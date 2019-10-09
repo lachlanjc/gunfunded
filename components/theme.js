@@ -1,4 +1,5 @@
 import base from '@rebass/preset'
+import { merge } from 'lodash'
 
 export const breakpoints = [32, 48, 64].map(w => `${w}em`)
 
@@ -28,8 +29,7 @@ export const palette = {
   instagram: '#e1306c'
 }
 
-const theme = {
-  ...base,
+const theme = merge(base, {
   breakpoints,
   space,
   fontSizes,
@@ -57,13 +57,15 @@ const theme = {
     heading: 1.125
   },
   fontWeights: {
+    stat: 300,
     body: 400,
-    heading: 900,
-    bold: 700
+    medium: 500,
+    bold: 700,
+    heading: 900
   },
   letterSpacings: {
     heading: '-0.05em',
-    caps: '0.1em'
+    caps: '0.05em'
   },
   sizes: {
     container: 768
@@ -80,8 +82,7 @@ const theme = {
     heading: {
       fontFamily: 'heading',
       fontWeight: 'heading',
-      lineHeight: 'heading',
-      letterSpacing: 'heading'
+      lineHeight: 'heading'
     },
     display: {
       fontFamily: 'heading',
@@ -95,7 +96,6 @@ const theme = {
       letterSpacing: 'caps'
     }
   },
-  styles: base.styles,
   variants: {
     container: {
       width: '100%',
@@ -116,11 +116,13 @@ const theme = {
       flexShrink: 0
     }
   }
-}
+})
 theme.styles.root = {
   fontFamily: theme.fonts.body,
   lineHeight: theme.lineHeights.body,
   fontWeight: theme.fontWeights.body,
+  color: theme.colors.text,
+  backgroundColor: theme.colors.bg,
   margin: 0,
   minHeight: '100vh',
   display: 'flex',

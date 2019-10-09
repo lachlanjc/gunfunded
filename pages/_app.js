@@ -4,6 +4,7 @@ import App, { Container } from 'next/app'
 import { ThemeProvider } from 'theme-ui'
 import { Global } from '@emotion/core'
 import theme from '../components/theme'
+import Footer from '../components/Footer'
 
 const name = 'Gun Funded'
 const desc = 'Rescuing democracy'
@@ -37,6 +38,7 @@ export default class extends App {
         <ThemeProvider theme={theme}>
           <Global styles={theme => ({ body: theme.styles.root })} />
           <Component {...pageProps} />
+          <Footer />
         </ThemeProvider>
       </Container>
     )
