@@ -8,7 +8,7 @@ const Grouping = ({
   profiles = [],
   children
 }) => (
-  <Box as="main" sx={{ bg: 'snow' }}>
+  <Box as="main" sx={{ bg: 'background' }}>
     <Head>
       <title>{title}</title>
       <meta name="description" content={desc} />

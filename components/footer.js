@@ -2,9 +2,9 @@ import { Flex, Box, Text, Link as A } from 'rebass'
 import Icon from '../components/icon'
 
 export default () => (
-  <Box as="footer" sx={{ bg: 'smoke', textAlign: 'center', px: 2, py: 3 }}>
+  <Box as="footer" sx={{ bg: 'sunken', textAlign: 'center', px: 2, py: 3 }}>
     <Flex sx={{ alignItems: 'center', justifyContent: 'center' }}>
-      <Text sx={{ color: 'slate' }}>
+      <Text sx={{ color: 'secondary' }}>
         Made by{' '}
         <A
           href="https://twitter.com/lachlanjc"

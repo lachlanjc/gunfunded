@@ -33,19 +33,33 @@ const theme = merge(base, {
   breakpoints,
   space,
   fontSizes,
+  initialColorMode: 'light',
+  useColorSchemeMediaQuery: true,
   colors: {
     ...palette,
     text: palette.black,
-    background: palette.white,
+    background: palette.snow,
+    elevated: palette.white,
+    sunken: palette.smoke,
+    secondary: palette.slate,
     primary: palette.red,
-    secondary: '#30c',
     muted: palette.muted,
-    accent: palette.green,
+    accent: palette.cyan,
     dem: palette.blue,
     rep: palette.red,
     ind: palette.cyan,
     lib: palette.orange,
-    gre: palette.green
+    gre: palette.green,
+    modes: {
+      dark: {
+        text: palette.white,
+        background: palette.dark,
+        elevated: palette.darkless,
+        sunken: palette.darker,
+        secondary: palette.muted,
+        muted: palette.muted
+      }
+    }
   },
   fonts: {
     body: 'system-ui, sans-serif',
@@ -104,7 +118,8 @@ const theme = merge(base, {
       px: 2
     },
     card: {
-      bg: 'white',
+      bg: 'elevated',
+      color: 'text',
       p: [3, 4],
       borderRadius: 'extra',
       boxShadow: 'card'
@@ -122,7 +137,6 @@ theme.styles.root = {
   lineHeight: theme.lineHeights.body,
   fontWeight: theme.fontWeights.body,
   color: theme.colors.text,
-  backgroundColor: theme.colors.bg,
   margin: 0,
   minHeight: '100vh',
   display: 'flex',

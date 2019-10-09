@@ -18,7 +18,7 @@ const Group = ({ id, pac, cycle, amount, type }) => (
 )
 
 const Page = ({ groups }) => (
-  <Box as="main" sx={{ bg: 'snow' }}>
+  <Box as="main" sx={{ bg: 'background' }}>
     <Box
       as="header"
       sx={{

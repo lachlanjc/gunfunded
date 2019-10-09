@@ -45,7 +45,7 @@ export default ({
           as="sup"
           sx={{
             fontSize: lg ? [2, 3] : [1, 2],
-            color: 'slate',
+            color: 'secondary',
             position: [null, unit === '%' ? null : 'absolute'],
             left: [null, -3],
             ml: [null, unit === '%' ? 1 : null],
@@ -57,7 +57,12 @@ export default ({
       )}
       <Text
         as="span"
-        sx={{ fontSize: lg ? [4, 5] : [3, 4], fontWeight: 'stat', my: 0 }}
+        sx={{
+          color: 'text',
+          fontSize: lg ? [4, 5] : [3, 4],
+          fontWeight: 'stat',
+          my: 0
+        }}
         children={value}
       />
     </Flex>
