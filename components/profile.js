@@ -39,22 +39,30 @@ const Badge = ({ party, ...props }) => (
   />
 )
 
-const tel = num => `tel:` + num.match(/\d+/g).join('')
-const Phone = ({ num }) => (
-  <Button as="a" href={tel(num)} sx={{ bg: 'red', mr: 'auto' }}>
-    Call {num}
-  </Button>
-)
-
 const Item = ({ label, icon, color, ...props }) => (
   <A
-    sx={{ color: color || icon || label.toLowerCase(), ml: [2, 3] }}
+    sx={{
+      color: color || icon || label.toLowerCase(),
+      ml: [2, 3],
+      lineHeight: 0
+    }}
     title={label}
     target="_blank"
     {...props}
   >
     <Icon glyph={icon || label.toLowerCase()} size={36} />
   </A>
+)
+
+const tel = num => `tel:` + num.match(/\d+/g).join('')
+const Phone = ({ num }) => (
+  <Item
+    href={tel(num)}
+    label="Call"
+    icon="notification"
+    color="red"
+    title={`Call ${num}`}
+  />
 )
 
 const Form = ({ url }) => (
@@ -74,7 +82,15 @@ const Instagram = ({ slug }) => (
 )
 
 const Contact = ({ phone, form, twitter, facebook, instagram }) => (
-  <Flex sx={{ alignItems: 'center' }}>
+  <Flex as="footer" sx={{ alignItems: 'center' }}>
+    <Button
+      as="a"
+      href="#"
+      sx={{ display: 'flex', alignItems: 'center', bg: 'red', mr: 'auto' }}
+    >
+      <Icon glyph="share" sx={{ mt: -1, mb: -2, ml: -1, mr: 2 }} />
+      Share
+    </Button>
     {phone && <Phone num={phone} />}
     {form && <Form url={form} />}
     {twitter && <Twitter slug={twitter} />}
@@ -84,8 +100,8 @@ const Contact = ({ phone, form, twitter, facebook, instagram }) => (
 )
 
 const Profile = ({ data }) => (
-  <Card sx={{ p: [3, 4], mb: [3, 4] }}>
-    <Flex sx={{ alignItems: 'center', position: 'relative' }}>
+  <Card as="section" sx={{ p: [3, 4], mb: [3, 4] }}>
+    <Flex as="header" sx={{ alignItems: 'center', position: 'relative' }}>
       <Box sx={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}>
         <Badge party={data.party} />
       </Box>
@@ -116,7 +132,7 @@ const Profile = ({ data }) => (
   "gunControlTotal": 0,
   "gunControlSupport": 0,
   "gunControlOpposed": 861, */}
-    <StatGrid>
+    <StatGrid as="article">
       <Stat
         value={commaNumber(data.gunRightsTotal)}
         label="from gun rights"
