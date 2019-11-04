@@ -6,6 +6,7 @@ const Grouping = ({
   title = 'Gun Funded',
   desc = '',
   profiles = [],
+  header,
   children
 }) => (
   <Box as="main" sx={{ bg: 'background' }}>
@@ -31,6 +32,7 @@ const Grouping = ({
           {desc}
         </Text>
       )}
+      {header}
     </Box>
     <Box as="article" variant="container" sx={{ py: [3, 4] }}>
       {children}
