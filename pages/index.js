@@ -40,13 +40,13 @@ const Page = ({ profiles }) => (
     <Heading as="h2" sx={{ fontSize: [3, 4], color: 'accent', mb: [2, 3] }}>Find your Representative</Heading>
     <Search />
     <Divider sx={{ mb: [3, 4] }} />
-    <Heading as="h2" sx={{ fontSize: [3, 4], color: 'accent', mb: [2, 3] }}>Explore all profiles</Heading>
+    <Heading as="h2" sx={{ fontSize: [3, 4], color: 'accent', mb: [2, 3] }}>Top 5 gun-funded Congresspeople</Heading>
   </Grouping>
 )
 
 Page.getInitialProps = async ({ req }) => {
   const origin = req ? `http://${req.headers.host}` : ''
-  const data = await fetch(`${origin}/api/profiles`)
+  const data = await fetch(`${origin}/api/profiles?limit=5`)
   const profiles = await data.json()
   return { profiles }
 }
