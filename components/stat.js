@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from '@theme-ui/components'
+import { Box, Donut, Flex, Text } from '@theme-ui/components'
 import { isEmpty } from 'lodash'
 
 export const StatGrid = props => (
@@ -65,6 +65,7 @@ export default ({
         }}
         children={value}
       />
+      {unit === '%' && <Donut value={value / 100} size={lg ? 48 : 32} strokeWidth={lg ? 3 : 2} sx={{ mr: 2 }} />}
     </Flex>
     {!isEmpty(label) && (
       <Text
