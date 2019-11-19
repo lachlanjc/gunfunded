@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-unfetch'
 import Grouping from '../components/grouping'
 import Link from 'next/link'
-import { Link as A, Flex, Button } from 'rebass'
+import { Link as A, Flex, Button } from '@theme-ui/components'
 
 const Page = ({ profiles }) => (
   <Grouping

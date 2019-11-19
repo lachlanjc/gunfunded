@@ -1,4 +1,4 @@
-import base from '@rebass/preset'
+import { base } from '@theme-ui/presets'
 import { merge } from 'lodash'
 
 export const breakpoints = [32, 48, 64].map(w => `${w}em`)
@@ -110,25 +110,34 @@ const theme = merge(base, {
       letterSpacing: 'caps'
     }
   },
+  buttons: {
+    primary: {
+      fontWeight: 'bold'
+    }
+  },
+  images: {
+    avatar: {
+      borderRadius: 'circle',
+      objectFit: 'cover',
+      objectPosition: 'center',
+      flexShrink: 0
+    }
+  },
+  cards: {
+    primary: {
+      bg: 'elevated',
+      color: 'text',
+      p: [3, 4],
+      borderRadius: 'extra',
+      boxShadow: 'card'
+    }
+  },
   variants: {
     container: {
       width: '100%',
       maxWidth: 'container',
       mx: 'auto',
       px: 2
-    },
-    card: {
-      bg: 'elevated',
-      color: 'text',
-      p: [3, 4],
-      borderRadius: 'extra',
-      boxShadow: 'card'
-    },
-    avatar: {
-      borderRadius: 'circle',
-      objectFit: 'cover',
-      objectPosition: 'center',
-      flexShrink: 0
     }
   }
 })

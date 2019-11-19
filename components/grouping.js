@@ -1,4 +1,4 @@
-import { Heading, Text, Box } from 'rebass'
+import { Heading, Text, Box } from '@theme-ui/components'
 import Head from 'next/head'
 import Profile from '../components/profile'
 

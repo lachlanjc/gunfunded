@@ -1,23 +1,17 @@
 /** @jsx jsx */
 import { jsx, Styled, useColorMode } from 'theme-ui'
-import { Flex, Box, Text, Link as A } from 'rebass'
+import { Flex, Box, Text, Link as A, IconButton, NavLink } from '@theme-ui/components'
+import Link from 'next/link'
 import Icon from '../components/icon'
 
 const ColorSwitcher = props => {
   const [mode, setMode] = useColorMode()
   return (
-    <button
+    <IconButton
       {...props}
       onClick={e => setMode(mode === 'dark' ? 'light' : 'dark')}
       title="Cycle Color Mode"
       sx={{
-        display: 'inline-block',
-        appearance: 'none',
-        bg: 'transparent',
-        color: 'inherit',
-        p: 1,
-        m: 0,
-        border: 0,
         borderRadius: 9999,
         transition: 'box-shadow .125s ease-in-out',
         ...props.sx,
@@ -47,7 +41,7 @@ const ColorSwitcher = props => {
         />
         <path d="M 16 0 A 16 16 0 0 0 16 32 z" />
       </svg>
-    </button>
+    </IconButton>
   )
 }
 
@@ -61,7 +55,9 @@ export default () => (
       }}
     >
       <Icon glyph="payment-docs" size={36} sx={{ mr: 1, mb: -2 }} />
-      <Text sx={{ fontWeight: 'bold', fontSize: 1 }}>Gun Funded</Text>
+      <Link href="/">
+        <NavLink sx={{ color: 'inherit', fontSize: 1 }}>Gun Funded</NavLink>
+      </Link>
       <ColorSwitcher sx={{ ml: 'auto' }} />
     </Flex>
   </Box>

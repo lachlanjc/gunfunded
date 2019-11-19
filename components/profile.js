@@ -7,7 +7,7 @@ import {
   Text,
   Link as A,
   Button
-} from 'rebass'
+} from '@theme-ui/components'
 import Stat, { StatGrid } from '../components/stat'
 import Icon from '../components/icon'
 

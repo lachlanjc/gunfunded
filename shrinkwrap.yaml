@@ -1,8 +1,8 @@
 dependencies:
   '@hackclub/icons': 0.0.2
   '@mdx-js/react': 1.5.1
-  '@rebass/preset': 4.0.5
   '@theme-ui/components': 0.2.49
+  '@theme-ui/presets': 0.2.44
   '@zeit/next-mdx': 1.2.0
   babel-plugin-emotion: 10.0.23
   comma-number: 2.0.1
@@ -16,7 +16,6 @@ dependencies:
   react: 16.12.0
   react-dom: 16.12.0
   react-usa-map: 1.4.0
-  rebass: 4.0.7
   theme-ui: 0.2.49
   write-json-file: 4.2.1
 packages:
@@ -1158,10 +1157,6 @@ packages:
       react: ^0.14.x || ^15.x || ^16.x
     resolution:
       integrity: sha512-u1H93/n7t2XE69fWiKIQIcnSHIHV9LgOew09rrzu+ceF+TK8jMacE2FxW09lQDUyL/Rat3fJDS4dQdTY8g/ZdQ==
-  /@rebass/preset/4.0.5:
-    dev: false
-    resolution:
-      integrity: sha512-RsNZ6r6GjJj7dvis7J+fniekpzqGh+tQ+slIbSX0vUjoB9XTJrRHPnNAf2fcWJHxVfCbZWY1JNsuq3Fcdj1oJA==
   /@styled-system/background/5.1.2:
     dependencies:
       '@styled-system/core': 5.1.2
@@ -1260,6 +1255,79 @@ packages:
       react: ^16.8.0
     resolution:
       integrity: sha512-0Q9jfUTJMRIZ+NF7oCJtVIoY8wyh0soMIlbbdPCCkU+BWLpCEuJ+FFCjWclkIuUiRCVJg6RD1JOyOer9MbUxXQ==
+  /@theme-ui/preset-base/0.2.44:
+    dev: false
+    resolution:
+      integrity: sha512-g2BaHKz5/32wHIFoRifHxYikBJICqYx+weypA/zwz+d7rZTE9q+EgTvlFSdVlf1HtR2a3uLB1lp4se0tlI2zwg==
+  /@theme-ui/preset-bootstrap/0.2.40:
+    dev: false
+    resolution:
+      integrity: sha512-eIWrmxDYDhw0A0FfiUScuhIVR7xlq/CS56nzidsdKl5R9kBg5K1pcyHPGQrW6jLDnhFL6bOqZuvzchvHXooSew==
+  /@theme-ui/preset-bulma/0.2.44:
+    dependencies:
+      '@theme-ui/preset-base': 0.2.44
+    dev: false
+    resolution:
+      integrity: sha512-gJ5daQzQZPQVcr34mWE3R2vf9ASRpb7Xjd//FVwcwKn95ZdaeLTAksW9FMDisWtrmF7O8NiF1JHSHnu6i9M3dQ==
+  /@theme-ui/preset-dark/0.2.40:
+    dev: false
+    resolution:
+      integrity: sha512-0Zuhrm7UmMgyxa9BRQcBwm8uA7jV4cBhbCVJfx0AO9E1OjrfjsW0kuU82BiBUY14wlqgQuleX0bcTdszXqSgzg==
+  /@theme-ui/preset-deep/0.2.40:
+    dev: false
+    resolution:
+      integrity: sha512-Cj9yYj6QYhhf4MXPtIFd9lL82WzsP8C6obqBI3Fmh51VoUrW6eYbBkmD5N/qvarkMJla29jF/3FjcS6gwMsOqQ==
+  /@theme-ui/preset-funk/0.2.44:
+    dependencies:
+      '@theme-ui/preset-base': 0.2.44
+    dev: false
+    resolution:
+      integrity: sha512-GEFmDXu21tGnXjYD+V5I5YPl8liWI5kEIFCuVz8awJoE8BYHPDdGo4Gm2TlZQvetiI9BIY2Lk5u/RYS2Zd7wYw==
+  /@theme-ui/preset-future/0.2.44:
+    dependencies:
+      '@theme-ui/preset-base': 0.2.44
+    dev: false
+    resolution:
+      integrity: sha512-y6LipmPOYxXb3yOGWACKMTLrP+Dg6gwxWGaH3OdqAUl3LX0If+4BLubvl4VJGxfAXb7YVXxDN3Xu+etX76boWg==
+  /@theme-ui/preset-roboto/0.2.44:
+    dependencies:
+      '@theme-ui/preset-base': 0.2.44
+    dev: false
+    resolution:
+      integrity: sha512-ZEUzsfp7Yj7o8CVJucrs/uJnd39e4z98jsn6+qbF3cZBtLoUmpikQaiWsM2OgUsptvGKMusvfcfFASUCfKr35Q==
+  /@theme-ui/preset-swiss/0.2.40:
+    dev: false
+    resolution:
+      integrity: sha512-4LHNNrvBBuNNt367haJCztBHUpcrq5VLfkjpq8cyuG8HbTcVbT/Hcad+t1B/0d0NKdE4q5paPXA+l7fv1A5q0Q==
+  /@theme-ui/preset-system/0.2.40:
+    dev: false
+    resolution:
+      integrity: sha512-AI321YIipLM6++6ligmSaAFiBwaWFJWLyHZk5ma415hn2neYddQ5vXeBI7P4Tfhx208qg2ete5qGWM+Q7KA3Sw==
+  /@theme-ui/preset-tailwind/0.2.42:
+    dev: false
+    resolution:
+      integrity: sha512-giQQ0xoGB2btWvLlg9GQSyRiQ6vGCpVF+uf5OxU5TJt2DGyuYckxvlG3za93o80cxHnVlm5YyO2sLNzXyQSi0w==
+  /@theme-ui/preset-tosh/0.2.40:
+    dev: false
+    resolution:
+      integrity: sha512-LatVzEDlVR1pqyn9u+i4ZcZrdfWx0Hvd7ktNGLrA89RD9IX7hDHdvsr0wI6z6nrPtTNoa41YZe7xU8QzgwnpCg==
+  /@theme-ui/presets/0.2.44:
+    dependencies:
+      '@theme-ui/preset-base': 0.2.44
+      '@theme-ui/preset-bootstrap': 0.2.40
+      '@theme-ui/preset-bulma': 0.2.44
+      '@theme-ui/preset-dark': 0.2.40
+      '@theme-ui/preset-deep': 0.2.40
+      '@theme-ui/preset-funk': 0.2.44
+      '@theme-ui/preset-future': 0.2.44
+      '@theme-ui/preset-roboto': 0.2.44
+      '@theme-ui/preset-swiss': 0.2.40
+      '@theme-ui/preset-system': 0.2.40
+      '@theme-ui/preset-tailwind': 0.2.42
+      '@theme-ui/preset-tosh': 0.2.40
+    dev: false
+    resolution:
+      integrity: sha512-jPiz3LMwNkz2FU7eqBhOqi+e1YKdFajHg5+7tmwjXkOhWYSGFGi391IFj+cTN9VEC12Og8JWLg1Aig3QL/fi2Q==
   /@types/parse-json/4.0.0:
     dev: false
     resolution:
@@ -5408,28 +5476,10 @@ packages:
       node: '>=0.10'
     resolution:
       integrity: sha512-1JU/8q+VgFZyxwrJ+SVIOsh+KywWGpds3NTqikiKpDMZWScmAYyKIgqkO+ARvNWJfXeXR1zxz7aHF4u4CyH6vQ==
-  /rebass/4.0.7:
-    dependencies:
-      reflexbox: 4.0.6
-    dev: false
-    resolution:
-      integrity: sha512-GJot6j6Qcr7jk1QIgf9qBoud75CGRpN8pGcEo98TSp4KNSWV01ZLvGwFKGI35oEBuNs+lpEd3+pnwkQUTSFytg==
   /reflect.ownkeys/0.2.0:
     dev: false
     resolution:
       integrity: sha1-dJrO7H8/34tj+SegSAnpDFwLNGA=
-  /reflexbox/4.0.6:
-    dependencies:
-      '@emotion/core': 10.0.22
-      '@emotion/styled': /@emotion/styled/10.0.23/@emotion!core@10.0.22
-      '@styled-system/css': 5.0.23
-      '@styled-system/should-forward-prop': 5.1.2
-      styled-system: 5.1.2
-    dev: false
-    peerDependencies:
-      react: ^16.8.6
-    resolution:
-      integrity: sha512-UNUL4YoJEXAPjRKHuty1tuOk+LV1nDJ2KYViDcH7lYm5yU3AQ+EKNXxPU3E14bQNK/pE09b1hYl+ZKdA94tWLQ==
   /regenerate-unicode-properties/8.1.0:
     dependencies:
       regenerate: 1.4.0
@@ -6683,8 +6733,8 @@ shrinkwrapVersion: 3
 specifiers:
   '@hackclub/icons': 0.0.2
   '@mdx-js/react': ^1.5.1
-  '@rebass/preset': ^4.0.5
   '@theme-ui/components': ^0.2.49
+  '@theme-ui/presets': ^0.2.44
   '@zeit/next-mdx': ^1.2.0
   babel-plugin-emotion: ^10.0.23
   comma-number: ^2.0.1
@@ -6698,6 +6748,5 @@ specifiers:
   react: ^16.11.0
   react-dom: ^16.12.0
   react-usa-map: ^1.4.0
-  rebass: ^4.0.7
-  theme-ui: ^0.2.46
+  theme-ui: ^0.2.49
   write-json-file: ^4.2.1

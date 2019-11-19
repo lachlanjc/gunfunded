@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box } from 'rebass'
+import { Box } from '@theme-ui/components'
 import Icon from '@hackclub/icons'
 
 export default ({ sx, ...props }) => (

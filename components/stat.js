@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from 'rebass'
+import { Box, Flex, Text } from '@theme-ui/components'
 import { isEmpty } from 'lodash'
 
 export const StatGrid = props => (

@@ -1,4 +1,4 @@
-import { Flex, Box, Text, Link as A } from 'rebass'
+import { Flex, Box, Text, Link as A } from '@theme-ui/components'
 import Icon from '../components/icon'
 
 export default () => (

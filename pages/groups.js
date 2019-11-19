@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-unfetch'
-import { Box, Flex, Heading, Text } from 'rebass'
+import { Box, Flex, Heading, Text } from '@theme-ui/components'
 import Stat, { StatGrid } from '../components/stat'
 import commaNumber from 'comma-number'
 import { map, sum } from 'lodash'

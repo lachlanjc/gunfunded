@@ -1,4 +1,4 @@
-import { Heading, Box, Flex, Link as A } from 'rebass'
+import { Heading, Box, Flex, Link as A } from '@theme-ui/components'
 import Head from 'next/head'
 import Router from 'next/router'
 import Link from 'next/link'
