@@ -46,8 +46,8 @@ export default ({
           sx={{
             fontSize: lg ? [2, 3] : [1, 2],
             color: 'secondary',
-            position: [null, unit === '%' ? null : 'absolute'],
-            left: [null, -3],
+            position: [null, null, unit === '%' ? null : 'absolute'],
+            left: [null, null, -3],
             ml: [null, unit === '%' ? 1 : null],
             mr: [null, 1],
             pt: [null, 1]

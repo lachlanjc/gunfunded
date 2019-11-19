@@ -1,10 +1,37 @@
 import records from '../../data/records.json'
-import { orderBy, filter } from 'lodash'
+import { orderBy, filter, find } from 'lodash'
+import fetch from 'isomorphic-unfetch'
 
 export default (req, res) => {
-  const {
-    query: { state, role, gender, party }
-  } = req
-  let profiles = orderBy(records, 'id')
-  res.json(profiles)
+  const { address } = req.query
+  const payload = {
+    key: 'AIzaSyAC098ZQK-jP_Q5fRpG_0of9LCTvOtdEFA',
+    address,
+    fields: 'divisions,officials',
+    includeOffices: true.toString()
+  }
+  const query = Object.keys(payload)
+    .map(key => [key, payload[key]].map(encodeURIComponent).join('='))
+    .join('&')
+  const keyMatch = key =>
+    key.match(
+      /ocd-division\/country:us\/(?:state|district):(\w+)(?:\/cd:)(\d+)/
+    )
+  const url = `https://www.googleapis.com/civicinfo/v2/representatives?${query}`
+  fetch(url)
+    .then(civic => civic.json())
+    .then(civic => {
+      const divKey = find(Object.keys(civic.divisions), keyMatch)
+      const record = civic.divisions[divKey]
+      const rep = civic.officials[record.officeIndices[0] + 1]
+      const state = keyMatch(divKey)[1].toString().toUpperCase()
+      const dist = keyMatch(divKey)[2].toString()
+      const id = `${state}-${dist}`
+      const result = find(records, ['id', id])
+      console.log(divKey, state, dist, id, result)
+      res.json(result || rep)
+    })
+    .catch(e => {
+      console.error(e)
+    })
 }

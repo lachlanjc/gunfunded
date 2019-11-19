@@ -1,7 +1,8 @@
 import fetch from 'isomorphic-unfetch'
 import Grouping from '../components/grouping'
+import Search from '../components/search'
 import Link from 'next/link'
-import { Link as A, Flex, Button } from '@theme-ui/components'
+import { Divider, Link as A, Flex, Heading, Button } from '@theme-ui/components'
 
 const Page = ({ profiles }) => (
   <Grouping
@@ -35,7 +36,12 @@ const Page = ({ profiles }) => (
         </Link>
       </Flex>
     }
-  />
+  >
+    <Heading as="h2" sx={{ fontSize: [3, 4], color: 'accent', mb: [2, 3] }}>Find your Representative</Heading>
+    <Search />
+    <Divider sx={{ mb: [3, 4] }} />
+    <Heading as="h2" sx={{ fontSize: [3, 4], color: 'accent', mb: [2, 3] }}>Explore all profiles</Heading>
+  </Grouping>
 )
 
 Page.getInitialProps = async ({ req }) => {
