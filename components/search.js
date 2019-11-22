@@ -8,7 +8,7 @@ const Loading = () => (
   <Spinner size={24} color="currentColor" sx={{ margin: '-4px 0 -6px' }} />
 )
 
-const ErrorCard = () => (
+const Error = ({ error = '' }) => (
   <Card
     variant="sunken"
     sx={{
@@ -20,29 +20,30 @@ const ErrorCard = () => (
       fontWeight: 'bold'
     }}
   >
-    Something went wrong :(
+    {error}
   </Card>
 )
 
 export default ({ defaultAddress = '' }) => {
   const [address, setAddress] = useState(defaultAddress)
-  const [rep, setRep] = useState({})
   const [submit, setSubmit] = useState('Search')
-
-  let value = null
+  const [value, setValue] = useState(null)
 
   const fetchRep = async () => {
     const res = await fetch(
       `/api/locate?address=${encodeURIComponent(address)}`
     )
     const data = await res.json()
-    if (isEmpty(data) || data.error) {
-      value = <ErrorCard />
+    if (isEmpty(data)) {
+      setValue(<Error error="Something went wrong" />)
+    } else if (!isEmpty(data.error)) {
+      setValue(<Error error="Invalid address" />)
     } else {
       setSubmit('Search')
-      setRep(data)
+      setValue(<Profile data={data} />)
     }
   }
+
   const onSubmit = e => {
     setSubmit(<Loading />)
     fetchRep()
@@ -50,10 +51,6 @@ export default ({ defaultAddress = '' }) => {
   }
   const onChange = e => {
     setAddress(e.target.value)
-  }
-
-  if (rep.party) {
-    value = <Profile data={rep} />
   }
 
   return (
@@ -71,7 +68,7 @@ export default ({ defaultAddress = '' }) => {
       >
         <Box sx={{ color: 'text' }}>
           <Label htmlFor="address">Home address</Label>
-          <Input type="text" name="address" onChange={onChange} />
+          <Input type="text" name="address" onChange={onChange} value={address} />
         </Box>
         <Button
           type="submit"
