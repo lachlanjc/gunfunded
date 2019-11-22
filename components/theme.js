@@ -91,6 +91,7 @@ const theme = merge(base, {
     circle: 99999
   },
   shadows: {
+    small: '0 1px 2px rgba(0, 0, 0, 0.0625), 0 2px 4px rgba(0, 0, 0, 0.0625)',
     card: '0 4px 8px rgba(0, 0, 0, 0.125)'
   },
   text: {
@@ -113,6 +114,7 @@ const theme = merge(base, {
   },
   buttons: {
     primary: {
+      fontFamily: 'body',
       fontWeight: 'bold'
     }
   },
@@ -124,6 +126,20 @@ const theme = merge(base, {
       flexShrink: 0
     }
   },
+  forms: {
+    input: {
+      bg: 'elevated',
+      color: 'text',
+      fontFamily: 'body',
+      borderRadius: 'base',
+      boxShadow: 'small',
+      transition: 'box-shadow .125s ease-in-out',
+      border: 0,
+      ':hover,:focus': {
+        boxShadow: 'card'
+      }
+    }
+  },
   cards: {
     primary: {
       bg: 'elevated',
@@ -131,6 +147,11 @@ const theme = merge(base, {
       p: [3, 4],
       borderRadius: 'extra',
       boxShadow: 'card'
+    },
+    sunken: {
+      bg: 'sunken',
+      p: [3, 4],
+      borderRadius: 'extra'
     }
   },
   variants: {

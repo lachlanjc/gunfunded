@@ -23,9 +23,14 @@ export default (req, res) => {
     .then(civic => {
       const divKey = find(Object.keys(civic.divisions), keyMatch)
       const record = civic.divisions[divKey]
+      if (typeof record === 'undefined') {
+        res.status(422).json({ error: 'Invalid address' })
+        return
+      }
       const rep = civic.officials[record.officeIndices[0] + 1]
       const state = keyMatch(divKey)[1].toString().toUpperCase()
-      const dist = keyMatch(divKey)[2].toString()
+      let dist = keyMatch(divKey)[2].toString()
+      if (dist.length === 1) dist = `0${dist}`
       const id = `${state}-${dist}`
       const result = find(records, ['id', id])
       console.log(divKey, state, dist, id, result)
@@ -33,5 +38,6 @@ export default (req, res) => {
     })
     .catch(e => {
       console.error(e)
+      res.status(500).json({ error: 'Something went wrong' })
     })
 }

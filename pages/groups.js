@@ -37,18 +37,10 @@ const Page = ({ groups }) => (
       </Text>
     </Box>
     <Box as="article" variant="container" sx={{ py: [3, 4] }}>
-      {children}
-      {profiles.map(profile => (
-        <Profile data={profile} key={profile.id} />
+      {groups.map(group => (
+        <Card sx={{ mb: [3, 4] }}>{group.name}</Card>
       ))}
     </Box>
-    <StatGrid sx={{ mt: [2, 3], mb: [4, 5] }}>
-      <Stat
-        lg
-        value={commaNumber(stats.total)}
-        label="total in gun rights money"
-      />
-    </StatGrid>
   </Box>
 )
 
@@ -56,6 +48,7 @@ Page.getInitialProps = async ({ req }) => {
   const origin = req ? `http://${req.headers.host}` : ''
   const data = await fetch(`${origin}/api/groups`)
   const groups = await data.json()
+  console.log(groups)
   // const totals = map(profiles, 'amount')
   // const stats = {
   //   total: sum(totals)

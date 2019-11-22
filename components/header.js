@@ -56,7 +56,7 @@ export default () => (
     >
       <Icon glyph="payment-docs" size={36} sx={{ mr: 1, mb: -2 }} />
       <Link href="/">
-        <NavLink sx={{ color: 'inherit', fontSize: 1 }}>Gun Funded</NavLink>
+        <a sx={{ color: 'inherit', fontSize: 1 }}>Gun Funded</a>
       </Link>
       <ColorSwitcher sx={{ ml: 'auto' }} />
     </Flex>

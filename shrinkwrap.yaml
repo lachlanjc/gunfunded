@@ -6745,7 +6745,7 @@ specifiers:
   lodash: ^4.17.15
   neat-csv: ^5.1.0
   next: ^9.1.1
-  react: ^16.11.0
+  react: ^16.12.0
   react-dom: ^16.12.0
   react-usa-map: ^1.4.0
   theme-ui: ^0.2.49

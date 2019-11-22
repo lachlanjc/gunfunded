@@ -19,6 +19,7 @@ export default ({
   value,
   label,
   unit = '$',
+  of,
   reversed = false,
   lg = false,
   ...props
@@ -65,6 +66,21 @@ export default ({
         }}
         children={value}
       />
+      {!isEmpty(of) && (
+        <Text
+          as="sup"
+          sx={{
+            fontSize: lg ? [2, 3] : [1, 2],
+            color: 'muted',
+            ml: [null, 1],
+            pt: [null, 1],
+            '::before': {
+              content: '"/"'
+            }
+          }}
+          children={of}
+        />
+      )}
       {unit === '%' && <Donut value={value / 100} size={lg ? 48 : 32} strokeWidth={lg ? 3 : 2} sx={{ mr: 2 }} />}
     </Flex>
     {!isEmpty(label) && (

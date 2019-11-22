@@ -1,33 +1,58 @@
 import React, { useState } from 'react'
 import fetch from 'isomorphic-unfetch'
 import Profile from './profile'
-import { Box, Label, Input, Button, Spinner } from '@theme-ui/components'
+import { Box, Card, Label, Input, Button, Spinner } from '@theme-ui/components'
+import { isEmpty } from 'lodash'
 
-export default () => {
-  const [address, setAddress] = useState('')
-  const [rep, setRep] = useState(null)
-  let value = <div />
-  let submit = 'Search'
+const Loading = () => (
+  <Spinner size={24} color="currentColor" sx={{ margin: '-4px 0 -6px' }} />
+)
+
+const ErrorCard = () => (
+  <Card
+    variant="sunken"
+    sx={{
+      color: 'text',
+      display: 'flex',
+      placeContent: 'center',
+      py: [3, 4],
+      mb: [3, 4],
+      fontWeight: 'bold'
+    }}
+  >
+    Something went wrong :(
+  </Card>
+)
+
+export default ({ defaultAddress = '' }) => {
+  const [address, setAddress] = useState(defaultAddress)
+  const [rep, setRep] = useState({})
+  const [submit, setSubmit] = useState('Search')
+
+  let value = null
 
   const fetchRep = async () => {
     const res = await fetch(
-        `/api/locate?address=${encodeURIComponent(address)}`
+      `/api/locate?address=${encodeURIComponent(address)}`
     )
     const data = await res.json()
-    console.log(data)
-    setRep(data)
-    submit = 'Search'
+    if (isEmpty(data) || data.error) {
+      value = <ErrorCard />
+    } else {
+      setSubmit('Search')
+      setRep(data)
+    }
   }
   const onSubmit = e => {
-    e.preventDefault()
-    submit = <Spinner size={24} />
+    setSubmit(<Loading />)
     fetchRep()
+    e.preventDefault()
   }
   const onChange = e => {
     setAddress(e.target.value)
   }
 
-  if (rep) {
+  if (rep.party) {
     value = <Profile data={rep} />
   }
 
@@ -48,7 +73,12 @@ export default () => {
           <Label htmlFor="address">Home address</Label>
           <Input type="text" name="address" onChange={onChange} />
         </Box>
-        <Button as="input" type="submit" onClick={onSubmit} value={submit} />
+        <Button
+          type="submit"
+          onClick={onSubmit}
+          sx={{ minWidth: 72 }}
+          children={submit}
+        />
       </Box>
       {value}
     </section>

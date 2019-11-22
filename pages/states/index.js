@@ -10,7 +10,7 @@ const mapHandler = e => {
 }
 
 export default () => (
-  <Box sx={{ minHeight: '100vh', bg: 'snow' }}>
+  <Box sx={{ minHeight: '100vh', bg: 'background' }}>
     <Head>
       <title>States – Gun Funded</title>
     </Head>

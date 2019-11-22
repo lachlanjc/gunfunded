@@ -1,7 +1,7 @@
 import { Box, Heading } from '@theme-ui/components'
 import Search from '../components/search'
 
-export default () => (
+const Page = ({ address }) => (
   <Box as="main" sx={{ bg: 'background' }}>
     <Box
       as="header"
@@ -18,7 +18,14 @@ export default () => (
       </Heading>
     </Box>
     <Box as="article" variant="container" sx={{ py: [3, 4] }}>
-      <Search />
+      <Search defaultAddress={address} />
     </Box>
   </Box>
 )
+
+Page.getInitialProps = req => {
+  const address = req.query.address || ''
+  return { address }
+}
+
+export default Page

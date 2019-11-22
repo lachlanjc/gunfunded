@@ -99,8 +99,9 @@ const Contact = ({ phone, form, twitter, facebook, instagram }) => (
   </Flex>
 )
 
-const Profile = ({ data }) => (
-  <Card as="section" sx={{ p: [3, 4], mb: [3, 4] }}>
+const Profile = ({ label, data, sx = {} }) => (
+  <Card as="section" sx={{ p: [3, 4], mb: [3, 4], ...sx }}>
+    {label && <Text variant="caps" sx={{ color: 'green', fontWeight: 'bold', mb: [2, 3] }} children={label} />}
     <Flex as="header" sx={{ alignItems: 'center', position: 'relative' }}>
       <Box sx={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}>
         <Badge party={data.party} />
@@ -144,7 +145,7 @@ const Profile = ({ data }) => (
         lg
       />
       <Stat value={commaNumber(data.net)} label="net gun money" /> */}
-      <Stat value={data.rank} unit="#" label="rank in Congress of 539" lg />
+      <Stat value={data.rank} unit="#" of="539" label="rank in Congress" lg />
     </StatGrid>
     <Contact {...data.contact} />
   </Card>
