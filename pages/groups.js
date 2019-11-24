@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-unfetch'
-import { Box, Flex, Heading, Text } from '@theme-ui/components'
+import { Box, Flex, Heading, Card, Text } from '@theme-ui/components'
 import Stat, { StatGrid } from '../components/stat'
 import commaNumber from 'comma-number'
 import { map, sum } from 'lodash'
@@ -38,7 +38,10 @@ const Page = ({ groups }) => (
     </Box>
     <Box as="article" variant="container" sx={{ py: [3, 4] }}>
       {groups.map(group => (
-        <Card sx={{ mb: [3, 4] }}>{group.name}</Card>
+        <Card sx={{ mb: [3, 4] }}>
+          {group.pac} {group.type}
+          <Stat unit="$" value={commaNumber(group.amount)} />
+        </Card>
       ))}
     </Box>
   </Box>

@@ -15,8 +15,7 @@ export default (req, res) => {
     .join('&')
   const keyMatch = key =>
     key.match(
-      /ocd-division\/country:us\/(?:state|district):(\w+)(?:\/cd:)(\d+)/
-    )
+      /ocd-division\/country:us\/(?:state|district):(\w+)(?:\/cd:)(\d+)/    )
   const url = `https://www.googleapis.com/civicinfo/v2/representatives?${query}`
   fetch(url)
     .then(civic => civic.json())
@@ -41,3 +40,4 @@ export default (req, res) => {
       res.status(500).json({ error: 'Something went wrong' })
     })
 }
+x
