@@ -45,6 +45,9 @@ const theme = merge(base, {
     primary: palette.red,
     muted: palette.muted,
     accent: palette.blue,
+    invertedPrimary: palette.white,
+    invertedText: palette.red,
+    nav: palette.white,
     dem: palette.blue,
     rep: palette.red,
     ind: palette.cyan,
@@ -58,7 +61,10 @@ const theme = merge(base, {
         sunken: palette.darker,
         secondary: palette.muted,
         muted: palette.muted,
-        accent: palette.cyan
+        accent: palette.cyan,
+        invertedPrimary: palette.darker,
+        invertedText: palette.red,
+        nav: palette.red,
       }
     }
   },
@@ -114,6 +120,16 @@ const theme = merge(base, {
   },
   buttons: {
     primary: {
+      bg: 'primary',
+      color: 'background',
+      cursor: 'pointer',
+      fontFamily: 'body',
+      fontWeight: 'bold'
+    },
+    inverted: {
+      bg: 'invertedPrimary',
+      color: 'invertedText',
+      cursor: 'pointer',
       fontFamily: 'body',
       fontWeight: 'bold'
     }

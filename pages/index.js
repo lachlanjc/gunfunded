@@ -21,7 +21,8 @@ const Page = ({ profiles }) => (
         <Link href="/states">
           <Button
             as="a"
-            sx={{ bg: 'white', color: 'primary', cursor: 'pointer', mx: 3 }}
+            variant="inverted"
+            sx={{ mx: 3 }}
           >
             Explore States
           </Button>
@@ -29,7 +30,8 @@ const Page = ({ profiles }) => (
         <Link href="/top-representatives">
           <Button
             as="a"
-            sx={{ bg: 'white', color: 'primary', cursor: 'pointer', mx: 3 }}
+            variant="inverted"
+            sx={{ mx: 3 }}
           >
             Top Reps
           </Button>

@@ -5,7 +5,7 @@ import { ThemeProvider, ColorMode } from 'theme-ui'
 import { Global } from '@emotion/core'
 
 import theme from '../components/theme'
-import Header from '../components/header'
+import Nav from '../components/nav'
 import Footer from '../components/footer'
 
 const name = 'Gun Funded'
@@ -30,7 +30,7 @@ export default class extends App {
         <ThemeProvider theme={theme}>
           <ColorMode />
           <Global styles={theme => ({ body: theme.styles.root })} />
-          <Header />
+          <Nav />
           <Component {...pageProps} />
           <Footer />
         </ThemeProvider>
