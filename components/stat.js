@@ -6,8 +6,9 @@ export const StatGrid = props => (
     {...props}
     sx={{
       display: 'grid',
-      gridTemplateColumns: ['auto', 'repeat(2, 1fr)'],
+      gridTemplateColumns: 'repeat(2, 1fr)',
       gridGap: 3,
+      alignItems: 'flex-end',
       mt: [3, 4],
       mb: [3, 4],
       ...props.sx
@@ -28,6 +29,7 @@ export default ({
     {...props}
     sx={{
       flexDirection: reversed ? 'column-reverse' : 'column',
+      gridColumn: lg ? ['span 2', 'initial'] : 'initial',
       lineHeight: 1,
       ...props.sx
     }}
@@ -60,7 +62,7 @@ export default ({
         as="span"
         sx={{
           color: 'text',
-          fontSize: lg ? [4, 5] : [3, 4],
+          fontSize: lg ? [4, 5] : 4,
           fontWeight: 'stat',
           my: 0
         }}

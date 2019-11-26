@@ -1,9 +1,9 @@
 import records from '../../data/groups.json'
-import { orderBy, filter, capitalize } from 'lodash'
+import { orderBy, reverse, filter, capitalize } from 'lodash'
 
 export default (req, res) => {
   // const {  } = req.query
-  let profiles = orderBy(records, ['cycle', 'amount'])
+  let profiles = reverse(orderBy(records, ['cycle', 'amount']))
   // if (role) {
   //   profiles = filter(profiles, ['role', role.toLowerCase()])
   // }

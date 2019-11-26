@@ -16,24 +16,22 @@ const Page = ({ profiles }) => (
       </>
     }
     profiles={profiles}
+    centeredHeader
     header={
       <Flex sx={{ justifyContent: 'center', mt: [3, 4] }}>
         <Link href="/states">
-          <Button
-            as="a"
-            variant="inverted"
-            sx={{ mx: 3 }}
-          >
+          <Button as="a" variant="inverted" sx={{ mx: 3 }}>
             Explore States
           </Button>
         </Link>
         <Link href="/top-representatives">
-          <Button
-            as="a"
-            variant="inverted"
-            sx={{ mx: 3 }}
-          >
+          <Button as="a" variant="inverted" sx={{ mx: 3 }}>
             Top Reps
+          </Button>
+        </Link>
+        <Link href="/groups">
+          <Button as="a" variant="inverted" sx={{ mx: 3 }}>
+            Explore PACs
           </Button>
         </Link>
       </Flex>

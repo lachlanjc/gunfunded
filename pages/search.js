@@ -1,22 +1,10 @@
 import { Box, Heading } from '@theme-ui/components'
+import Header from '../components/header'
 import Search from '../components/search'
 
 const Page = ({ address }) => (
   <Box as="main" sx={{ bg: 'background' }}>
-    <Box
-      as="header"
-      sx={{
-        bg: 'red',
-        color: 'white',
-        py: [4, 5],
-        px: 2,
-        textAlign: 'center'
-      }}
-    >
-      <Heading as="h1" sx={{ fontSize: [5, 6] }}>
-        Find Your Rep
-      </Heading>
-    </Box>
+    <Header title="Find Your Rep" centeredHeader />
     <Box as="article" variant="container" sx={{ py: [3, 4] }}>
       <Search defaultAddress={address} />
     </Box>

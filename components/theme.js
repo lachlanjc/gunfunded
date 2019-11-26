@@ -89,7 +89,8 @@ const theme = merge(base, {
     caps: '0.05em'
   },
   sizes: {
-    container: 768
+    container: 768,
+    small: 512
   },
   radii: {
     default: 6,
@@ -116,6 +117,11 @@ const theme = merge(base, {
     caps: {
       textTransform: 'uppercase',
       letterSpacing: 'caps'
+    }
+  },
+  badges: {
+    pill: {
+      borderRadius: 'circle'
     }
   },
   buttons: {

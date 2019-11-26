@@ -7,6 +7,7 @@ const Grouping = ({
   title = 'Gun Funded',
   desc = '',
   profiles = [],
+  centeredHeader,
   header,
   children
 }) => (
@@ -15,7 +16,7 @@ const Grouping = ({
       <title>{title}</title>
       <meta name="description" content={desc} />
     </Head>
-    <Header title={title} desc={desc} children={header} />
+    <Header title={title} desc={desc} centered={centeredHeader} children={header} />
     <Box as="article" variant="container" sx={{ py: [3, 4] }}>
       {children}
       {profiles.map(profile => (
