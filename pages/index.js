@@ -18,32 +18,32 @@ const Page = ({ profiles }) => (
     profiles={profiles}
     centeredHeader
     header={
-      <Flex sx={{ justifyContent: 'center', mt: [3, 4] }}>
+      <Flex sx={{ justifyContent: 'center', flexWrap: 'wrap', mt: 3 }}>
         <Link href="/states">
-          <Button as="a" variant="inverted" sx={{ mx: 3 }}>
+          <Button as="a" variant="inverted" sx={{ m: [2, 3] }}>
             Explore States
           </Button>
         </Link>
         <Link href="/top-representatives">
-          <Button as="a" variant="inverted" sx={{ mx: 3 }}>
+          <Button as="a" variant="inverted" sx={{ m: [2, 3] }}>
             Top Reps
           </Button>
         </Link>
         <Link href="/groups">
-          <Button as="a" variant="inverted" sx={{ mx: 3 }}>
+          <Button as="a" variant="inverted" sx={{ m: [2, 3] }}>
             Explore PACs
           </Button>
         </Link>
       </Flex>
     }
   >
-    <Heading as="h2" sx={{ fontSize: [3, 4], color: 'accent', mb: [2, 3] }}>
+    <Heading as="h2" sx={{ fontSize: [3, 4], color: 'accent', mb: 3 }}>
       Find your Representative
     </Heading>
     <Search />
     <Heading
       as="h2"
-      sx={{ fontSize: [3, 4], color: 'accent', mb: [2, 3] }}
+      sx={{ fontSize: [3, 4], color: 'accent', mt: [3, 0], mb: 3 }}
     >
       Top 5 gun-funded Congresspeople
     </Heading>

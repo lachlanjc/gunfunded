@@ -17,7 +17,7 @@ const Grouping = ({
       <meta name="description" content={desc} />
     </Head>
     <Header title={title} desc={desc} centered={centeredHeader} children={header} />
-    <Box as="article" variant="container" sx={{ py: [3, 4] }}>
+    <Box as="article" variant="container" sx={{ py: 4, px: [2, 0] }}>
       {children}
       {profiles.map(profile => (
         <Profile data={profile} key={profile.id} />

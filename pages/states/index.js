@@ -35,7 +35,7 @@ export default () => {
         <Map onClick={mapHandler} />
       </Box>
       <Box as="article" variant="container" sx={{ py: [2, 3, 4] }}>
-        <Heading as="h2" sx={{ color: 'blue' }}>
+        <Heading as="h2" sx={{ color: 'accent' }}>
           All states
         </Heading>
         <Flex sx={{ flexWrap: 'wrap', mx: -2, py: 3 }}>

@@ -58,7 +58,7 @@ const Item = ({ label, color, ...props }) => {
     <A
       sx={{
         color: color || label.toLowerCase(),
-        ml: [2, 3],
+        pl: [3, 4],
         lineHeight: 0
       }}
       title={label}
