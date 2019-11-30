@@ -1,5 +1,5 @@
 import { Flex, Box, Text, Link as A } from '@theme-ui/components'
-import Icon from '../components/icon'
+import { Heart } from 'react-feather'
 
 export default () => (
   <Box as="footer" sx={{ bg: 'sunken', textAlign: 'center', px: 2, py: 3 }}>
@@ -15,7 +15,7 @@ export default () => (
         </A>
         , 2019.
       </Text>
-      <Icon glyph="like-fill" sx={{ color: 'red', ml: 1 }} />
+      <Box as={Heart} sx={{ color: 'red', ml: 1 }} />
     </Flex>
   </Box>
 )

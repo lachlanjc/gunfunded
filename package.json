@@ -13,7 +13,6 @@
     "data:groups": "node data/process-groups.js"
   },
   "dependencies": {
-    "@hackclub/icons": "0.0.2",
     "@mdx-js/react": "^1.5.1",
     "@theme-ui/presets": "^0.2.44",
     "@theme-ui/components": "^0.2.49",
@@ -29,6 +28,7 @@
     "next": "^9.1.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-feather": "^2.0.3",
     "react-usa-map": "^1.4.0",
     "theme-ui": "^0.2.49",
     "write-json-file": "^4.2.1"

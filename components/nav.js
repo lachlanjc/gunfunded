@@ -9,7 +9,7 @@ import {
   NavLink
 } from '@theme-ui/components'
 import Link from 'next/link'
-import Icon from '../components/icon'
+import { Moon } from 'react-feather'
 
 const ColorSwitcher = props => {
   const [mode, setMode] = useColorMode()
@@ -29,25 +29,7 @@ const ColorSwitcher = props => {
         }
       }}
     >
-      <svg
-        viewBox="0 0 32 32"
-        width="24"
-        height="24"
-        fill="currentcolor"
-        sx={{
-          display: 'block'
-        }}
-      >
-        <circle
-          cx="16"
-          cy="16"
-          r="14"
-          fill="none"
-          stroke="currentcolor"
-          strokeWidth="4"
-        />
-        <path d="M 16 0 A 16 16 0 0 0 16 32 z" />
-      </svg>
+      <Moon size={24} />
     </IconButton>
   )
 }
@@ -67,7 +49,6 @@ export default () => {
       key="nav"
     >
       <Flex variant="container" sx={{ alignItems: 'center' }}>
-        <Icon glyph="payment-docs" size={36} sx={{ mr: 1, mb: -2 }} />
         <Link href="/">
           <a sx={{ color: 'inherit', fontSize: 1, fontWeight: 'bold' }}>
             Gun Funded

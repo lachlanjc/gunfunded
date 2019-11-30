@@ -9,7 +9,14 @@ import {
   Button
 } from '@theme-ui/components'
 import Stat, { StatGrid } from '../components/stat'
-import Icon from '../components/icon'
+import {
+  Phone as PhoneIcon,
+  Edit3 as FormIcon,
+  Facebook as FacebookIcon,
+  Twitter as TwitterIcon,
+  Instagram as InstagramIcon,
+  Share
+} from 'react-feather'
 
 import commaNumber from 'comma-number'
 
@@ -39,20 +46,29 @@ const Badge = ({ party, ...props }) => (
   />
 )
 
-const Item = ({ label, icon, color, ...props }) => (
-  <A
-    sx={{
-      color: color || icon || label.toLowerCase(),
-      ml: [2, 3],
-      lineHeight: 0
-    }}
-    title={label}
-    target="_blank"
-    {...props}
-  >
-    <Icon glyph={icon || label.toLowerCase()} size={36} />
-  </A>
-)
+const Item = ({ label, color, ...props }) => {
+  const Icon = {
+    Call: PhoneIcon,
+    Contact: FormIcon,
+    Twitter: TwitterIcon,
+    Facebook: FacebookIcon,
+    Instagram: InstagramIcon
+  }[label]
+  return (
+    <A
+      sx={{
+        color: color || label.toLowerCase(),
+        ml: [2, 3],
+        lineHeight: 0
+      }}
+      title={label}
+      target="_blank"
+      {...props}
+    >
+      <Icon />
+    </A>
+  )
+}
 
 const tel = num => `tel:` + num.match(/\d+/g).join('')
 const Phone = ({ num }) => (
@@ -66,7 +82,7 @@ const Phone = ({ num }) => (
 )
 
 const Form = ({ url }) => (
-  <Item href={url} label="Contact" icon="message" color="orange" />
+  <Item href={url} label="Contact" color="orange" />
 )
 
 const Twitter = ({ slug }) => (
@@ -88,7 +104,7 @@ const Contact = ({ phone, form, twitter, facebook, instagram }) => (
       href="#"
       sx={{ display: 'flex', alignItems: 'center', bg: 'red', mr: 'auto' }}
     >
-      <Icon glyph="share" sx={{ mt: -1, mb: -2, ml: -1, mr: 2 }} />
+      <Box as={Share} size={24} sx={{ ml: -1, mr: 2 }} />
       Share
     </Button>
     {phone && <Phone num={phone} />}
@@ -101,7 +117,13 @@ const Contact = ({ phone, form, twitter, facebook, instagram }) => (
 
 const Profile = ({ label, data, sx = {} }) => (
   <Card as="section" sx={{ p: [3, 4], mb: [3, 4], ...sx }}>
-    {label && <Text variant="caps" sx={{ color: 'green', fontWeight: 'bold', mb: [2, 3] }} children={label} />}
+    {label && (
+      <Text
+        variant="caps"
+        sx={{ color: 'green', fontWeight: 'bold', mb: [2, 3] }}
+        children={label}
+      />
+    )}
     <Flex as="header" sx={{ alignItems: 'center', position: 'relative' }}>
       <Box sx={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}>
         <Badge party={data.party} />

@@ -1,5 +1,4 @@
 dependencies:
-  '@hackclub/icons': 0.0.2
   '@mdx-js/react': 1.5.1
   '@theme-ui/components': 0.2.49
   '@theme-ui/presets': 0.2.44
@@ -15,6 +14,7 @@ dependencies:
   next: 9.1.4
   react: 16.12.0
   react-dom: 16.12.0
+  react-feather: 2.0.3
   react-usa-map: 1.4.0
   theme-ui: 0.2.49
   write-json-file: 4.2.1
@@ -1082,12 +1082,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-6PYY5DVdAY1ifaQW6XYTnOMihmBVT27elqSjEoodchsGjzYlEsTQMcEhSud99kVawatyTZRTiVkJ/c6lwbQ7nA==
-  /@hackclub/icons/0.0.2:
-    dependencies:
-      react: 16.12.0
-    dev: false
-    resolution:
-      integrity: sha512-Y6uhVLRCwavHry6py/lm/u8nl1/1PolMyvsz2Dgf2rB6rrk3kZsE8PQaJ8/DPR5FSYcz7F6D5sZlaCp+r2/R/Q==
   /@hapi/address/2.1.4:
     dev: false
     resolution:
@@ -5408,6 +5402,14 @@ packages:
     dev: false
     resolution:
       integrity: sha512-X1Y+0jR47ImDVr54Ab6V9eGk0Hnu7fVWGeHQSOXHf/C2pF9c6uy3gef8QUeuUiWlNb0i08InPSE5a/KJzNzw1Q==
+  /react-feather/2.0.3:
+    dependencies:
+      prop-types: 15.7.2
+    dev: false
+    peerDependencies:
+      react: ^16.8.6
+    resolution:
+      integrity: sha512-XVjtxIyMxb2RFlqC2APoB/IZvXKDW9uLN1c264XEeZNYe8jIxjQVQpeTo3nxtHiLTgMfgf0ZYxJC6HwmY8+9BA==
   /react-is/16.12.0:
     dev: false
     resolution:
@@ -6731,7 +6733,6 @@ registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
-  '@hackclub/icons': 0.0.2
   '@mdx-js/react': ^1.5.1
   '@theme-ui/components': ^0.2.49
   '@theme-ui/presets': ^0.2.44
@@ -6747,6 +6748,7 @@ specifiers:
   next: ^9.1.1
   react: ^16.12.0
   react-dom: ^16.12.0
+  react-feather: ^2.0.3
   react-usa-map: ^1.4.0
   theme-ui: ^0.2.49
   write-json-file: ^4.2.1
