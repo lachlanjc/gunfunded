@@ -7,11 +7,12 @@ import { Global } from '@emotion/core'
 import theme from '../components/theme'
 import Nav from '../components/nav'
 import Footer from '../components/footer'
+import withError from '../components/with-error'
 
 const name = 'Gun Funded'
-const desc = 'Rescuing democracy'
+const desc = 'Analyzing the gun lobby’s funding of the US Congress.'
 
-export default class extends App {
+class Root extends App {
   render() {
     const { Component, pageProps } = this.props
     return (
@@ -38,3 +39,5 @@ export default class extends App {
     )
   }
 }
+
+export default withError(Root)

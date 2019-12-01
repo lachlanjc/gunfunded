@@ -1,6 +1,5 @@
-import fetch from 'isomorphic-unfetch'
+import useSWR from 'swr'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import {
   Box,
   Container,
@@ -64,8 +63,9 @@ Page.getInitialProps = async ({ req }) => {
   ).toUpperCase()
   const origin = req ? `http://${req.headers.host}` : ''
   const data = await fetch(`${origin}/api/profiles?id=${id}`)
+  const statusCode = data.ok ? 200 : 404
   const profile = await data.json()
-  return { profile }
+  return { statusCode, profile }
 }
 
 export default Page

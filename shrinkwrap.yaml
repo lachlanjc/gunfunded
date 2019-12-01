@@ -16,6 +16,7 @@ dependencies:
   react-dom: 16.12.0
   react-feather: 2.0.3
   react-usa-map: 1.4.0
+  swr: 0.1.12
   theme-ui: 0.2.49
   write-json-file: 4.2.1
 packages:
@@ -6105,6 +6106,14 @@ packages:
     dev: false
     resolution:
       integrity: sha1-w5IDpFhzhfrTyFCgvRvK+ggZdOM=
+  /swr/0.1.12:
+    dependencies:
+      fast-deep-equal: 2.0.1
+    dev: false
+    peerDependencies:
+      react: 16.11.0
+    resolution:
+      integrity: sha512-bYZWem/uMJluyYy64LXOWpUg7wiedRVsQBK2STBG6crjpiR/VA23/200nKvfAZtwrPA+E4oazMQCHXZ4LPbU3A==
   /tapable/1.1.3:
     dev: false
     engines:
@@ -6750,5 +6759,6 @@ specifiers:
   react-dom: ^16.12.0
   react-feather: ^2.0.3
   react-usa-map: ^1.4.0
+  swr: ^0.1.12
   theme-ui: ^0.2.49
   write-json-file: ^4.2.1
