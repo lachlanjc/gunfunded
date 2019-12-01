@@ -1,13 +1,6 @@
 /** @jsx jsx */
 import { jsx, Styled, useColorMode } from 'theme-ui'
-import {
-  Flex,
-  Box,
-  Text,
-  Link as A,
-  IconButton,
-  NavLink
-} from '@theme-ui/components'
+import { Box, Container, IconButton, Text, NavLink } from '@theme-ui/components'
 import Link from 'next/link'
 import { Moon } from 'react-feather'
 
@@ -43,19 +36,19 @@ export default () => {
         bg: mode === 'dark' ? 'darkless' : 'red',
         color: 'nav',
         textAlign: 'center',
-        px: 2,
+        px: [2, 3],
         py: 3
       }}
       key="nav"
     >
-      <Flex variant="container" sx={{ alignItems: 'center' }}>
+      <Container sx={{ display: 'flex', alignItems: 'center' }}>
         <Link href="/">
-          <a sx={{ color: 'inherit', fontSize: 1, fontWeight: 'bold' }}>
-            Gun Funded
-          </a>
+          <Text as="a" variant="logo" sx={{ color: 'inherit', fontSize: 1 }}>
+            Gun&nbsp;Funded
+          </Text>
         </Link>
         <ColorSwitcher sx={{ ml: 'auto' }} />
-      </Flex>
+      </Container>
     </Box>
   )
 }

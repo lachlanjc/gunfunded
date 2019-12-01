@@ -75,22 +75,24 @@ const theme = merge(base, {
   },
   lineHeights: {
     body: 1.5,
-    heading: 1.125
+    title: 1.125,
+    heading: 1.25
   },
   fontWeights: {
     stat: 300,
     body: 400,
-    medium: 500,
+    medium: 600,
     bold: 700,
     heading: 900
   },
   letterSpacings: {
-    heading: '-0.05em',
-    caps: '0.05em'
+    title: '-0.009em',
+    subhead: '0.009em'
   },
   sizes: {
+    wide: 1200,
     container: 768,
-    small: 512
+    narrow: 512
   },
   radii: {
     default: 6,
@@ -103,20 +105,41 @@ const theme = merge(base, {
   },
   text: {
     heading: {
-      fontFamily: 'heading',
       fontWeight: 'heading',
       lineHeight: 'heading'
     },
-    display: {
+    title: {
       fontFamily: 'heading',
+      fontWeight: 'heading',
+      lineHeight: 'title',
+      letterSpacing: 'title',
+      fontSize: [6, 7]
+    },
+    subtitle: {
+      fontSize: [3, 4],
+      fontWeight: 'body',
+      letterSpacing: 'subhead',
+      lineHeight: 'heading',
+      my: 0
+    },
+    subhead: {
       fontWeight: 'heading',
       lineHeight: 'heading',
       letterSpacing: 'heading',
-      fontSize: [5, 6, 7]
+      fontSize: [3, 4],
+      color: 'accent',
+      mt: 3,
+      mb: 3
     },
-    caps: {
+    caption: {
+      color: 'muted',
+      fontWeight: 'medium',
+      letterSpacing: 'subhead'
+    },
+    logo: {
       textTransform: 'uppercase',
-      letterSpacing: 'caps'
+      letterSpacing: 'subhead',
+      fontWeight: 'heading'
     }
   },
   badges: {
@@ -176,18 +199,18 @@ const theme = merge(base, {
       borderRadius: 'extra'
     }
   },
-  variants: {
+  layout: {
     container: {
       width: '100%',
       maxWidth: 'container',
       mx: 'auto',
       px: [2, 3]
-    }
-  },
-  // MDX
-  styles: {
-    a: {
-      color: 'accent'
+    },
+    wide: {
+      width: '100%',
+      maxWidth: 'wide',
+      mx: 'auto',
+      px: [2, 3]
     }
   }
 })

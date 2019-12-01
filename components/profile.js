@@ -25,7 +25,7 @@ const getYear = date => date.slice(0, 4)
 const avatarUrl = id =>
   `https://lachlanjc.me/congress-images/congress/225x275/${id}.jpg`
 
-const Badge = ({ party, ...props }) => (
+const Badge = ({ party, sx, ...props }) => (
   <Box
     sx={{
       bg: party.toLowerCase().slice(0, 3),
@@ -38,7 +38,8 @@ const Badge = ({ party, ...props }) => (
       width: 24,
       height: 24,
       lineHeight: 0,
-      borderRadius: 12
+      borderRadius: 12,
+      ...sx
     }}
     title={party}
     children={party.slice(0, 1)}
@@ -97,7 +98,7 @@ const Contact = ({ phone, form, twitter, facebook, instagram }) => (
 )
 
 const Profile = ({ label, data, full = false, sx = {} }) => (
-  <Card as="section" sx={{ p: [3, 4], mb: [3, 4], ...sx }}>
+  <Card as="section" sx={{ p: [3, 4], ...sx }}>
     {label && (
       <Text
         variant="caps"
@@ -106,9 +107,10 @@ const Profile = ({ label, data, full = false, sx = {} }) => (
       />
     )}
     <Flex as="header" sx={{ alignItems: 'center', position: 'relative' }}>
-      <Box sx={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}>
-        <Badge party={data.party} />
-      </Box>
+      <Badge
+        party={data.party}
+        sx={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}
+      />
       <Image
         src={avatarUrl(data.ids.bioguide)}
         variant="avatar"
@@ -119,7 +121,7 @@ const Profile = ({ label, data, full = false, sx = {} }) => (
         }}
       />
       <Box sx={{ align: 'left' }}>
-        <Heading as="h2" sx={{ fontSize: [3, 4] }}>
+        <Heading as="h2" variant="subhead" sx={{ color: 'text', my: 0}}>
           {data.role === 'sen' ? 'Sen.' : 'Rep.'} {data.name.full}
         </Heading>
         <Text sx={{ color: 'muted', fontSize: [1, 2] }}>

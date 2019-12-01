@@ -17,7 +17,7 @@ const Page = ({ profiles, abbrev, stats }) => {
         <Stat
           lg
           value={commaNumber(stats.total)}
-          label="total in gun rights money"
+          label="total gun rights money"
         />
         <Stat lg value={stats.percent} unit="%" label="gun-funded members" />
       </StatGrid>

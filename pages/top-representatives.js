@@ -14,7 +14,7 @@ const Page = ({ profiles, stats }) => (
       <Stat
         lg
         value={commaNumber(stats.total)}
-        label="total in gun rights money"
+        label="total gun rights money"
       />
       <Stat
         lg

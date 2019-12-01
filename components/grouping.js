@@ -1,4 +1,4 @@
-import { Heading, Text, Box } from '@theme-ui/components'
+import { Heading, Text, Box, Container } from '@theme-ui/components'
 import Head from 'next/head'
 import Header from './header'
 import Profile from './profile'
@@ -16,13 +16,30 @@ const Grouping = ({
       <title>{title}</title>
       <meta name="description" content={desc} />
     </Head>
-    <Header title={title} desc={desc} centered={centeredHeader} children={header} />
-    <Box as="article" variant="container" sx={{ py: 4, px: [2, 0] }}>
-      {children}
+    <Header
+      title={title}
+      desc={desc}
+      centered={centeredHeader}
+      children={header}
+    />
+    {children && (
+      <Container as="section" sx={{ pt: [3, 4] }}>
+        {children}
+      </Container>
+    )}
+    <Container
+      as="article"
+      sx={{
+        maxWidth: ['container', null, null, 'wide'],
+        display: 'grid',
+        gridTemplateColumns: ['auto', null, null, 'repeat(2, 1fr)'],
+        gridGap: [3, 4]
+      }}
+    >
       {profiles.map(profile => (
         <Profile data={profile} key={profile.id} />
       ))}
-    </Box>
+    </Container>
   </Box>
 )
 

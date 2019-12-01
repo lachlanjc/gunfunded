@@ -92,15 +92,15 @@ export default ({
           value={value / 100}
           size={lg ? 48 : 32}
           strokeWidth={lg ? 3 : 2}
-          sx={{ mr: 2 }}
+          sx={{ mr: 2, width: lg ? [32, 48] : 32, height: lg ? [32, 48] : 32 }}
         />
       )}
     </Flex>
     {!isEmpty(label) && (
       <Text
         as="span"
-        variant="caps"
-        sx={{ color: 'muted', fontSize: half ? 0 : [0, 1], fontWeight: 'medium' }}
+        variant="caption"
+        sx={{ fontSize: half ? 0 : [0, 1] }}
         children={label}
       />
     )}

@@ -37,22 +37,19 @@ const Page = ({ profiles }) => (
       </Flex>
     }
   >
-    <Heading as="h2" sx={{ fontSize: [3, 4], color: 'accent', mb: 3 }}>
+    <Heading as="h2" variant="subhead">
       Find your Representative
     </Heading>
     <Search />
-    <Heading
-      as="h2"
-      sx={{ fontSize: [3, 4], color: 'accent', mt: [3, 0], mb: 3 }}
-    >
-      Top 5 gun-funded Congresspeople
+    <Heading as="h2" variant="subhead" sx={{ mt: 4, mb: [3, 4] }}>
+      Top 6 gun-funded Congresspeople
     </Heading>
   </Grouping>
 )
 
 Page.getInitialProps = async ({ req }) => {
   const origin = req ? `http://${req.headers.host}` : ''
-  const data = await fetch(`${origin}/api/profiles?limit=5`)
+  const data = await fetch(`${origin}/api/profiles?limit=6`)
   const profiles = await data.json()
   return { profiles }
 }
