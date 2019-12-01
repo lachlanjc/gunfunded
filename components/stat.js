@@ -1,16 +1,19 @@
 import { Box, Donut, Flex, Text } from '@theme-ui/components'
 import { isEmpty } from 'lodash'
 
-export const StatGrid = props => (
+export const StatGrid = ({ quad = false, ...props }) => (
   <Box
     {...props}
     sx={{
       display: 'grid',
-      gridTemplateColumns: 'repeat(2, 1fr)',
+      gridTemplateColumns: `repeat(${quad ? 4 : 2}, 1fr)`,
       gridGap: 3,
       alignItems: 'flex-end',
       mt: [3, 4],
       mb: [3, 4],
+      div: {
+        gridColumn: quad ? 'span 2' : null
+      },
       ...props.sx
     }}
   />
@@ -22,6 +25,7 @@ export default ({
   unit = '$',
   of,
   reversed = false,
+  half = false,
   lg = false,
   ...props
 }) => (
@@ -29,7 +33,7 @@ export default ({
     {...props}
     sx={{
       flexDirection: reversed ? 'column-reverse' : 'column',
-      gridColumn: lg ? ['span 2', 'initial'] : 'initial',
+      gridColumn: lg ? 'span 2' : half ? 'span 1 !important' : 'initial',
       lineHeight: 1,
       ...props.sx
     }}
@@ -83,13 +87,20 @@ export default ({
           children={of}
         />
       )}
-      {unit === '%' && <Donut value={value / 100} size={lg ? 48 : 32} strokeWidth={lg ? 3 : 2} sx={{ mr: 2 }} />}
+      {unit === '%' && (
+        <Donut
+          value={value / 100}
+          size={lg ? 48 : 32}
+          strokeWidth={lg ? 3 : 2}
+          sx={{ mr: 2 }}
+        />
+      )}
     </Flex>
     {!isEmpty(label) && (
       <Text
         as="span"
         variant="caps"
-        sx={{ color: 'muted', fontSize: [0, 1], fontWeight: 'medium' }}
+        sx={{ color: 'muted', fontSize: half ? 0 : [0, 1], fontWeight: 'medium' }}
         children={label}
       />
     )}

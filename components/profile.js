@@ -81,9 +81,7 @@ const Phone = ({ num }) => (
   />
 )
 
-const Form = ({ url }) => (
-  <Item href={url} label="Contact" color="orange" />
-)
+const Form = ({ url }) => <Item href={url} label="Contact" color="orange" />
 
 const Twitter = ({ slug }) => (
   <Item href={`https://twitter.com/${slug}`} label="Twitter" />
@@ -115,7 +113,7 @@ const Contact = ({ phone, form, twitter, facebook, instagram }) => (
   </Flex>
 )
 
-const Profile = ({ label, data, sx = {} }) => (
+const Profile = ({ label, data, full = false, sx = {} }) => (
   <Card as="section" sx={{ p: [3, 4], mb: [3, 4], ...sx }}>
     {label && (
       <Text
@@ -155,18 +153,42 @@ const Profile = ({ label, data, sx = {} }) => (
   "gunControlTotal": 0,
   "gunControlSupport": 0,
   "gunControlOpposed": 861, */}
-    <StatGrid as="article">
+    <StatGrid as="article" quad={full}>
       <Stat
         value={commaNumber(data.gunRightsTotal)}
         label="from gun rights"
         lg
       />
-      {/* <Stat
-        value={commaNumber(data.gunControlTotal)}
-        label="from gun control"
-        lg
-      />
-      <Stat value={commaNumber(data.net)} label="net gun money" /> */}
+      {full ? (
+        <>
+          <Stat
+            value={commaNumber(data.gunRightsSupport)}
+            label="rights support"
+            half
+          />
+          <Stat
+            value={commaNumber(data.gunRightsOpposed)}
+            label="rights opposition"
+            half
+          />
+          <Stat
+            value={commaNumber(data.gunRightsTotal)}
+            label="from gun control"
+            lg
+          />
+          <Stat
+            value={commaNumber(data.gunControlSupport)}
+            label="control support"
+            half
+          />
+          <Stat
+            value={commaNumber(data.gunControlOpposed)}
+            label="control opposition"
+            half
+          />
+          <Stat value={commaNumber(data.net)} label="net gun money" lg />
+        </>
+      ) : null}
       <Stat value={data.rank} unit="#" of="539" label="rank in Congress" lg />
     </StatGrid>
     <Contact {...data.contact} />

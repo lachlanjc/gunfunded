@@ -64,7 +64,7 @@ const theme = merge(base, {
         accent: palette.cyan,
         invertedPrimary: palette.darker,
         invertedText: palette.red,
-        nav: palette.red,
+        nav: palette.red
       }
     }
   },
@@ -181,7 +181,13 @@ const theme = merge(base, {
       width: '100%',
       maxWidth: 'container',
       mx: 'auto',
-      px: 2
+      px: [2, 3]
+    }
+  },
+  // MDX
+  styles: {
+    a: {
+      color: 'accent'
     }
   }
 })
