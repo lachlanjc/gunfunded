@@ -33,7 +33,7 @@ export default ({
     {...props}
     sx={{
       flexDirection: reversed ? 'column-reverse' : 'column',
-      gridColumn: lg ? 'span 2' : half ? 'span 1 !important' : 'initial',
+      gridColumn: lg ? ['initial', 'span 1'] : half ? 'span 1 !important' : 'initial',
       lineHeight: 1,
       ...props.sx
     }}

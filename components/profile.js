@@ -71,46 +71,29 @@ const Item = ({ label, color, ...props }) => {
 }
 
 const tel = num => `tel:` + num.match(/\d+/g).join('')
-const Phone = ({ num }) => (
-  <Item
-    href={tel(num)}
-    label="Call"
-    icon="notification"
-    color="red"
-    title={`Call ${num}`}
-  />
-)
-
-const Form = ({ url }) => <Item href={url} label="Contact" color="orange" />
-
-const Twitter = ({ slug }) => (
-  <Item href={`https://twitter.com/${slug}`} label="Twitter" />
-)
-
-const Facebook = ({ slug }) => (
-  <Item href={`https://facebook.com/${slug}`} label="Facebook" />
-)
-
-const Instagram = ({ slug }) => (
-  <Item href={`https://instagram.com/@${slug}`} label="Instagram" />
-)
 
 const Contact = ({ phone, form, twitter, facebook, instagram }) => (
-  <Flex as="footer" sx={{ alignItems: 'center' }}>
-    <Button
-      as="a"
-      href="#"
-      sx={{ display: 'flex', alignItems: 'center', bg: 'red', mr: 'auto' }}
-    >
-      <Box as={Share} size={24} sx={{ ml: -1, mr: 2 }} />
-      Share
-    </Button>
-    {phone && <Phone num={phone} />}
-    {form && <Form url={form} />}
-    {twitter && <Twitter slug={twitter} />}
-    {facebook && <Facebook slug={facebook} />}
-    {instagram && <Instagram slug={instagram} />}
-  </Flex>
+  <>
+    {phone && (
+      <Item
+        href={tel(phone)}
+        label="Call"
+        icon="notification"
+        color="red"
+        title={`Call ${phone}`}
+      />
+    )}
+    {form && <Item href={form} label="Contact" color="orange" />}
+    {twitter && (
+      <Item href={`https://twitter.com/${twitter}`} label="Twitter" />
+    )}
+    {facebook && (
+      <Item href={`https://facebook.com/${facebook}`} label="Facebook" />
+    )}
+    {instagram && (
+      <Item href={`https://instagram.com/@${instagram}`} label="Instagram" />
+    )}
+  </>
 )
 
 const Profile = ({ label, data, full = false, sx = {} }) => (
@@ -146,13 +129,6 @@ const Profile = ({ label, data, full = false, sx = {} }) => (
         </Text>
       </Box>
     </Flex>
-    {/* 
-    "gunRightsTotal": 26050,
-  "gunRightsSupport": 1270,
-  "gunRightsOpposed": 0,
-  "gunControlTotal": 0,
-  "gunControlSupport": 0,
-  "gunControlOpposed": 861, */}
     <StatGrid as="article" quad={full}>
       <Stat
         value={commaNumber(data.gunRightsTotal)}
@@ -191,7 +167,18 @@ const Profile = ({ label, data, full = false, sx = {} }) => (
       ) : null}
       <Stat value={data.rank} unit="#" of="539" label="rank in Congress" lg />
     </StatGrid>
-    <Contact {...data.contact} />
+    <Flex as="footer" sx={{ alignItems: 'center' }}>
+      <Button
+        as="a"
+        href="#"
+        variant="primary"
+        sx={{ display: 'flex', alignItems: 'center', mr: 'auto' }}
+      >
+        <Box as={Share} size={24} sx={{ ml: -1, mr: 2 }} />
+        Share
+      </Button>
+      <Contact id={data.id} {...data.contact} />
+    </Flex>
   </Card>
 )
 
