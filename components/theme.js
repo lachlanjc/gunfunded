@@ -216,6 +216,8 @@ const theme = merge(base, {
       maxWidth: 256,
       borderRadius: 'extra',
       boxShadow: 'card',
+      position: 'relative',
+      overflow: 'hidden',
       display: 'flex',
       alignItems: 'center',
       fontSize: 2,

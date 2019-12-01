@@ -29,13 +29,13 @@ export default () => {
           maxWidth: 1024,
           display: 'flex',
           justifyContent: 'center',
-          py: [2, 3, 4]
+          py: [0, 3, 4]
         }}
       >
         <Map onClick={mapHandler} />
       </Box>
-      <Box as="article" variant="container" sx={{ py: [2, 3, 4] }}>
-        <Heading as="h2" sx={{ color: 'accent' }}>
+      <Container sx={{ py: [2, 3, 4] }}>
+        <Heading as="h2" variant="headline">
           All states
         </Heading>
         <Flex sx={{ flexWrap: 'wrap', mx: -2, py: 3 }}>
@@ -67,7 +67,7 @@ export default () => {
             </Link>
           ))}
         </Flex>
-      </Box>
+      </Container>
     </Box>
   )
 }
