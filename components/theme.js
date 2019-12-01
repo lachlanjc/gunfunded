@@ -87,7 +87,7 @@ const theme = merge(base, {
   },
   letterSpacings: {
     title: '-0.009em',
-    subhead: '0.009em'
+    headline: '0.009em'
   },
   sizes: {
     wide: 1200,
@@ -118,11 +118,11 @@ const theme = merge(base, {
     subtitle: {
       fontSize: [3, 4],
       fontWeight: 'body',
-      letterSpacing: 'subhead',
+      letterSpacing: 'headline',
       lineHeight: 'heading',
       my: 0
     },
-    subhead: {
+    headline: {
       fontWeight: 'heading',
       lineHeight: 'heading',
       letterSpacing: 'heading',
@@ -131,14 +131,23 @@ const theme = merge(base, {
       mt: 3,
       mb: 3
     },
+    subheadline: {
+      fontWeight: 'heading',
+      lineHeight: 'heading',
+      textTransform: 'uppercase',
+      letterSpacing: 'heading',
+      fontSize: [3, 4],
+      mt: 0,
+      mb: 3
+    },
     caption: {
       color: 'muted',
       fontWeight: 'medium',
-      letterSpacing: 'subhead'
+      letterSpacing: 'headline'
     },
     logo: {
       textTransform: 'uppercase',
-      letterSpacing: 'subhead',
+      letterSpacing: 'headline',
       fontWeight: 'heading'
     }
   },
@@ -197,6 +206,27 @@ const theme = merge(base, {
       bg: 'sunken',
       p: [3, 4],
       borderRadius: 'extra'
+    },
+    nav: {
+      bg: 'elevated',
+      color: 'text',
+      px: 3,
+      py: 4,
+      mr: [3, 4],
+      maxWidth: 256,
+      borderRadius: 'extra',
+      boxShadow: 'card',
+      display: 'flex',
+      alignItems: 'center',
+      fontSize: 2,
+      fontWeight: 'bold',
+      ':after': {
+        content: '"→"',
+        display: 'inline-block',
+        ml: 'auto',
+        color: 'accent',
+        fontWeight: 'title'
+      }
     }
   },
   layout: {

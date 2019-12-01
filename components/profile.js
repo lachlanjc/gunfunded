@@ -9,6 +9,7 @@ import {
   Button
 } from '@theme-ui/components'
 import Stat, { StatGrid } from '../components/stat'
+import Link from 'next/link'
 import {
   Phone as PhoneIcon,
   Edit3 as FormIcon,
@@ -121,7 +122,7 @@ const Profile = ({ label, data, full = false, sx = {} }) => (
         }}
       />
       <Box sx={{ align: 'left' }}>
-        <Heading as="h2" variant="subhead" sx={{ color: 'text', my: 0}}>
+        <Heading as="h2" variant="headline" sx={{ color: 'text', my: 0 }}>
           {data.role === 'sen' ? 'Sen.' : 'Rep.'} {data.name.full}
         </Heading>
         <Text sx={{ color: 'muted', fontSize: [1, 2] }}>
@@ -150,7 +151,7 @@ const Profile = ({ label, data, full = false, sx = {} }) => (
             half
           />
           <Stat
-            value={commaNumber(data.gunRightsTotal)}
+            value={commaNumber(data.gunControlTotal)}
             label="from gun control"
             lg
           />
@@ -170,15 +171,16 @@ const Profile = ({ label, data, full = false, sx = {} }) => (
       <Stat value={data.rank} unit="#" of="539" label="rank in Congress" lg />
     </StatGrid>
     <Flex as="footer" sx={{ alignItems: 'center' }}>
-      <Button
-        as="a"
-        href="#"
-        variant="primary"
-        sx={{ display: 'flex', alignItems: 'center', mr: 'auto' }}
-      >
-        <Box as={Share} size={24} sx={{ ml: -1, mr: 2 }} />
-        Share
-      </Button>
+      <Link href="/profiles/[id]" as={`/profiles/${data.id}`}>
+        <Button
+          as="a"
+          variant="primary"
+          sx={{ display: 'flex', alignItems: 'center', mr: 'auto' }}
+        >
+          <Box as={Share} size={24} sx={{ ml: -1, mr: 2 }} />
+          Share
+        </Button>
+      </Link>
       <Contact id={data.id} {...data.contact} />
     </Flex>
   </Card>

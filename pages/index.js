@@ -37,11 +37,11 @@ const Page = ({ profiles }) => (
       </Flex>
     }
   >
-    <Heading as="h2" variant="subhead">
+    <Heading as="h2" variant="headline">
       Find your Representative
     </Heading>
     <Search />
-    <Heading as="h2" variant="subhead" sx={{ mt: 4, mb: [3, 4] }}>
+    <Heading as="h2" variant="headline" sx={{ mt: 4, mb: [3, 4] }}>
       Top 6 gun-funded Congresspeople
     </Heading>
   </Grouping>
