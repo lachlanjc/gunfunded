@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Heading, Box, Flex, Link as A } from '@theme-ui/components'
+import { Container, Heading, Box, Flex, Link as A } from '@theme-ui/components'
 import { filter } from '../'
 import Head from 'next/head'
 import Router from 'next/router'
@@ -22,18 +22,18 @@ export default () => {
         <title>States – Gun Funded</title>
       </Head>
       <Header title="States" />
-      <Box
+      <Container
         as="article"
-        variant="container"
+        variant="wide"
         sx={{
-          maxWidth: 1024,
           display: 'flex',
           justifyContent: 'center',
-          py: [0, 3, 4]
+          py: [0, 3, 4],
+          px: 0
         }}
       >
         <Map onClick={mapHandler} />
-      </Box>
+      </Container>
       <Container sx={{ py: [2, 3, 4] }}>
         <Heading as="h2" variant="headline">
           All states

@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-unfetch'
-import { Box, Badge, Flex, Heading, Card, Text } from '@theme-ui/components'
+import { Container, Box, Badge, Flex, Heading, Card, Text } from '@theme-ui/components'
 import Header from '../components/header'
 import Stat, { StatGrid } from '../components/stat'
 import commaNumber from 'comma-number'
@@ -52,11 +52,11 @@ const Page = ({ groups }) => (
       title="PACs"
       desc="These are the top PACs giving money to Congress on gun issues."
     />
-    <Box as="article" variant="container" sx={{ py: [3, 4] }}>
+    <Container as="article" sx={{ py: [3, 4] }}>
       {groups.map(group => (
         <Group key={group.id} {...group} />
       ))}
-    </Box>
+    </Container>
   </Box>
 )
 
