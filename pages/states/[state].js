@@ -13,13 +13,14 @@ const Page = ({ profiles, abbrev, stats }) => {
       desc={`All US Congress members from ${state.name}, sorted by gun money.`}
       profiles={profiles}
     >
-      <StatGrid sx={{ mt: [2, 3], mb: [4, 5] }}>
+      <StatGrid quad sx={{ mt: [2, 3], mb: [4, 5] }}>
         <Stat
           lg
           value={commaNumber(stats.total)}
           label="total gun rights money"
         />
-        <Stat lg value={stats.percent} unit="%" label="gun-funded members" />
+        <Stat value={commaNumber(stats.avg)} unit="$" label="average funding" half />
+        <Stat value={stats.percent} unit="%" label="gun-funded members" half />
       </StatGrid>
     </Grouping>
   )
@@ -31,10 +32,11 @@ Page.getInitialProps = async ({ req }) => {
   const data = await fetch(`${origin}/api/profiles?state=${abbrev}&order=rank`)
   const profiles = await data.json()
   const totals = map(profiles, 'gunRightsTotal')
-  const stats = {
-    total: sum(totals),
-    percent: round((filter(totals, t => t > 0).length / totals.length) * 100)
-  }
+  const funds = filter(totals, t => t > 0)
+  const total = sum(totals)
+  const avg = round(total / profiles.length)
+  const percent = round(funds.length / totals.length) * 100
+  const stats = { total, avg, percent }
   return { profiles, abbrev, stats }
 }
 
