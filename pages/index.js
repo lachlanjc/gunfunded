@@ -60,6 +60,12 @@ const Page = ({ profiles }) => (
       <Link href="/top-representatives">
         <Card variant="nav">Top Reps</Card>
       </Link>
+      <Link href="/profiles">
+        <Card variant="nav">All Congress</Card>
+      </Link>
+      <Link href="/search">
+        <Card variant="nav">Search</Card>
+      </Link>
     </Grid>
     <Heading as="h2" variant="headline" sx={{ mt: 4, mb: [3, 4] }}>
       Top 6 gun-funded Congresspeople

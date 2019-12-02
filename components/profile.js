@@ -166,9 +166,23 @@ const Profile = ({ label, data, full = false, sx = {} }) => (
             half
           />
           <Stat value={commaNumber(data.net)} label="net gun money" lg />
+          <Stat
+            value={data.rank}
+            unit="#"
+            of="539"
+            label="rank in Congress"
+            lg
+          />
         </>
-      ) : null}
-      <Stat value={data.rank} unit="#" of="539" label="rank in Congress" lg />
+      ) : (
+        <Stat
+          value={data.rank}
+          unit="#"
+          of="539"
+          label="gun-funded in Congress"
+          lg
+        />
+      )}
     </StatGrid>
     <Flex as="footer" sx={{ alignItems: 'center' }}>
       <Link href="/profiles/[id]" as={`/profiles/${data.id}`}>
