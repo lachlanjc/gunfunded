@@ -212,8 +212,7 @@ const theme = merge(base, {
       color: 'text',
       px: 3,
       py: 4,
-      mr: [3, 4],
-      maxWidth: 256,
+      // maxWidth: 256,
       borderRadius: 'extra',
       boxShadow: 'card',
       position: 'relative',
@@ -222,10 +221,12 @@ const theme = merge(base, {
       alignItems: 'center',
       fontSize: 2,
       fontWeight: 'bold',
+      lineHeight: 'title',
       ':after': {
         content: '"→"',
         display: 'inline-block',
         ml: 'auto',
+        pl: 3,
         color: 'accent',
         fontWeight: 'title'
       }

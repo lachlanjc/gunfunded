@@ -9,7 +9,6 @@ import {
   Link as A
 } from '@theme-ui/components'
 import Profile from '../../components/profile'
-import StateShape from '../../components/state-shape'
 import Methodology from '../../components/profile-methodology.mdx'
 import states from '../../data/states.json'
 import { find, last } from 'lodash'
@@ -26,17 +25,6 @@ const Page = ({ profile }) => {
             as={`/states/${state.abbrev.toLowerCase()}`}
           >
             <Card variant="nav">
-              <StateShape
-                id={profile.state.toUpperCase()}
-                sx={{
-                  width: 512,
-                  position: 'absolute',
-                  top: -16,
-                  left: 0,
-                  fill: 'sunken',
-                  zIndex: 0
-                }}
-              />
               See all from {state.name}
             </Card>
           </Link>
