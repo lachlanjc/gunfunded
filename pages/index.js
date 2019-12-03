@@ -12,7 +12,7 @@ const Page = ({ profiles }) => (
     desc={
       <>
         In progress, fall 2019, by{' '}
-        <A href="https://lachlanjc.me" sx=%20color%3A%20%27inherit%27%20>
+        <A href="https://lachlanjc.me" sx={{color:'inherit'}}>
           @lachlanjc
         </A>
       </>
@@ -24,7 +24,7 @@ const Page = ({ profiles }) => (
       Find your Representative
     </Heading>
     <Search />
-    <Heading as="h2" variant="headline" sx=%20mt%3A%204%20>
+    <Heading as="h2" variant="headline" sx={{ mt: 4 }}>
       Explore
     </Heading>
     <Grid gap={3} columns={[1, 2, 4]}>
@@ -93,7 +93,7 @@ const Page = ({ profiles }) => (
         </Card>
       </Link>
     </Grid>
-    <Heading as="h2" variant="headline" sx=%20mt%3A%204%2C%20mb%3A%20%5B3%2C%204%5D%20>
+    <Heading as="h2" variant="headline"  sx={{ mt: 4, mb: [3, 4] }}>
       Top 6 gun-funded Congresspeople
     </Heading>
   </Grouping>
