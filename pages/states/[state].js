@@ -19,7 +19,12 @@ const Page = ({ profiles, abbrev, stats }) => {
           value={commaNumber(stats.total)}
           label="total gun rights money"
         />
-        <Stat value={commaNumber(stats.avg)} unit="$" label="average funding" half />
+        <Stat
+          value={commaNumber(stats.avg)}
+          unit="$"
+          label="average funding"
+          half
+        />
         <Stat value={stats.percent} unit="%" label="gun-funded members" half />
       </StatGrid>
     </Grouping>
@@ -29,15 +34,20 @@ const Page = ({ profiles, abbrev, stats }) => {
 Page.getInitialProps = async ({ req }) => {
   const origin = req ? `http://${req.headers.host}` : ''
   const abbrev = last(req.url.split('/')).toUpperCase()
-  const data = await fetch(`${origin}/api/profiles?state=${abbrev}&order=rank`)
-  const profiles = await data.json()
-  const totals = map(profiles, 'gunRightsTotal')
-  const funds = filter(totals, t => t > 0)
-  const total = sum(totals)
-  const avg = round(total / profiles.length)
-  const percent = round(funds.length / totals.length) * 100
-  const stats = { total, avg, percent }
-  return { profiles, abbrev, stats }
+  if (abbrev.length !== 2) return { statusCode: 404 }
+  const api = await fetch(`${origin}/api/profiles?state=${abbrev}&order=rank`)
+  const profiles = await api.json()
+  if (api.ok && profiles) {
+    const totals = map(profiles, 'gunRightsTotal')
+    const funds = filter(totals, t => t > 0)
+    const total = sum(totals)
+    const avg = round(total / profiles.length)
+    const percent = round(funds.length / totals.length) * 100
+    const stats = { total, avg, percent }
+    return { profiles, abbrev, stats }
+  } else {
+    return { statusCode: 404 }
+  }
 }
 
 export default Page

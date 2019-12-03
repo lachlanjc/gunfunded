@@ -7,7 +7,7 @@ const withError = App => {
     const {
       pageProps: { statusCode }
     } = props
-    return !isEmpty(statusCode) && statusCode !== 200 ? (
+    return statusCode && statusCode !== 200 ? (
       <ErrorPage statusCode={statusCode} />
     ) : (
       <App {...props} />

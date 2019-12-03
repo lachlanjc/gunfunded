@@ -7,6 +7,7 @@ import states from '../../data/states.json'
 import { find, last } from 'lodash'
 
 const Page = ({ profile }) => {
+  console.error("PROFILE", profile)
   const state = find(states, ['abbrev', profile.state.toUpperCase()])
   return (
     <Box as="main" sx={{ bg: 'background' }}>
@@ -42,9 +43,12 @@ Page.getInitialProps = async ({ req }) => {
   ).toUpperCase()
   const origin = req ? `http://${req.headers.host}` : ''
   const data = await fetch(`${origin}/api/profiles?id=${id}`)
-  const statusCode = data.ok ? 200 : 404
-  const profile = await data.json()
-  return { statusCode, profile }
+  if (data.ok) {
+    const profile = await data.json()
+    return { statusCode, profile }  
+  } else {
+    return { statusCode: 404 }
+  }
 }
 
 export default Page
