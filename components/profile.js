@@ -165,7 +165,7 @@ const Profile = ({ label, data, full = false, sx = {} }) => (
             label="control opposition"
             half
           />
-          <Stat value={commaNumber(data.net)} label="net gun money" lg />
+          <Stat value={commaNumber(data.net)} label="net gun funding" lg />
           <Stat
             value={data.rank}
             unit="#"

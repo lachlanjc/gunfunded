@@ -217,7 +217,7 @@ const theme = merge(base, {
       boxShadow: 'card',
       position: 'relative',
       overflow: 'hidden',
-      display: 'flex',
+      display: 'grid',
       flexWrap: 'wrap',
       alignItems: 'center',
       fontSize: 2,
@@ -225,16 +225,16 @@ const theme = merge(base, {
       lineHeight: 'title',
       ':after': {
         content: '"→"',
-        display: 'inline-block',
-        ml: 'auto',
-        pl: 3,
+        // display: 'inline-block',
         color: 'accent',
         fontWeight: 'title'
       },
       svg: {
         flexShrink: 'none',
-        mr: [2, 3]
-      }
+        mr: [2, 3],
+        mb: [3, 0]
+      },
+      span: { display: 'inline-block' }
     }
   },
   layout: {

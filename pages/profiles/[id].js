@@ -1,13 +1,6 @@
 import useSWR from 'swr'
 import Link from 'next/link'
-import {
-  Box,
-  Container,
-  Heading,
-  Card,
-  Button,
-  Link as A
-} from '@theme-ui/components'
+import { Box, Container, Heading, Card, Button } from '@theme-ui/components'
 import Profile from '../../components/profile'
 import Methodology from '../../components/profile-methodology.mdx'
 import states from '../../data/states.json'
@@ -24,9 +17,7 @@ const Page = ({ profile }) => {
             href="/states/[state]"
             as={`/states/${state.abbrev.toLowerCase()}`}
           >
-            <Card variant="nav">
-              See all from {state.name}
-            </Card>
+            <Card variant="nav">See all from {state.name}</Card>
           </Link>
         </Box>
         <Card
@@ -38,7 +29,7 @@ const Page = ({ profile }) => {
             'p:last-of-type': { mb: 0 }
           }}
         >
-          <Methodology components={{ link: A }} />
+          <Methodology />
         </Card>
       </Container>
     </Box>

@@ -9,9 +9,10 @@ const Grouping = ({
   profiles = [],
   centeredHeader,
   header,
+  sx = {},
   children
 }) => (
-  <Box as="main" sx={{ bg: 'background' }}>
+  <Box as="main" sx={{ bg: 'background', ...sx }}>
     <Head>
       <title>{title}</title>
       <meta name="description" content={desc} />
