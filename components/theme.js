@@ -218,6 +218,7 @@ const theme = merge(base, {
       position: 'relative',
       overflow: 'hidden',
       display: 'flex',
+      flexWrap: 'wrap',
       alignItems: 'center',
       fontSize: 2,
       fontWeight: 'bold',
@@ -229,6 +230,10 @@ const theme = merge(base, {
         pl: 3,
         color: 'accent',
         fontWeight: 'title'
+      },
+      svg: {
+        flexShrink: 'none',
+        mr: [2, 3]
       }
     }
   },

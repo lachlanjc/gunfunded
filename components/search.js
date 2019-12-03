@@ -33,14 +33,18 @@ export default ({ defaultAddress = '' }) => {
     const res = await fetch(
       `/api/locate?address=${encodeURIComponent(address)}`
     )
-    const data = await res.json()
-    if (isEmpty(data)) {
-      setValue(<Error error="Something went wrong" />)
-    } else if (!isEmpty(data.error)) {
-      setValue(<Error error="Invalid address" />)
+    if (res.ok) {
+      const data = await res.json()
+      if (isEmpty(data)) {
+        setValue(<Error error="Something went wrong" />)
+      } else if (!isEmpty(data.error)) {
+        setValue(<Error error="Invalid address" />)
+      } else {
+        setSubmit('Search')
+        setValue(<Profile data={data} />)
+      }
     } else {
-      setSubmit('Search')
-      setValue(<Profile data={data} />)
+      setValue(<Error error="Something went wrong" />)
     }
   }
 
@@ -68,7 +72,12 @@ export default ({ defaultAddress = '' }) => {
       >
         <Box sx={{ color: 'text' }}>
           <Label htmlFor="address">Home address</Label>
-          <Input type="text" name="address" onChange={onChange} value={address} />
+          <Input
+            type="text"
+            name="address"
+            onChange={onChange}
+            value={address}
+          />
         </Box>
         <Button
           type="submit"
