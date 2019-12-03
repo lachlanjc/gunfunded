@@ -7,7 +7,6 @@ import states from '../../data/states.json'
 import { find, last } from 'lodash'
 
 const Page = ({ profile }) => {
-  console.error("PROFILE", profile)
   const state = find(states, ['abbrev', profile.state.toUpperCase()])
   return (
     <Box as="main" sx={{ bg: 'background' }}>
@@ -45,7 +44,7 @@ Page.getInitialProps = async ({ req }) => {
   const data = await fetch(`${origin}/api/profiles?id=${id}`)
   if (data.ok) {
     const profile = await data.json()
-    return { statusCode, profile }  
+    return { profile }  
   } else {
     return { statusCode: 404 }
   }
