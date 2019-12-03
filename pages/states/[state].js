@@ -34,20 +34,17 @@ const Page = ({ profiles, abbrev, stats }) => {
 Page.getInitialProps = async ({ req }) => {
   const origin = req ? `http://${req.headers.host}` : ''
   const abbrev = last(req.url.split('/')).toUpperCase()
-  if (abbrev.length !== 2) return { statusCode: 404 }
+  if (!map(states, 'abbrev').includes(abbrev)) return { statusCode: 404 }
   const api = await fetch(`${origin}/api/profiles?state=${abbrev}&order=rank`)
+  const statusCode = api.ok ? 200 : 404
   const profiles = await api.json()
-  if (api.ok && profiles) {
-    const totals = map(profiles, 'gunRightsTotal')
-    const funds = filter(totals, t => t > 0)
-    const total = sum(totals)
-    const avg = round(total / profiles.length)
-    const percent = round(funds.length / totals.length) * 100
-    const stats = { total, avg, percent }
-    return { profiles, abbrev, stats }
-  } else {
-    return { statusCode: 404 }
-  }
+  const totals = map(profiles, 'gunRightsTotal')
+  const funds = filter(totals, t => t > 0)
+  const total = sum(totals)
+  const avg = round(total / profiles.length)
+  const percent = round(funds.length / totals.length) * 100
+  const stats = { total, avg, percent }
+  return { statusCode, profiles, abbrev, stats }
 }
 
 export default Page
