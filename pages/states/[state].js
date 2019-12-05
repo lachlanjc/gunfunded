@@ -1,8 +1,10 @@
 import fetch from 'isomorphic-unfetch'
+import { Heading, Card } from '@theme-ui/components'
 import commaNumber from 'comma-number'
 import Grouping from '../../components/grouping'
 import Breakdown from '../../components/breakdown'
 import Stat, { StatGrid } from '../../components/stat'
+import Search from '../../components/search'
 import states from '../../data/states.json'
 import { find, last, sum, map, filter, round } from 'lodash'
 
@@ -13,6 +15,14 @@ const Page = ({ profiles, abbrev, stats }) => {
       title={state.name}
       desc={`All US Congress members from ${state.name}, sorted by gun money.`}
       profiles={profiles}
+      footer={
+        <Card sx={{ input: { bg: 'sunken', boxShadow: 'none' } }}>
+          <Heading as="h2" variant="headline" sx={{ mt: 0 }}>
+            Find your Representative
+          </Heading>
+          <Search />
+        </Card>
+      }
     >
       <StatGrid quad sx={{ mt: [2, 3], mb: [4, 5] }}>
         <Stat
@@ -74,13 +84,15 @@ Page.getInitialProps = async ({ req }) => {
   const total = sum(totals)
   const avg = round(total / profiles.length)
   const percent = round(funds.length / count) * 100
-  
+
   const profilesRep = filter(profiles, ['party', 'Republican'])
   const profilesDem = filter(profiles, ['party', 'Democrat'])
   const rep = profilesRep.length / count
   const dem = profilesDem.length / count
-  const fundedRep = filter(profilesRep, p => p.gunRightsTotal > 0).length / totals.length
-  const fundedDem = filter(profilesDem, p => p.gunRightsTotal > 0).length / totals.length
+  const fundedRep =
+    filter(profilesRep, p => p.gunRightsTotal > 0).length / totals.length
+  const fundedDem =
+    filter(profilesDem, p => p.gunRightsTotal > 0).length / totals.length
 
   const stats = { total, avg, percent, rep, dem, fundedRep, fundedDem }
 

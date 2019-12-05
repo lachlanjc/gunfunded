@@ -9,6 +9,7 @@ const Grouping = ({
   profiles = [],
   centeredHeader,
   header,
+  footer,
   sx = {},
   children
 }) => (
@@ -40,6 +41,7 @@ const Grouping = ({
       {profiles.map(profile => (
         <Profile data={profile} key={profile.id} />
       ))}
+      {footer}
     </Container>
   </Box>
 )

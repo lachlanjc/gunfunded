@@ -20,7 +20,7 @@ const Group = ({ id, pac, cycle, amount, type }) => (
     sx={{
       flexWrap: 'wrap',
       borderTop: '1px solid',
-      borderColor: 'sunken',
+      borderColor: 'border',
       color: 'text',
       py: 2
     }}
@@ -105,7 +105,7 @@ const Page = ({ cycles }) => (
         <Box
           as="section"
           key={cycle.year}
-          sx={{ mb: [3, 4], borderBottom: '1px solid', borderColor: 'sunken' }}
+          sx={{ mb: [3, 4], borderBottom: '1px solid', borderColor: 'border' }}
         >
           <CycleHeader cycle={cycle} />
           {cycle.groups.map(group => (
