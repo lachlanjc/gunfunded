@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-unfetch'
 import commaNumber from 'comma-number'
 import Grouping from '../../components/grouping'
+import Breakdown from '../../components/breakdown'
 import Stat, { StatGrid } from '../../components/stat'
 import states from '../../data/states.json'
 import { find, last, sum, map, filter, round } from 'lodash'
@@ -26,6 +27,34 @@ const Page = ({ profiles, abbrev, stats }) => {
           half
         />
         <Stat value={stats.percent} unit="%" label="gun-funded members" half />
+        <Breakdown
+          sx={{ maxWidth: 256 }}
+          segments={[
+            {
+              color: 'rep',
+              value: stats.rep,
+              label: 'total Republicans vs Democrats'
+            },
+            {
+              color: 'dem',
+              value: stats.dem
+            }
+          ]}
+        />
+        <Breakdown
+          sx={{ maxWidth: 256 }}
+          segments={[
+            {
+              color: 'rep',
+              value: stats.fundedRep,
+              label: 'funded Republicans vs Democrats'
+            },
+            {
+              color: 'dem',
+              value: stats.fundedDem
+            }
+          ]}
+        />
       </StatGrid>
     </Grouping>
   )
@@ -38,12 +67,23 @@ Page.getInitialProps = async ({ req }) => {
   const api = await fetch(`${origin}/api/profiles?state=${abbrev}&order=rank`)
   const statusCode = api.ok ? 200 : 404
   const profiles = await api.json()
+  const count = profiles.length
+
   const totals = map(profiles, 'gunRightsTotal')
   const funds = filter(totals, t => t > 0)
   const total = sum(totals)
   const avg = round(total / profiles.length)
-  const percent = round(funds.length / totals.length) * 100
-  const stats = { total, avg, percent }
+  const percent = round(funds.length / count) * 100
+  
+  const profilesRep = filter(profiles, ['party', 'Republican'])
+  const profilesDem = filter(profiles, ['party', 'Democrat'])
+  const rep = profilesRep.length / count
+  const dem = profilesDem.length / count
+  const fundedRep = filter(profilesRep, p => p.gunRightsTotal > 0).length / totals.length
+  const fundedDem = filter(profilesDem, p => p.gunRightsTotal > 0).length / totals.length
+
+  const stats = { total, avg, percent, rep, dem, fundedRep, fundedDem }
+
   return { statusCode, profiles, abbrev, stats }
 }
 

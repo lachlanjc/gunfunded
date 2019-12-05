@@ -10,6 +10,7 @@ import {
   Text
 } from '@theme-ui/components'
 import Header from '../components/header'
+import Breakdown from '../components/breakdown'
 import Stat, { StatGrid } from '../components/stat'
 import commaNumber from 'comma-number'
 import { capitalize, map, sum, groupBy, reverse, filter } from 'lodash'
@@ -40,48 +41,6 @@ const Group = ({ id, pac, cycle, amount, type }) => (
       </Badge>
     </Box>
     <Stat unit="$" value={commaNumber(amount)} />
-  </Flex>
-)
-
-const Breakdown = ({ segments, sx = {} }) => (
-  <Flex sx={{ flexDirection: 'column', minWidth: 196, maxWidth: 208, ...sx }}>
-    <Flex
-      sx={{
-        borderRadius: 12,
-        alignItems: 'center',
-        overflow: 'hidden',
-        mb: 1
-      }}
-    >
-      {segments.map(segment => (
-        <Box
-          sx={{
-            bg: segment.color,
-            color: 'inverseText',
-            display: 'inline-block',
-            width: segment.value * 100 + '%',
-            height: 8
-          }}
-          key={segment.label}
-        />
-      ))}
-    </Flex>
-    <Flex
-      sx={{
-        alignItems: 'center',
-        justifyContent: 'space-between'
-      }}
-    >
-      {segments.map(segment => (
-        <Text
-          as="span"
-          variant="caption"
-          sx={{ fontSize: [0, 1] }}
-          key={segment.label}
-          children={segment.label}
-        />
-      ))}
-    </Flex>
   </Flex>
 )
 

@@ -186,12 +186,8 @@ const Profile = ({ label, data, full = false, sx = {} }) => (
     </StatGrid>
     <Flex as="footer" sx={{ alignItems: 'center' }}>
       <Link href="/profiles/[id]" as={`/profiles/${data.id}`}>
-        <Button
-          as="a"
-          variant="primary"
-          sx={{ display: 'flex', alignItems: 'center', mr: 'auto' }}
-        >
-          <Box as={Share} size={24} sx={{ ml: -1, mr: 2 }} />
+        <Button as="a" variant="primary" sx={{ mr: 'auto' }}>
+          <Share size={24} />
           Share
         </Button>
       </Link>

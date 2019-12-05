@@ -162,14 +162,20 @@ const theme = merge(base, {
       color: 'background',
       cursor: 'pointer',
       fontFamily: 'body',
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      display: 'flex',
+      alignItems: 'center',
+      svg: { ml: -1, mr: 2 }
     },
     inverted: {
       bg: 'invertedPrimary',
       color: 'invertedText',
       cursor: 'pointer',
       fontFamily: 'body',
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      display: 'flex',
+      alignItems: 'center',
+      svg: { ml: -1, mr: 2 }
     }
   },
   images: {

@@ -1,6 +1,6 @@
 dependencies:
   '@mdx-js/react': 1.5.1
-  '@theme-ui/components': 0.2.49
+  '@theme-ui/components': 0.2.50
   '@theme-ui/presets': 0.2.44
   '@zeit/next-mdx': 1.2.0
   babel-plugin-emotion: 10.0.23
@@ -947,6 +947,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-JONRbXbTXc9WQE2mAZd1p0Z3DZ/6vaQIkgYMSTP3KjRCyd7rCZCcfhCyX+YjwcKxcZ82UrxbRD358bpExNgrjw==
+  /@babel/runtime/7.7.4:
+    dependencies:
+      regenerator-runtime: 0.13.3
+    dev: false
+    resolution:
+      integrity: sha512-r24eVUUr0QqNZa+qrImUk8fn5SPhHq+IfYvIoIMg0do3GdK9sMdiLKP3GYVVaxpPKORgm8KRKaNTEhAjgIpLMw==
   /@babel/template/7.7.0:
     dependencies:
       '@babel/code-frame': 7.5.5
@@ -994,7 +1000,7 @@ packages:
       integrity: sha512-BoiLlk4vEsGBg2dAqGSJu0vJl/PgVtCYLBFJaEO8RmQzPugXewQCXZJNXTDFaRlfCs0W+quesayav4fvaif5WQ==
   /@emotion/core/10.0.22:
     dependencies:
-      '@babel/runtime': 7.7.2
+      '@babel/runtime': 7.7.4
       '@emotion/cache': 10.0.19
       '@emotion/css': 10.0.22
       '@emotion/serialize': 0.11.14
@@ -1043,7 +1049,7 @@ packages:
       integrity: sha512-c3Q6V7Df7jfwSq5AzQWbXHa5soeE4F5cbqi40xn0CzXxWW9/6Mxq48WJEtqfWzbZtW9odZdnRAkwCQwN12ob4A==
   /@emotion/styled-base/10.0.24/@emotion!core@10.0.22:
     dependencies:
-      '@babel/runtime': 7.7.2
+      '@babel/runtime': 7.7.4
       '@emotion/core': 10.0.22
       '@emotion/is-prop-valid': 0.8.5
       '@emotion/serialize': 0.11.14
@@ -1180,6 +1186,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-yC3S0Iox8OTPAyrP1t5yY9nURUICcUdhVYOkwffftuxa5+txxI4qkT2e9JNCc2aaem+DG8mlXTdnYefjqge5wg==
+  /@styled-system/css/5.1.4:
+    dev: false
+    resolution:
+      integrity: sha512-79IFT37Kxb6dlbx/0hwIGOakNHkK5oU3cMypGziShnEK8WMgK/+vuAi4MHO7uLI+FZ5U8MGYvGY9Gtk0mBzxSg==
   /@styled-system/flexbox/5.1.2:
     dependencies:
       '@styled-system/core': 5.1.2
@@ -1210,14 +1220,14 @@ packages:
     dev: false
     resolution:
       integrity: sha512-wqniqYb7XuZM7K7C0d1Euxc4eGtqEe/lvM0WjuAFsQVImiq6KGT7s7is+0bNI8O4Dwg27jyu4Lfqo/oIQXNzAg==
-  /@styled-system/should-forward-prop/5.1.2:
+  /@styled-system/should-forward-prop/5.1.4:
     dependencies:
       '@emotion/is-prop-valid': 0.8.5
       '@emotion/memoize': 0.7.3
-      styled-system: 5.1.2
+      styled-system: 5.1.4
     dev: false
     resolution:
-      integrity: sha512-6+6kqS172H/7qPXNBJB9Y14sMrSS5yTu5o7UpV1oIW9Oy6jZ3Z4iiF1nEuQa8RNwfV3a1MczlFLu7F0PEWmKNg==
+      integrity: sha512-WvKlXdbzz64QX8E66dlt/t+AsHhE5mJPyxMAufKeUKn5DSj+1w7CfLtwVH2oYje7XFcrcZOV9elzaeMWE0znTw==
   /@styled-system/space/5.1.2:
     dependencies:
       '@styled-system/core': 5.1.2
@@ -1230,26 +1240,26 @@ packages:
     dev: false
     resolution:
       integrity: sha512-BxbVUnN8N7hJ4aaPOd7wEsudeT7CxarR+2hns8XCX1zp0DFfbWw4xYa/olA0oQaqx7F1hzDg+eRaGzAJbF+jOg==
-  /@styled-system/variant/5.1.2:
+  /@styled-system/variant/5.1.4:
     dependencies:
       '@styled-system/core': 5.1.2
-      '@styled-system/css': 5.0.23
+      '@styled-system/css': 5.1.4
     dev: false
     resolution:
-      integrity: sha512-NousRWr0JQSOZS87f1N+59EUAo7ZH6/Df/iN1ZVjHr2Ntah/lPMQvAnIuqkknjoRMjJL/g1SyoQ+dP3QX0XOng==
-  /@theme-ui/components/0.2.49:
+      integrity: sha512-4bI2AYQfWU/ljvWlysKU8T+6gsVx5xXEI/yBvg2De7Jd6o03ZQ9tsL3OJwbzyMkIKg+UZp7YG190txEOb8K6tg==
+  /@theme-ui/components/0.2.50:
     dependencies:
       '@emotion/core': 10.0.22
       '@emotion/styled': /@emotion/styled/10.0.23/@emotion!core@10.0.22
       '@styled-system/color': 5.1.2
-      '@styled-system/css': 5.0.23
-      '@styled-system/should-forward-prop': 5.1.2
+      '@styled-system/css': 5.1.4
+      '@styled-system/should-forward-prop': 5.1.4
       '@styled-system/space': 5.1.2
     dev: false
     peerDependencies:
       react: ^16.8.0
     resolution:
-      integrity: sha512-0Q9jfUTJMRIZ+NF7oCJtVIoY8wyh0soMIlbbdPCCkU+BWLpCEuJ+FFCjWclkIuUiRCVJg6RD1JOyOer9MbUxXQ==
+      integrity: sha512-mgFcV1GeGePyZh5TM8cOya5JyonxTqDLCk2zc/U4GP3C/6SdLORMD/e84MKyQfOA7AVO64i6jZ2v1wv8jScgAQ==
   /@theme-ui/preset-base/0.2.44:
     dev: false
     resolution:
@@ -6046,7 +6056,7 @@ packages:
       react: 15.x.x || 16.x.x
     resolution:
       integrity: sha512-UMclQzI1lss38RhyjTf7SmtXJEMbB6Q9slDz8adGtzHjirYb1PPgeWLSP8SlZc8c9f3LF6axmtv+6K/553ANdg==
-  /styled-system/5.1.2:
+  /styled-system/5.1.4:
     dependencies:
       '@styled-system/background': 5.1.2
       '@styled-system/border': 5.1.2
@@ -6059,11 +6069,11 @@ packages:
       '@styled-system/shadow': 5.1.2
       '@styled-system/space': 5.1.2
       '@styled-system/typography': 5.1.2
-      '@styled-system/variant': 5.1.2
+      '@styled-system/variant': 5.1.4
       object-assign: 4.1.1
     dev: false
     resolution:
-      integrity: sha512-gbiohoqYYtvg9Q6nA3EagQSouHI9ylmcKUHHaUvCQrPpnPeJlUJAvj9vfyDgsJjw/oBogggfojF1X9EShfPffg==
+      integrity: sha512-b1EdfZ41NDcR6vnvZauylhpFvSjsFl1yyQEUA+v3rLjcKdM//EIFY195Nh3YLwgj+hWIWsG0Tk1Kl0tq1xLw8Q==
   /stylis-rule-sheet/0.0.10/stylis@3.5.4:
     dependencies:
       stylis: 3.5.4
@@ -6743,7 +6753,7 @@ shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
   '@mdx-js/react': ^1.5.1
-  '@theme-ui/components': ^0.2.49
+  '@theme-ui/components': ^0.2.50
   '@theme-ui/presets': ^0.2.44
   '@zeit/next-mdx': ^1.2.0
   babel-plugin-emotion: ^10.0.23
