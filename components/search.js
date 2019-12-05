@@ -58,7 +58,7 @@ export default ({ defaultAddress = '' }) => {
   }
 
   return (
-    <section>
+    <>
       <Box
         as="form"
         onSubmit={onSubmit}
@@ -87,6 +87,6 @@ export default ({ defaultAddress = '' }) => {
         />
       </Box>
       {value}
-    </section>
+    </>
   )
 }

@@ -16,7 +16,7 @@ const Page = ({ profiles, abbrev, stats }) => {
       desc={`All US Congress members from ${state.name}, sorted by gun money.`}
       profiles={profiles}
       footer={
-        <Card sx={{ input: { bg: 'sunken', boxShadow: 'none' } }}>
+        <Card sx={{ 'input, section': { bg: 'sunken', boxShadow: 'none' } }}>
           <Heading as="h2" variant="headline" sx={{ mt: 0 }}>
             Find your Representative
           </Heading>
