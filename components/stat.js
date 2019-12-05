@@ -6,7 +6,7 @@ export const StatGrid = ({ quad = false, ...props }) => (
     {...props}
     sx={{
       display: 'grid',
-      gridTemplateColumns: `repeat(${quad ? 4 : 2}, 1fr)`,
+      gridTemplateColumns: ['repeat(2, 1fr)', `repeat(${quad ? 4 : 2}, 1fr)`],
       gridGap: 3,
       alignItems: 'flex-end',
       textAlign: 'left',
