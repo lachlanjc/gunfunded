@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-unfetch'
-import { Heading, Card } from '@theme-ui/components'
+import { Box, Heading, Card } from '@theme-ui/components'
 import commaNumber from 'comma-number'
-import Grouping from '../../components/grouping'
+import Grouping, { ProfileGrouping } from '../../components/grouping'
 import Breakdown from '../../components/breakdown'
 import Stat, { StatGrid } from '../../components/stat'
 import Search from '../../components/search'
@@ -10,13 +10,21 @@ import { find, last, sum, map, filter, round } from 'lodash'
 
 const Page = ({ profiles, abbrev, stats }) => {
   const state = find(states, ['abbrev', abbrev.toUpperCase()])
+  const sens = filter(profiles, ['role', 'sen'])
+  const reps = filter(profiles, ['role', 'rep'])
   return (
     <Grouping
+      centeredHeader
       title={state.name}
       desc={`All US Congress members from ${state.name}, sorted by gun money.`}
-      profiles={profiles}
+      profiles={reps}
       footer={
-        <Card sx={{ 'input, section': { bg: 'sunken', boxShadow: 'none' } }}>
+        <Card
+          sx={{
+            textAlign: 'left',
+            'input, section': { bg: 'sunken', boxShadow: 'none' }
+          }}
+        >
           <Heading as="h2" variant="headline" sx={{ mt: 0 }}>
             Find your Representative
           </Heading>
@@ -66,6 +74,22 @@ const Page = ({ profiles, abbrev, stats }) => {
           ]}
         />
       </StatGrid>
+      <Heading as="h2" variant="headline">
+        Senators
+      </Heading>
+      <Box
+        sx={{
+          width: '100vw',
+          position: 'relative',
+          left: '50%',
+          transform: 'translateX(-50%)'
+        }}
+      >
+        <ProfileGrouping profiles={sens} />
+      </Box>
+      <Heading as="h2" variant="headline" sx={{ mt: 4 }}>
+        Representatives
+      </Heading>
     </Grouping>
   )
 }

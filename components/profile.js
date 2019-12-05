@@ -99,7 +99,7 @@ const Contact = ({ phone, form, twitter, facebook, instagram }) => (
 )
 
 const Profile = ({ label, data, full = false, sx = {} }) => (
-  <Card as="section" sx={{ p: [3, 4], ...sx }}>
+  <Card as="section" sx={{ p: [3, 4], textAlign: 'left', ...sx }}>
     {label && (
       <Text
         variant="caps"

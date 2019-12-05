@@ -9,6 +9,7 @@ export const StatGrid = ({ quad = false, ...props }) => (
       gridTemplateColumns: `repeat(${quad ? 4 : 2}, 1fr)`,
       gridGap: 3,
       alignItems: 'flex-end',
+      textAlign: 'left',
       mt: [3, 4],
       mb: [3, 4],
       div: {
