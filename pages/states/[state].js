@@ -96,8 +96,10 @@ const Page = ({ profiles, abbrev, stats }) => {
 
 Page.getInitialProps = async ({ req }) => {
   const origin = req ? `http://${req.headers.host}` : ''
-  const abbrev = last(req.url.split('/')).toUpperCase()
+  const url = typeof window === 'undefined' ? req.url : window.location.href
+  const abbrev = last(url.split('/')).toUpperCase()
   if (!map(states, 'abbrev').includes(abbrev)) return { statusCode: 404 }
+
   const api = await fetch(`${origin}/api/profiles?state=${abbrev}&order=rank`)
   const statusCode = api.ok ? 200 : 404
   const profiles = await api.json()
