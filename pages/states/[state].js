@@ -22,7 +22,8 @@ const Page = ({ profiles, abbrev, stats }) => {
         <Card
           sx={{
             textAlign: 'left',
-            'input, section': { bg: 'sunken', boxShadow: 'none' }
+            'input, a': { bg: 'sunken', boxShadow: 'none' },
+            a: { display: 'block', textDecoration: 'none' }
           }}
         >
           <Heading as="h2" variant="headline" sx={{ mt: 0 }}>
