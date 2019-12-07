@@ -18,7 +18,7 @@ const Page = ({ profiles }) => (
       </>
     }
     profiles={profiles}
-    centeredHeader
+    centered
     sx={{ h2: { textAlign: ['left', 'center'] } }}
   >
     <Heading as="h2" variant="headline">

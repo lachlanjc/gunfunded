@@ -21,7 +21,7 @@ export default () => {
       <Head>
         <title>States – Gun Funded</title>
       </Head>
-      <Header title="States" />
+      <Header title="States" centered />
       <Container
         as="article"
         variant="wide"

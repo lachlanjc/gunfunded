@@ -4,7 +4,7 @@ import Search from '../components/search'
 
 const Page = ({ address }) => (
   <Box as="main" sx={{ bg: 'background' }}>
-    <Header title="Find Your Rep" centeredHeader />
+    <Header title="Find Your Rep" />
     <Container as="article" sx={{ py: [3, 4] }}>
       <Search defaultAddress={address} />
     </Container>

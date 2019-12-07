@@ -14,7 +14,7 @@ const Page = ({ profiles, abbrev, stats }) => {
   const reps = filter(profiles, ['role', 'rep'])
   return (
     <Grouping
-      centeredHeader
+      centered
       title={state.name}
       desc={`All US Congress members from ${state.name}, sorted by gun money.`}
       profiles={reps}

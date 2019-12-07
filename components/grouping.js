@@ -26,13 +26,13 @@ const Grouping = ({
   title = 'Gun Funded',
   desc = '',
   profiles = [],
-  centeredHeader = false,
+  centered = false,
   header,
   footer,
   sx = {},
   children
 }) => (
-  <Box as="main" sx={{ bg: 'background', textAlign: ['left', 'center'], ...sx }}>
+  <Box as="main" sx={{ bg: 'background', textAlign: centered && ['left', 'center'], ...sx }}>
     <Head>
       <title>{title}</title>
       <meta name="description" content={desc} />
@@ -40,7 +40,7 @@ const Grouping = ({
     <Header
       title={title}
       desc={desc}
-      centered={centeredHeader}
+      centered={centered}
       children={header}
     />
     {children && (
