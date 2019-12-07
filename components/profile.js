@@ -101,15 +101,13 @@ const Contact = ({ phone, form, twitter, facebook, instagram }) => (
   </div>
 )
 
-const onClick = id => Router.push(`/profiles/${id}`)
-
 const buttonOnClick = () => alert('Coming soon')
 
-const Profile = ({ label, data, full = false, sx = {} }) => (
+const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
   <Card
-    as="section"
+    as={full ? 'article' : 'a'}
     sx={{ p: [3, 4], textAlign: 'left', ...sx }}
-    onClick={e => !full && onClick(data.id)}
+    {...props}
   >
     {label && (
       <Text
@@ -133,8 +131,12 @@ const Profile = ({ label, data, full = false, sx = {} }) => (
           }}
         />
       </Box>
-      <Box sx={{ mr: 'auto', textAlign: 'left' }}>
-        <Heading as="h2" variant="headline" sx={{ color: 'text', my: 0 }}>
+      <Box sx={{ mr: 'auto' }}>
+        <Heading
+          as="h2"
+          variant="headline"
+          sx={{ color: 'text', textAlign: 'left !important', my: 0 }}
+        >
           {data.role === 'sen' ? 'Sen.' : 'Rep.'} {data.name.full}
         </Heading>
         <Text sx={{ color: 'muted', fontSize: [1, 2] }}>
@@ -159,7 +161,11 @@ const Profile = ({ label, data, full = false, sx = {} }) => (
         </IconButton>
       )}
     </Flex>
-    <StatGrid as="article" quad={full} sx={{ mb: full ? [3, 4] : 0 }}>
+    <StatGrid
+      as="article"
+      quad={full}
+      sx={{ mt: [2, 3], mb: full ? [3, 4] : 0 }}
+    >
       <Stat
         value={commaNumber(data.gunRightsTotal)}
         label="from gun rights"
@@ -223,4 +229,25 @@ const Profile = ({ label, data, full = false, sx = {} }) => (
   </Card>
 )
 
-export default Profile
+const Wrapper = ({ full, data, ...props }) =>
+  full ? (
+    <Profile data={data} full {...props} />
+  ) : (
+    <Link
+      href="/profiles/[id]"
+      as={`/profiles/${data.id}`}
+      passHref
+      prefetch={false}
+    >
+      <Profile
+        data={data}
+        sx={{
+          transition: 'transform .125s ease-in-out, box-shadow .125s ease-in-out',
+          ':hover,:focus': { transform: 'scale(1.0625)', boxShadow: 'elevated' }
+        }}
+        {...props}
+      />
+    </Link>
+  )
+
+export default Wrapper

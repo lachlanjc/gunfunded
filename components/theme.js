@@ -103,7 +103,8 @@ const theme = merge(base, {
   },
   shadows: {
     small: '0 1px 2px rgba(0, 0, 0, 0.0625), 0 2px 4px rgba(0, 0, 0, 0.0625)',
-    card: '0 4px 8px rgba(0, 0, 0, 0.125)'
+    card: '0 4px 8px rgba(0, 0, 0, 0.125)',
+    elevated: '0 1px 2px rgba(0, 0, 0, 0.0625), 0 8px 12px rgba(0, 0, 0, 0.125)',
   },
   text: {
     heading: {
@@ -126,7 +127,7 @@ const theme = merge(base, {
     },
     headline: {
       fontWeight: 'heading',
-      lineHeight: 'heading',
+      lineHeight: 'title',
       letterSpacing: 'heading',
       fontSize: [3, 4],
       color: 'accent',

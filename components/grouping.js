@@ -12,6 +12,9 @@ export const ProfileGrouping = ({ profiles = [], children, ...props }) => (
       display: 'grid',
       gridTemplateColumns: ['auto', null, null, 'repeat(2, 1fr)'],
       gridGap: [3, 4],
+      '> a': {
+        textDecoration: 'none'
+      },
       ...props.sx
     }}
   >

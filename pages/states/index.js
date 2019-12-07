@@ -43,6 +43,7 @@ export default () => {
             <Link
               href={`/states/${state.abbreviation}`}
               key={state.abbreviation}
+              passHref
             >
               <A
                 sx={{
