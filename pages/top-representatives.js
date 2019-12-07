@@ -26,12 +26,11 @@ const Page = ({ profiles, stats }) => (
         value={stats.repub * 100}
         unit="%"
         label="Republican"
+        sx={{
+          'circle:first-of-type': { opacity: '1 !important', stroke: 'blue' }
+        }}
       />
-      <Stat
-        value={stats.male * 100}
-        unit="%"
-        label="male"
-      />
+      <Stat value={stats.male * 100} unit="%" label="male" />
     </StatGrid>
   </Grouping>
 )
@@ -42,7 +41,8 @@ Page.getInitialProps = async ({ req }) => {
   const profiles = await data.json()
   const total = sum(map(profiles, 'gunRightsTotal'))
   const avg = round(total / profiles.length)
-  const repub = filter(profiles, ['party', 'Republican']).length / profiles.length
+  const repub =
+    filter(profiles, ['party', 'Republican']).length / profiles.length
   const male = filter(profiles, ['gender', 'M']).length / profiles.length
   const stats = { total, avg, repub, male }
   return { profiles, stats }

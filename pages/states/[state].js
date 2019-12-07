@@ -46,33 +46,25 @@ const Page = ({ profiles, abbrev, stats }) => {
           half
         />
         <Stat value={stats.percent} unit="%" label="gun-funded members" half />
-        <Breakdown
-          sx={{ maxWidth: 256 }}
-          segments={[
-            {
-              color: 'rep',
-              value: stats.rep,
-              label: 'total Republicans vs Democrats'
-            },
-            {
-              color: 'dem',
-              value: stats.dem
-            }
-          ]}
+        <Stat value={stats.male} unit="%" label="total are male" half />
+        <Stat value={stats.fundedMale} unit="%" label="funded are male" half />
+        <Stat
+          value={stats.rep}
+          unit="%"
+          label="total are Republicans"
+          half
+          sx={{
+            'circle:first-of-type': { opacity: '1 !important', stroke: 'blue' }
+          }}
         />
-        <Breakdown
-          sx={{ maxWidth: 256 }}
-          segments={[
-            {
-              color: 'rep',
-              value: stats.fundedRep,
-              label: 'funded Republicans vs Democrats'
-            },
-            {
-              color: 'dem',
-              value: stats.fundedDem
-            }
-          ]}
+        <Stat
+          value={stats.fundedRep}
+          unit="%"
+          label="funded are Republicans"
+          half
+          sx={{
+            'circle:first-of-type': { opacity: '1 !important', stroke: 'blue' }
+          }}
         />
       </StatGrid>
       <Heading as="h2" variant="headline">
@@ -109,19 +101,25 @@ Page.getInitialProps = async ({ req }) => {
   const totals = map(profiles, 'gunRightsTotal')
   const funds = filter(totals, t => t > 0)
   const total = sum(totals)
-  const avg = round(total / profiles.length)
-  const percent = round(funds.length / count) * 100
+  const avg = round(total / count)
+  const p = (a, b) => round((a / b) * 100)
+  const percent = p(funds.length, count)
+
+  const profilesMale = filter(profiles, ['gender', 'M'])
+  const male = p(profilesMale.length, count)
+  const fundedMale = p(
+    filter(profilesMale, n => n.gunRightsTotal > 0).length,
+    funds.length
+  )
 
   const profilesRep = filter(profiles, ['party', 'Republican'])
-  const profilesDem = filter(profiles, ['party', 'Democrat'])
-  const rep = profilesRep.length / count
-  const dem = profilesDem.length / count
-  const fundedRep =
-    filter(profilesRep, p => p.gunRightsTotal > 0).length / totals.length
-  const fundedDem =
-    filter(profilesDem, p => p.gunRightsTotal > 0).length / totals.length
+  const rep = p(profilesRep.length, count)
+  const fundedRep = p(
+    filter(profilesRep, n => n.gunRightsTotal > 0).length,
+    funds.length
+  )
 
-  const stats = { total, avg, percent, rep, dem, fundedRep, fundedDem }
+  const stats = { total, avg, percent, male, fundedMale, rep, fundedRep }
 
   return { statusCode, profiles, abbrev, stats }
 }
