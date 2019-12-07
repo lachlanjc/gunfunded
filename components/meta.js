@@ -1,8 +1,8 @@
 import Head from 'next/head'
 
-export default ({ title, description, image, url }) => (
+export default ({ title = 'Gun Funded', description, image, url }) => (
   <Head>
-    {title && <title>{title}</title>}
+    {title && <title>{title === 'Gun Funded' ? title : `${title} – Gun Funded`}</title>}
     {title && <meta property="og:title" content={title} />}
     {title && <meta name="twitter:title" content={title} />}
     {url && <meta name="og:url" content={url} />}

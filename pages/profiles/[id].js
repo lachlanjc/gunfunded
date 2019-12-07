@@ -1,6 +1,7 @@
 import useSWR from 'swr'
 import Link from 'next/link'
 import { Box, Container, Heading, Card, Button } from '@theme-ui/components'
+import Meta from '../../components/meta'
 import Profile from '../../components/profile'
 import Methodology from '../../components/profile-methodology.mdx'
 import states from '../../data/states.json'
@@ -10,6 +11,16 @@ const Page = ({ profile }) => {
   const state = find(states, ['abbrev', profile.state.toUpperCase()])
   return (
     <Box as="main" sx={{ bg: 'background' }}>
+      <Meta
+        title={`${profile.role === 'sen' ? 'Sen.' : 'Rep.'} ${
+          profile.name.full
+        }`}
+        description={`View ${
+          profile.role === 'sen' ? 'Senator' : 'Representative'
+        } ${profile.name.full} of ${
+          state.name
+        }’s gun lobby funding on Gun Funded.`}
+      />
       <Container sx={{ py: [3, 4] }}>
         <Profile data={profile} full />
         <Box as="section" sx={{ mt: [3, 4] }}>
@@ -44,7 +55,7 @@ Page.getInitialProps = async ({ req }) => {
   const data = await fetch(`${origin}/api/profiles?id=${id}`)
   if (data.ok) {
     const profile = await data.json()
-    return { profile }  
+    return { profile }
   } else {
     return { statusCode: 404 }
   }
