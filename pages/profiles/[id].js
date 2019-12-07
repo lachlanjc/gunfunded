@@ -27,8 +27,9 @@ const Page = ({ profile }) => {
           <Link
             href="/states/[state]"
             as={`/states/${state.abbrev.toLowerCase()}`}
+            passHref
           >
-            <Card variant="nav">See all from {state.name}</Card>
+            <Card as="a" variant="nav">See all from {state.name}</Card>
           </Link>
         </Box>
         <Card
