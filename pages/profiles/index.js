@@ -6,7 +6,7 @@ import { find, last, sum, map, filter, round } from 'lodash'
 
 const Page = ({ profiles, abbrev, stats }) => (
   <Grouping
-    title="All Congresspeople"
+    title="All Members of&nbsp;Congress"
     desc={`All US Congress members, sorted by gun money.`}
     profiles={profiles}
   >

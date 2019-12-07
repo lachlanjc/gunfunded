@@ -42,8 +42,12 @@ export default () => {
       key="nav"
     >
       <Container sx={{ display: 'flex', alignItems: 'center' }}>
-        <Link href="/">
-          <Text as="a" variant="logo" sx={{ color: 'inherit', fontSize: 1 }}>
+        <Link href="/" passHref>
+          <Text
+            as="a"
+            variant="logo"
+            sx={{ color: 'inherit', fontSize: 1, textDecoration: 'none' }}
+          >
             Gun&nbsp;Funded
           </Text>
         </Link>

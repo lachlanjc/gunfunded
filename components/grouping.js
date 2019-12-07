@@ -35,8 +35,10 @@ const Grouping = ({
   sx = {},
   children
 }) => (
-  <Box as="main" sx={{ bg: 'background', textAlign: centered && ['left', 'center'], ...sx }}>
-    <Meta title={title} description={desc} />
+  <Box
+    as="main"
+    sx={{ bg: 'background', textAlign: centered && ['left', 'center'], ...sx }}>
+    <Meta title={title.replace('&nbsp;', ' ')} description={desc} />
     <Header
       title={title}
       desc={desc}

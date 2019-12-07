@@ -28,12 +28,13 @@ const Page = ({ profiles }) => (
     <Heading as="h2" variant="headline" sx={{ mt: 4 }}>
       Explore
     </Heading>
-    <Grid gap={3} columns={[1, 2, 4]} sx={{ textAlign: 'left' }}>
-      <Link href="/states">
+    <Grid gap={3} columns={[1, 2, 6]} sx={{ textAlign: 'left' }}>
+      <Link href="/states" passHref>
         <Card
           variant="nav"
+          as="a"
           sx={{
-            gridColumn: [null, null, 'span 2'],
+            gridColumn: [null, null, 'span 3'],
             fontSize: [2, 3, 4],
             py: 3,
             svg: {
@@ -46,11 +47,12 @@ const Page = ({ profiles }) => (
           Explore States
         </Card>
       </Link>
-      <Link href="/groups">
+      <Link href="/groups" passHref>
         <Card
           variant="nav"
+          as="a"
           sx={{
-            gridColumn: [null, null, 'span 2'],
+            gridColumn: [null, null, 'span 3'],
             fontSize: [2, 3, 4],
             svg: {
               stroke: 'orange',
@@ -63,34 +65,30 @@ const Page = ({ profiles }) => (
           Explore PACs
         </Card>
       </Link>
-      <Link href="/top-senators">
-        <Card variant="nav">
+      <Link href="/top-senators" passHref>
+        <Card variant="nav" as="a" sx={{ gridColumn: [null, null, 'span 2'] }}>
           Top US
           <br />
           Senators
         </Card>
       </Link>
-      <Link href="/top-representatives">
-        <Card variant="nav">
+      <Link href="/top-representatives" passHref>
+        <Card variant="nav" as="a" sx={{ gridColumn: [null, null, 'span 2'] }}>
           Top US
           <br />
           Reps
         </Card>
       </Link>
-      <Link href="/profiles">
-        <Card variant="nav" sx={{ svg: { stroke: 'green' } }}>
+      <Link href="/profiles" passHref>
+        <Card
+          variant="nav"
+          as="a"
+          sx={{ gridColumn: [null, null, 'span 2'], svg: { stroke: 'green' } }}
+        >
           <Users size={32} />
           All Members
           <br />
           of Congress
-        </Card>
-      </Link>
-      <Link href="/search">
-        <Card variant="nav" sx={{ svg: { stroke: 'accent' } }}>
-          <SearchIcon size={32} />
-          <span>Find
-          <br />
-          Your&nbsp;Rep</span>
         </Card>
       </Link>
     </Grid>

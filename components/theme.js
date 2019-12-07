@@ -104,7 +104,7 @@ const theme = merge(base, {
   shadows: {
     small: '0 1px 2px rgba(0, 0, 0, 0.0625), 0 2px 4px rgba(0, 0, 0, 0.0625)',
     card: '0 4px 8px rgba(0, 0, 0, 0.125)',
-    elevated: '0 1px 2px rgba(0, 0, 0, 0.0625), 0 8px 12px rgba(0, 0, 0, 0.125)',
+    elevated: '0 1px 2px rgba(0, 0, 0, 0.0625), 0 8px 12px rgba(0, 0, 0, 0.125)'
   },
   text: {
     heading: {
@@ -221,12 +221,12 @@ const theme = merge(base, {
       color: 'text',
       px: 3,
       py: 4,
-      // maxWidth: 256,
       borderRadius: 'extra',
       boxShadow: 'card',
+      textDecoration: 'none',
       position: 'relative',
       overflow: 'hidden',
-      display: 'grid',
+      display: 'flex',
       flexWrap: 'wrap',
       alignItems: 'center',
       fontSize: 2,
@@ -236,14 +236,15 @@ const theme = merge(base, {
         content: '"→"',
         // display: 'inline-block',
         color: 'accent',
-        fontWeight: 'title'
+        fontWeight: 'title',
+        ml: 'auto'
       },
       svg: {
         flexShrink: 'none',
         mr: [2, 3],
         mb: [3, 0]
       },
-      span: { display: 'inline-block' }
+      span: { display: 'inline-block', flex: '1 1 auto' }
     }
   },
   layout: {
