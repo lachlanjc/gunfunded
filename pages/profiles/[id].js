@@ -1,37 +1,156 @@
 import useSWR from 'swr'
 import Link from 'next/link'
-import { Box, Container, Heading, Card, Button } from '@theme-ui/components'
+import {
+  Box,
+  Container,
+  Heading,
+  Card,
+  Button,
+  Flex,
+  Grid,
+  Link as A
+} from '@theme-ui/components'
+import {
+  Phone as PhoneIcon,
+  Edit as FormIcon,
+  Facebook as FacebookIcon,
+  Twitter as TwitterIcon,
+  Instagram as InstagramIcon,
+  Mail as MailIcon,
+  Share as ShareIcon
+} from 'react-feather'
 import Meta from '../../components/meta'
 import Profile from '../../components/profile'
 import Methodology from '../../components/profile-methodology.mdx'
 import states from '../../data/states.json'
 import { find, last } from 'lodash'
 
+const Item = ({ label, color, ...props }) => {
+  const Icon = {
+    Call: PhoneIcon,
+    Email: MailIcon,
+    Contact: FormIcon,
+    Twitter: TwitterIcon,
+    Facebook: FacebookIcon,
+    Instagram: InstagramIcon
+  }[label]
+  return (
+    <A
+      sx={{
+        color: color || label.toLowerCase(),
+        pr: [3, 4],
+        lineHeight: 0
+      }}
+      title={label}
+      target="_blank"
+      {...props}
+    >
+      <Icon />
+    </A>
+  )
+}
+
+const tel = num => `tel:` + num.match(/\d+/g).join('')
+
+const Contact = ({ phone, form, twitter, facebook, instagram }) => (
+  <div>
+    {phone && (
+      <Item
+        href={tel(phone)}
+        label="Call"
+        icon="notification"
+        color="red"
+        title={`Call ${phone}`}
+      />
+    )}
+    {form && <Item href={form} label="Contact" color="orange" />}
+    {twitter && (
+      <Item href={`https://twitter.com/${twitter}`} label="Twitter" />
+    )}
+    {facebook && (
+      <Item href={`https://facebook.com/${facebook}`} label="Facebook" />
+    )}
+    {instagram && (
+      <Item href={`https://instagram.com/${instagram}`} label="Instagram" />
+    )}
+  </div>
+)
+
+const url = 'http://hackpenn.com/'
+const twitterURL = (text, u) =>
+  `https://twitter.com/intent/tweet?text=${text
+    .split(' ')
+    .join('%20')}&url=${u}`
+const facebookURL = u => `https://www.facebook.com/sharer/sharer.php?u=${u}`
+const emailURL = (subject, body) =>
+  `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+    body
+  )}`
+
 const Page = ({ profile }) => {
   const state = find(states, ['abbrev', profile.state.toUpperCase()])
+  const url = `https://gunfunded.now.sh/profiles/${profile.id}`
+  const name = `${profile.role === 'sen' ? 'Sen.' : 'Rep.'} ${
+    profile.name.full
+  }`
+  const title = `${name} on Gun Funded`
+  const desc = `View ${state.name} ${
+    profile.role === 'sen' ? 'Senator' : 'Representative'
+  } ${profile.name.full}’s gun lobby funding on Gun Funded.`
+  const body = [desc, url].join('\n\n')
   return (
     <Box as="main" sx={{ bg: 'background' }}>
-      <Meta
-        title={`${profile.role === 'sen' ? 'Sen.' : 'Rep.'} ${
-          profile.name.full
-        }`}
-        description={`View ${
-          profile.role === 'sen' ? 'Senator' : 'Representative'
-        } ${profile.name.full} of ${
-          state.name
-        }’s gun lobby funding on Gun Funded.`}
-      />
+      <Meta title={title} description={desc} />
       <Container sx={{ py: [3, 4] }}>
         <Profile data={profile} full />
-        <Box as="section" sx={{ mt: [3, 4] }}>
+        <Grid gap={3} columns={[null, 2]} as="section" sx={{ mt: [3, 4] }}>
+          <div>
+            <Heading as="h2" variant="subheadline" sx={{ mt: 0 }}>
+              Share
+            </Heading>
+            <Flex sx={{ alignItems: 'center' }}>
+              <Button
+                sx={{ mr: [3, 4] }}
+                onClick={e => {
+                  try {
+                    navigator.share({ title, body, url })
+                  } catch {}
+                }}
+              >
+                <ShareIcon />
+                Share
+              </Button>
+              <Item href={emailURL(title, body)} label="Email" />
+              <Item
+                href={twitterURL(
+                  profile.contact.twitter
+                    ? `.@${profile.contact.twitter}’s gun lobby funding on @gunfunded`
+                    : `${name} on @gunfunded`,
+                  url
+                )}
+                label="Twitter"
+              />
+              <Item href={facebookURL(url)} label="Facebook" />
+            </Flex>
+          </div>
+          <div>
+            <Heading as="h2" variant="subheadline" sx={{ mt: 0 }}>
+              Contact
+            </Heading>
+            <Contact id={profile.id} {...profile.contact} />
+          </div>
+        </Grid>
+        <Grid gap={3} columns={[null, 2]} as="section" sx={{ mt: [3, 4] }}>
           <Link
             href="/states/[state]"
             as={`/states/${state.abbrev.toLowerCase()}`}
             passHref
           >
-            <Card as="a" variant="nav">See all from {state.name}</Card>
+            <Card as="a" variant="nav">
+              See all from {state.name}
+            </Card>
           </Link>
-        </Box>
+        </Grid>
         <Card
           variant="sunken"
           sx={{

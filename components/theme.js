@@ -139,7 +139,7 @@ const theme = merge(base, {
       lineHeight: 'heading',
       textTransform: 'uppercase',
       letterSpacing: 'heading',
-      fontSize: [3, 4],
+      fontSize: [1, 2],
       mt: 0,
       mb: 3
     },
@@ -234,7 +234,6 @@ const theme = merge(base, {
       lineHeight: 'title',
       ':after': {
         content: '"→"',
-        // display: 'inline-block',
         color: 'accent',
         fontWeight: 'title',
         ml: 'auto'
@@ -243,8 +242,7 @@ const theme = merge(base, {
         flexShrink: 'none',
         mr: [2, 3],
         mb: [3, 0]
-      },
-      span: { display: 'inline-block', flex: '1 1 auto' }
+      }
     }
   },
   layout: {

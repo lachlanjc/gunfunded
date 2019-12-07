@@ -9,18 +9,9 @@ import {
   IconButton,
   Button
 } from '@theme-ui/components'
-import Router from 'next/router'
+import { ChevronsRight } from 'react-feather'
 import Stat, { StatGrid } from '../components/stat'
 import Link from 'next/link'
-import {
-  Phone as PhoneIcon,
-  Edit as FormIcon,
-  Facebook as FacebookIcon,
-  Twitter as TwitterIcon,
-  Instagram as InstagramIcon,
-  ChevronsRight,
-  Share
-} from 'react-feather'
 
 import commaNumber from 'comma-number'
 
@@ -50,58 +41,6 @@ const Badge = ({ party, sx, ...props }) => (
     {...props}
   />
 )
-
-const Item = ({ label, color, ...props }) => {
-  const Icon = {
-    Call: PhoneIcon,
-    Contact: FormIcon,
-    Twitter: TwitterIcon,
-    Facebook: FacebookIcon,
-    Instagram: InstagramIcon
-  }[label]
-  return (
-    <A
-      sx={{
-        color: color || label.toLowerCase(),
-        pl: [3, 4],
-        lineHeight: 0
-      }}
-      title={label}
-      target="_blank"
-      {...props}
-    >
-      <Icon />
-    </A>
-  )
-}
-
-const tel = num => `tel:` + num.match(/\d+/g).join('')
-
-const Contact = ({ phone, form, twitter, facebook, instagram }) => (
-  <div onClick={e => e.preventDefault()}>
-    {phone && (
-      <Item
-        href={tel(phone)}
-        label="Call"
-        icon="notification"
-        color="red"
-        title={`Call ${phone}`}
-      />
-    )}
-    {form && <Item href={form} label="Contact" color="orange" />}
-    {twitter && (
-      <Item href={`https://twitter.com/${twitter}`} label="Twitter" />
-    )}
-    {facebook && (
-      <Item href={`https://facebook.com/${facebook}`} label="Facebook" />
-    )}
-    {instagram && (
-      <Item href={`https://instagram.com/${instagram}`} label="Instagram" />
-    )}
-  </div>
-)
-
-const buttonOnClick = () => alert('Coming soon')
 
 const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
   <Card
@@ -161,11 +100,7 @@ const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
         </IconButton>
       )}
     </Flex>
-    <StatGrid
-      as="article"
-      quad={full}
-      sx={{ mt: [2, 3], mb: full ? [3, 4] : 0 }}
-    >
+    <StatGrid as="article" quad={full} sx={{ mt: [2, 3], mb: 0 }}>
       <Stat
         value={commaNumber(data.gunRightsTotal)}
         label="from gun rights"
@@ -217,15 +152,6 @@ const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
         />
       )}
     </StatGrid>
-    {full && (
-      <Flex as="footer" sx={{ alignItems: 'center' }}>
-        <Button onClick={buttonOnClick} variant="primary" sx={{ mr: 'auto' }}>
-          <Share size={24} />
-          Share
-        </Button>
-        <Contact id={data.id} {...data.contact} />
-      </Flex>
-    )}
   </Card>
 )
 
