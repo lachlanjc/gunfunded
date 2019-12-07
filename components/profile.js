@@ -6,16 +6,19 @@ import {
   Image,
   Text,
   Link as A,
+  IconButton,
   Button
 } from '@theme-ui/components'
+import Router from 'next/router'
 import Stat, { StatGrid } from '../components/stat'
 import Link from 'next/link'
 import {
   Phone as PhoneIcon,
-  Edit3 as FormIcon,
+  Edit as FormIcon,
   Facebook as FacebookIcon,
   Twitter as TwitterIcon,
   Instagram as InstagramIcon,
+  ChevronsRight,
   Share
 } from 'react-feather'
 
@@ -75,7 +78,7 @@ const Item = ({ label, color, ...props }) => {
 const tel = num => `tel:` + num.match(/\d+/g).join('')
 
 const Contact = ({ phone, form, twitter, facebook, instagram }) => (
-  <>
+  <div onClick={e => e.preventDefault()}>
     {phone && (
       <Item
         href={tel(phone)}
@@ -93,13 +96,21 @@ const Contact = ({ phone, form, twitter, facebook, instagram }) => (
       <Item href={`https://facebook.com/${facebook}`} label="Facebook" />
     )}
     {instagram && (
-      <Item href={`https://instagram.com/@${instagram}`} label="Instagram" />
+      <Item href={`https://instagram.com/${instagram}`} label="Instagram" />
     )}
-  </>
+  </div>
 )
 
+const onClick = id => Router.push(`/profiles/${id}`)
+
+const buttonOnClick = () => alert('Coming soon')
+
 const Profile = ({ label, data, full = false, sx = {} }) => (
-  <Card as="section" sx={{ p: [3, 4], textAlign: 'left', ...sx }}>
+  <Card
+    as="section"
+    sx={{ p: [3, 4], textAlign: 'left', ...sx }}
+    onClick={e => !full && onClick(data.id)}
+  >
     {label && (
       <Text
         variant="caps"
@@ -107,21 +118,22 @@ const Profile = ({ label, data, full = false, sx = {} }) => (
         children={label}
       />
     )}
-    <Flex as="header" sx={{ alignItems: 'center', position: 'relative' }}>
-      <Badge
-        party={data.party}
-        sx={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}
-      />
-      <Image
-        src={avatarUrl(data.ids.bioguide)}
-        variant="avatar"
-        sx={{
-          mr: 3,
-          width: [64, 72],
-          height: [64, 72]
-        }}
-      />
-      <Box sx={{ align: 'left' }}>
+    <Flex as="header" sx={{ alignItems: 'center' }}>
+      <Box sx={{ position: 'relative', flexShrink: '0', mr: 3 }}>
+        <Badge
+          party={data.party}
+          sx={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}
+        />
+        <Image
+          src={avatarUrl(data.ids.bioguide)}
+          variant="avatar"
+          sx={{
+            width: [64, 72],
+            height: [64, 72]
+          }}
+        />
+      </Box>
+      <Box sx={{ mr: 'auto', textAlign: 'left' }}>
         <Heading as="h2" variant="headline" sx={{ color: 'text', my: 0 }}>
           {data.role === 'sen' ? 'Sen.' : 'Rep.'} {data.name.full}
         </Heading>
@@ -131,8 +143,23 @@ const Profile = ({ label, data, full = false, sx = {} }) => (
           {getYear(data.termStart)}–{getYear(data.termEnd)}
         </Text>
       </Box>
+      {!full && (
+        <IconButton
+          sx={{
+            color: data.party.toLowerCase().slice(0, 3),
+            border: '2px solid currentColor',
+            borderRadius: 18,
+            width: 36,
+            height: 36,
+            flexShrink: '0',
+            ml: 3
+          }}
+        >
+          <ChevronsRight size={24} />
+        </IconButton>
+      )}
     </Flex>
-    <StatGrid as="article" quad={full}>
+    <StatGrid as="article" quad={full} sx={{ mb: full ? [3, 4] : 0 }}>
       <Stat
         value={commaNumber(data.gunRightsTotal)}
         label="from gun rights"
@@ -184,15 +211,15 @@ const Profile = ({ label, data, full = false, sx = {} }) => (
         />
       )}
     </StatGrid>
-    <Flex as="footer" sx={{ alignItems: 'center' }}>
-      <Link href="/profiles/[id]" as={`/profiles/${data.id}`}>
-        <Button as="a" variant="primary" sx={{ mr: 'auto' }}>
+    {full && (
+      <Flex as="footer" sx={{ alignItems: 'center' }}>
+        <Button onClick={buttonOnClick} variant="primary" sx={{ mr: 'auto' }}>
           <Share size={24} />
           Share
         </Button>
-      </Link>
-      <Contact id={data.id} {...data.contact} />
-    </Flex>
+        <Contact id={data.id} {...data.contact} />
+      </Flex>
+    )}
   </Card>
 )
 
