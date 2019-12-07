@@ -110,14 +110,14 @@ Page.getInitialProps = async ({ req }) => {
   const fundedMale = p(
     filter(profilesMale, n => n.gunRightsTotal > 0).length,
     funds.length
-  )
+  ) || 0
 
   const profilesRep = filter(profiles, ['party', 'Republican'])
   const rep = p(profilesRep.length, count)
   const fundedRep = p(
     filter(profilesRep, n => n.gunRightsTotal > 0).length,
     funds.length
-  )
+  ) || 0
 
   const stats = { total, avg, percent, male, fundedMale, rep, fundedRep }
 
