@@ -87,14 +87,13 @@ const Page = ({ profiles, abbrev, stats }) => {
   )
 }
 
-Page.getInitialProps = async ({ req }) => {
-  const origin = req ? `http://${req.headers.host}` : ''
-  const url = typeof window === 'undefined' ? req.url : window.location.href
-  const abbrev = last(url.split('/')).toUpperCase()
-  if (!map(states, 'abbrev').includes(abbrev)) return { statusCode: 404 }
-
-  const api = await fetch(`${origin}/api/profiles?state=${abbrev}&order=rank`)
-  const statusCode = api.ok ? 200 : 404
+Page.getInitialProps = async context => {
+  const abbrev = context.query.state
+  if (!map(states, 'abbrev').includes(abbrev.toUpperCase())) return { statusCode: 404 }
+  const api = await fetch(
+    `https://gunfunded.now.sh/api/profiles?state=${abbrev}&order=rank`
+  )
+  const statusCode = api.ok ? 200 : 422
   const profiles = await api.json()
   const count = profiles.length
 
@@ -107,17 +106,13 @@ Page.getInitialProps = async ({ req }) => {
 
   const profilesMale = filter(profiles, ['gender', 'M'])
   const male = p(profilesMale.length, count)
-  const fundedMale = p(
-    filter(profilesMale, n => n.gunRightsTotal > 0).length,
-    funds.length
-  ) || 0
+  const fundedMale =
+    p(filter(profilesMale, n => n.gunRightsTotal > 0).length, funds.length) || 0
 
   const profilesRep = filter(profiles, ['party', 'Republican'])
   const rep = p(profilesRep.length, count)
-  const fundedRep = p(
-    filter(profilesRep, n => n.gunRightsTotal > 0).length,
-    funds.length
-  ) || 0
+  const fundedRep =
+    p(filter(profilesRep, n => n.gunRightsTotal > 0).length, funds.length) || 0
 
   const stats = { total, avg, percent, male, fundedMale, rep, fundedRep }
 

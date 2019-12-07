@@ -167,12 +167,9 @@ const Page = ({ profile }) => {
   )
 }
 
-Page.getInitialProps = async ({ req }) => {
-  const id = last(
-    (req ? req.url : window.location.pathname).split('/')
-  ).toUpperCase()
-  const origin = req ? `http://${req.headers.host}` : ''
-  const data = await fetch(`${origin}/api/profiles?id=${id}`)
+Page.getInitialProps = async (context) => {
+  const { id } = context.query
+  const data = await fetch(`https://gunfunded.now.sh/api/profiles?id=${id}`)
   if (data.ok) {
     const profile = await data.json()
     return { profile }
