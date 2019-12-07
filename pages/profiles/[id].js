@@ -23,7 +23,7 @@ import Meta from '../../components/meta'
 import Profile from '../../components/profile'
 import Methodology from '../../components/profile-methodology.mdx'
 import states from '../../data/states.json'
-import { find, last } from 'lodash'
+import { capitalize, find, last } from 'lodash'
 
 const Item = ({ label, color, ...props }) => {
   const Icon = {
@@ -38,7 +38,7 @@ const Item = ({ label, color, ...props }) => {
     <A
       sx={{
         color: color || label.toLowerCase(),
-        pr: [3, 4],
+        pr: 4,
         lineHeight: 0
       }}
       title={label}
@@ -103,14 +103,14 @@ const Page = ({ profile }) => {
       <Meta title={title} description={desc} />
       <Container sx={{ py: [3, 4] }}>
         <Profile data={profile} full />
-        <Grid gap={3} columns={[null, 2]} as="section" sx={{ mt: [3, 4] }}>
+        <Grid gap={4} columns={[null, 2]} as="section" sx={{ my: 4 }}>
           <div>
-            <Heading as="h2" variant="subheadline" sx={{ mt: 0 }}>
+            <Heading as="h2" variant="subheadline" sx={{ color: 'text', mt: 0 }}>
               Share
             </Heading>
             <Flex sx={{ alignItems: 'center' }}>
               <Button
-                sx={{ mr: [3, 4] }}
+                sx={{ mr: 4 }}
                 onClick={e => {
                   try {
                     navigator.share({ title, body, url })
@@ -134,13 +134,13 @@ const Page = ({ profile }) => {
             </Flex>
           </div>
           <div>
-            <Heading as="h2" variant="subheadline" sx={{ mt: 0 }}>
-              Contact
+            <Heading as="h2" variant="subheadline" sx={{ color: 'text', mt: 0 }}>
+              Contact {capitalize(profile.role)}.
             </Heading>
             <Contact id={profile.id} {...profile.contact} />
           </div>
         </Grid>
-        <Grid gap={3} columns={[null, 2]} as="section" sx={{ mt: [3, 4] }}>
+        <Grid gap={4} columns={[null, 2]} as="section" sx={{ my: 4 }}>
           <Link
             href="/states/[state]"
             as={`/states/${state.abbrev.toLowerCase()}`}

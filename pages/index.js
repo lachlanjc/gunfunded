@@ -8,7 +8,7 @@ import { Briefcase, Users, Search as SearchIcon } from 'react-feather'
 
 const Page = ({ profiles }) => (
   <Grouping
-    title="Gun Funded"
+    title="Gun&nbsp;Funded"
     desc={
       <>
         In progress, fall 2019, by{' '}
@@ -28,13 +28,17 @@ const Page = ({ profiles }) => (
     <Heading as="h2" variant="headline" sx={{ mt: 4 }}>
       Explore
     </Heading>
-    <Grid gap={3} columns={[1, 2, 6]} sx={{ textAlign: 'left' }}>
+    <Grid
+      gap={3}
+      columns={[2, 6]}
+      sx={{ textAlign: 'left' }}
+    >
       <Link href="/states" passHref>
         <Card
           variant="nav"
           as="a"
           sx={{
-            gridColumn: [null, null, 'span 3'],
+            gridColumn: ['span 2', null, 'span 3'],
             fontSize: [2, 3, 4],
             py: 3,
             svg: {
@@ -67,14 +71,14 @@ const Page = ({ profiles }) => (
       </Link>
       <Link href="/top-senators" passHref>
         <Card variant="nav" as="a" sx={{ gridColumn: [null, null, 'span 2'] }}>
-          Top US
+          Top US{' '}
           <br />
           Senators
         </Card>
       </Link>
       <Link href="/top-representatives" passHref>
         <Card variant="nav" as="a" sx={{ gridColumn: [null, null, 'span 2'] }}>
-          Top US
+          Top US{' '}
           <br />
           Reps
         </Card>
@@ -86,7 +90,7 @@ const Page = ({ profiles }) => (
           sx={{ gridColumn: [null, null, 'span 2'], svg: { stroke: 'green' } }}
         >
           <Users size={32} />
-          All Members
+          All Members{' '}
           <br />
           of Congress
         </Card>

@@ -76,9 +76,10 @@ const theme = merge(base, {
     monospace: 'Menlo, monospace'
   },
   lineHeights: {
-    body: 1.5,
-    title: 1.125,
-    heading: 1.25
+    title: 1,
+    heading: 1.125,
+    subheading: 1.25,
+    body: 1.5
   },
   fontWeights: {
     stat: 300,
@@ -122,14 +123,14 @@ const theme = merge(base, {
       fontSize: [3, 4],
       fontWeight: 'body',
       letterSpacing: 'headline',
-      lineHeight: 'heading',
+      lineHeight: 'subheading',
       my: 0
     },
     headline: {
       fontWeight: 'heading',
-      lineHeight: 'title',
+      lineHeight: 'heading',
       letterSpacing: 'heading',
-      fontSize: [3, 4],
+      fontSize: 4,
       color: 'accent',
       mt: 3,
       mb: 3
@@ -232,6 +233,12 @@ const theme = merge(base, {
       fontSize: 2,
       fontWeight: 'bold',
       lineHeight: 'title',
+      WebkitTapHighlightColor: 'transparent',
+      transition: 'transform .125s ease-in-out, box-shadow .125s ease-in-out',
+      ':hover,:focus': {
+        transform: 'scale(1.0625)',
+        boxShadow: 'elevated'
+      },
       ':after': {
         content: '"→"',
         color: 'accent',
@@ -239,8 +246,8 @@ const theme = merge(base, {
         ml: 'auto'
       },
       svg: {
-        flexShrink: 'none',
-        mr: [2, 3],
+        flexShrink: '0',
+        mr: 3,
         mb: [3, 0]
       }
     }
@@ -250,13 +257,13 @@ const theme = merge(base, {
       width: '100%',
       maxWidth: 'container',
       mx: 'auto',
-      px: [2, 3]
+      px: 3
     },
     wide: {
       width: '100%',
       maxWidth: 'wide',
       mx: 'auto',
-      px: [2, 3]
+      px: 3
     }
   }
 })

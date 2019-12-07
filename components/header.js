@@ -26,10 +26,10 @@ export default ({ centered = false, title, desc, children, ...props }) => {
             as="h2"
             variant="subtitle"
             sx={{
-              mt: [2, 3],
+              mt: 3,
               color: 'snow',
               maxWidth: 576,
-              mx: centered && 'auto'
+              mx: centered ? 'auto' : null
             }}
             children={desc}
           />

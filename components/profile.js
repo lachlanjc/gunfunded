@@ -168,7 +168,9 @@ const Wrapper = ({ full, data, ...props }) =>
       <Profile
         data={data}
         sx={{
-          transition: 'transform .125s ease-in-out, box-shadow .125s ease-in-out',
+          WebkitTapHighlightColor: 'transparent',
+          transition:
+            'transform .125s ease-in-out, box-shadow .125s ease-in-out',
           ':hover,:focus': { transform: 'scale(1.0625)', boxShadow: 'elevated' }
         }}
         {...props}
