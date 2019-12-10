@@ -28,32 +28,40 @@ const Page = ({ cycles }) => {
     setJump(e.target.value.toString().match(/[A-Za-z\s]+/g) || '')
   const onGroupClick = e => setJump(e.currentTarget.getAttribute('data-filter'))
 
+  const calculateStats = src => {
+    const getTotal = g => sum(map(g, 'amount'))
+    const groups =
+      src.length > 0
+        ? src
+        : [
+            { amount: 0, type: 'rights' },
+            { amount: 0, type: 'control' }
+          ]
+    const total = getTotal(groups)
+    const rightsTotal = getTotal(filter(groups, ['type', 'rights']))
+    const controlTotal = getTotal(filter(groups, ['type', 'control']))
+    return { total, rightsTotal, controlTotal }
+  }
+  useEffect(() => {
+    const groups = flatten(map(list, 'groups'))
+    setStats(calculateStats(groups))
+  }, [list])
+
   useEffect(() => {
     if (jump.toString().length > 0) {
       const j = jump.toString().toLowerCase()
       let nextCycles = JSON.parse(JSON.stringify(cycles))
       nextCycles = map(nextCycles, c => {
         c.groups = filter(c.groups, g => g.pac.toLowerCase().includes(j))
+        c.stats = calculateStats(c.groups)
         return c
       })
       nextCycles = filter(nextCycles, c => c.groups.length > 0)
       setList(nextCycles)
-      console.log(cycles)
     } else {
-      console.log(cycles)
-      // alert('resetting ' + cycles[0].groups.length)
       setList(cycles)
     }
   }, [jump])
-
-  useEffect(() => {
-    const groups = flatten(map(list, 'groups'))
-    const getTotal = g => sum(map(g, 'amount'))
-    const total = getTotal(groups)
-    const rightsTotal = getTotal(filter(groups, ['type', 'rights']))
-    const controlTotal = getTotal(filter(groups, ['type', 'control']))
-    setStats({ total, rightsTotal, controlTotal })
-  }, [list])
 
   const input = useRef(null)
   const placeholder = useFocusable(input, '')

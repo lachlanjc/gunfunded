@@ -51,7 +51,7 @@ export const CycleStats = ({ total, rightsTotal, controlTotal, ...props }) => (
         justifySelf: [null, null, null, 'end']
       }}
     />
-    {rightsTotal && controlTotal ? (
+    {rightsTotal + controlTotal > 0 ? (
       <Breakdown
         segments={[
           {
