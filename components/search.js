@@ -2,7 +2,15 @@ import React, { useState, useRef } from 'react'
 import fetch from 'isomorphic-unfetch'
 import useFocusable from '../lib/use-focusable'
 import Profile from './profile'
-import { Box, Card, Label, Input, Button, Spinner } from '@theme-ui/components'
+import {
+  Box,
+  Card,
+  Label,
+  Input,
+  Button,
+  Spinner,
+  Text
+} from '@theme-ui/components'
 import { isEmpty } from 'lodash'
 
 const Loading = () => (
@@ -19,10 +27,18 @@ const Error = ({ error = '' }) => (
   </Card>
 )
 
+const disclaimer = (
+  <Text
+    sx={{ color: 'muted', fontSize: 0, mt: [-2, -3, -28], textAlign: 'left' }}
+  >
+    Never stored, saved, or sold.
+  </Text>
+)
+
 export default ({ defaultAddress = '' }) => {
   const [address, setAddress] = useState(defaultAddress)
   const [submit, setSubmit] = useState('Search')
-  const [value, setValue] = useState(null)
+  const [value, setValue] = useState(disclaimer)
 
   const fetchRep = async () => {
     const res = await fetch(
@@ -53,7 +69,11 @@ export default ({ defaultAddress = '' }) => {
   }
 
   const input = useRef(null)
-  const placeholder = useFocusable(input, '')
+  const placeholder = useFocusable(
+    input,
+    '725 5th Ave, New York, NY',
+    '– press “/” to start'
+  )
 
   return (
     <>
