@@ -2,6 +2,6 @@
 
 Analyzing the gun lobby’s funding of Congress.
 
-[**gunfunded.now.sh**](https://gunfunded.now.sh/)
+[**gunfunded.com**](https://gunfunded.com/)
 
 MIT License

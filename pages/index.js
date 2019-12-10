@@ -9,14 +9,7 @@ import { Briefcase, Users, Search as SearchIcon } from 'react-feather'
 const Page = ({ profiles }) => (
   <Grouping
     title="Gun&nbsp;Funded"
-    desc={
-      <>
-        In progress, fall 2019, by{' '}
-        <A href="https://lachlanjc.me" sx={{ color: 'inherit' }}>
-          @lachlanjc
-        </A>
-      </>
-    }
+    desc="See & understand the gun lobby’s funding of the U.S. Congress."
     profiles={profiles}
     centered
     sx={{ h2: { textAlign: ['left', 'center'] } }}

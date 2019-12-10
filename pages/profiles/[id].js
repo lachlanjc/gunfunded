@@ -23,6 +23,7 @@ import Meta from '../../components/meta'
 import Profile from '../../components/profile'
 import Methodology from '../../components/profile-methodology.mdx'
 import states from '../../data/states.json'
+import commaNumber from 'comma-number'
 import { capitalize, find, last } from 'lodash'
 
 const Item = ({ label, color, ...props }) => {
@@ -96,16 +97,22 @@ const Page = ({ profile }) => {
   const title = `${name} on Gun Funded`
   const desc = `View ${state.name} ${
     profile.role === 'sen' ? 'Senator' : 'Representative'
-  } ${profile.name.full}’s gun lobby funding on Gun Funded.`
+  } ${profile.name.full}’s gun lobby funding ($${commaNumber(
+    profile.gunRightsTotal
+  )}) on Gun Funded.`
   const body = [desc, url].join('\n\n')
   return (
     <Box as="main" sx={{ bg: 'background' }}>
-      <Meta title={title} description={desc} />
+      <Meta title={name} description={desc} />
       <Container sx={{ py: [3, 4] }}>
         <Profile data={profile} full />
         <Grid gap={4} columns={[null, 2]} as="section" sx={{ my: 4 }}>
           <div>
-            <Heading as="h2" variant="subheadline" sx={{ color: 'text', mt: 0 }}>
+            <Heading
+              as="h2"
+              variant="subheadline"
+              sx={{ color: 'text', mt: 0 }}
+            >
               Share
             </Heading>
             <Flex sx={{ alignItems: 'center' }}>
@@ -134,7 +141,11 @@ const Page = ({ profile }) => {
             </Flex>
           </div>
           <div>
-            <Heading as="h2" variant="subheadline" sx={{ color: 'text', mt: 0 }}>
+            <Heading
+              as="h2"
+              variant="subheadline"
+              sx={{ color: 'text', mt: 0 }}
+            >
               Contact {capitalize(profile.role)}.
             </Heading>
             <Contact id={profile.id} {...profile.contact} />
@@ -167,7 +178,7 @@ const Page = ({ profile }) => {
   )
 }
 
-Page.getInitialProps = async (context) => {
+Page.getInitialProps = async context => {
   const { id } = context.query
   const data = await fetch(`https://gunfunded.now.sh/api/profiles?id=${id}`)
   if (data.ok) {
