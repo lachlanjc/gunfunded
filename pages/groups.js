@@ -8,6 +8,7 @@ import {
   Input,
   Label
 } from '@theme-ui/components'
+import Meta from '../components/meta'
 import Header from '../components/header'
 import { Group, CycleHeader, CycleStats } from '../components/cycle'
 import fetch from '../lib/fetch'
@@ -59,6 +60,10 @@ const Page = ({ cycles }) => {
 
   return (
     <Box as="main" sx={{ bg: 'background' }}>
+      <Meta
+        title="Gun Money PACs"
+        description="Explore the top gun lobby and gun control PACs giving money to U.S. Congress every year."
+      />
       <Header
         title="PACs"
         desc="These are the top PACs giving money to Congress on gun issues."
