@@ -14,6 +14,7 @@ import Link from 'next/link'
 import Header from '../../components/header'
 import Map from 'react-usa-map'
 import allStates from 'react-usa-map/src/data/usa-states-dimensions.json'
+import useFocusable from '../../lib/use-focusable'
 
 const states = orderBy(Object.values(allStates), 'name')
 
@@ -39,16 +40,7 @@ const StateList = () => {
   }, [jump])
 
   const input = useRef(null)
-  const focusInput = e => {
-    console.log('focus')
-    if (e.key === '/') input.current.focus()
-  }
-  useEffect(() => {
-    document.addEventListener('keypress', focusInput)
-    return () => {
-      document.removeEventListener('keypress', focusInput)
-    }
-  })
+  const placeholder = useFocusable(input, 'Filter list')
 
   return [
     <Label htmlFor="state" variant="hidden" key="label">
@@ -58,7 +50,7 @@ const StateList = () => {
       key="input"
       type="text"
       name="state"
-      placeholder="Filter list (press “/” to focus)"
+      placeholder={placeholder}
       onChange={onChange}
       value={jump}
       ref={input}
