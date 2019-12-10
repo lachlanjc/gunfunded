@@ -1,124 +1,125 @@
+import { useEffect, useRef, useState } from 'react'
 import {
-  Container,
   Box,
-  Badge,
-  Flex,
+  Card,
+  Container,
+  Divider,
   Grid,
-  Heading,
-  Text
+  Input,
+  Label
 } from '@theme-ui/components'
 import Header from '../components/header'
-import Breakdown from '../components/breakdown'
-import Stat from '../components/stat'
+import { Group, CycleHeader, CycleStats } from '../components/cycle'
 import fetch from '../lib/fetch'
-import commaNumber from 'comma-number'
-import { capitalize } from 'lodash'
+import useFocusable from '../lib/use-focusable'
+import { map, filter, sum, flatten } from 'lodash'
 
-const Group = ({ id, pac, cycle, amount, type }) => (
-  <Flex
-    sx={{
-      flexWrap: 'wrap',
-      borderTop: '1px solid',
-      borderColor: 'border',
-      color: 'text',
-      py: 2
-    }}
-  >
-    <Box sx={{ mr: 'auto' }}>
-      <Text sx={{ fontSize: 1, fontWeight: 'bold', my: 0 }}>{pac}</Text>
-      <Badge
-        variant="pill"
-        as="span"
-        sx={{
-          fontSize: 0,
-          fontWeight: 'normal',
-          bg: type === 'control' ? 'dem' : 'repub',
-          px: 2
-        }}
-      >
-        Gun {capitalize(type)}
-      </Badge>
-    </Box>
-    <Stat unit="$" value={commaNumber(amount)} />
-  </Flex>
-)
+const Page = ({ cycles }) => {
+  const [jump, setJump] = useState('')
+  const [list, setList] = useState(cycles)
+  const [stats, setStats] = useState({
+    total: null,
+    rightsTotal: null,
+    controlTotal: null
+  })
 
-const CycleHeader = ({ cycle }) => (
-  <Box
-    as="header"
-    sx={{
-      display: 'grid',
-      gridRowGap: [2, null, 3],
-      gridColumnGap: [3, null, 4],
-      gridTemplateColumns: [null, null, '1fr auto'],
-      alignItems: 'end',
-      mb: [2, 3]
-    }}
-  >
-    <Heading
-      as="h2"
-      variant="headline"
-      sx={{
-        color: 'text',
-        fontSize: [5, 6],
-        lineHeight: 1,
-        mb: 0
-      }}
-    >
-      {cycle.year}
-    </Heading>
-    <Grid gap={[2, null, 3, 4]} columns={[null, 2]} sx={{ alignItems: 'end' }}>
-      <Stat
-        value={commaNumber(cycle.stats.total)}
-        label="total funding"
-        sx={{
-          justifySelf: [null, null, null, 'end']
-        }}
+  const onChange = e =>
+    setJump(e.target.value.toString().match(/[A-Za-z\s]+/g) || '')
+  const onGroupClick = e => setJump(e.currentTarget.getAttribute('data-filter'))
+
+  useEffect(() => {
+    if (jump.toString().length > 0) {
+      const j = jump.toString().toLowerCase()
+      let nextCycles = JSON.parse(JSON.stringify(cycles))
+      nextCycles = map(nextCycles, c => {
+        c.groups = filter(c.groups, g => g.pac.toLowerCase().includes(j))
+        return c
+      })
+      nextCycles = filter(nextCycles, c => c.groups.length > 0)
+      setList(nextCycles)
+      console.log(cycles)
+    } else {
+      console.log(cycles)
+      // alert('resetting ' + cycles[0].groups.length)
+      setList(cycles)
+    }
+  }, [jump])
+
+  useEffect(() => {
+    const groups = flatten(map(list, 'groups'))
+    const getTotal = g => sum(map(g, 'amount'))
+    const total = getTotal(groups)
+    const rightsTotal = getTotal(filter(groups, ['type', 'rights']))
+    const controlTotal = getTotal(filter(groups, ['type', 'control']))
+    setStats({ total, rightsTotal, controlTotal })
+  }, [list])
+
+  const input = useRef(null)
+  const placeholder = useFocusable(input, '')
+
+  return (
+    <Box as="main" sx={{ bg: 'background' }}>
+      <Header
+        title="PACs"
+        desc="These are the top PACs giving money to Congress on gun issues."
       />
-      <Breakdown
-        segments={[
-          {
-            color: 'rep',
-            value: cycle.stats.rightsTotal / cycle.stats.total,
-            label: 'rights'
-          },
-          {
-            color: 'dem',
-            value: cycle.stats.controlTotal / cycle.stats.total,
-            label: 'control'
-          }
-        ]}
-      />
-    </Grid>
-  </Box>
-)
-
-const Page = ({ cycles }) => (
-  <Box as="main" sx={{ bg: 'background' }}>
-    <Header
-      title="PACs"
-      desc="These are the top PACs giving money to Congress on gun issues."
-    />
-    <Container as="article" sx={{ py: [3, 4] }}>
-      {cycles.map(cycle => (
-        <Box
-          as="section"
-          key={cycle.year}
-          sx={{ mb: [3, 4], borderBottom: '1px solid', borderColor: 'border' }}
+      <Container as="article" sx={{ py: [3, 4] }}>
+        <Grid
+          as="header"
+          gap={[2, null, 3, 4]}
+          sx={{
+            alignItems: 'end',
+            gridTemplateColumns: [null, null, '1fr auto']
+          }}
         >
-          <CycleHeader cycle={cycle} />
-          {cycle.groups.map(group => (
-            <Group key={group.id} {...group} />
-          ))}
-        </Box>
-      ))}
-    </Container>
-  </Box>
-)
+          <div>
+            <Label htmlFor="filter">Filter list</Label>
+            <Input
+              type="search"
+              name="filter"
+              placeholder={placeholder}
+              onChange={onChange}
+              value={jump}
+              ref={input}
+            />
+          </div>
+          <CycleStats {...stats} />
+        </Grid>
+        <Divider sx={{ mt: [4, 5], mb: [3, 4] }} />
+        {list.map(cycle => (
+          <Box
+            as="section"
+            key={cycle.year}
+            sx={{
+              mt: [3, 4],
+              borderBottom: '1px solid',
+              borderColor: 'border'
+            }}
+          >
+            <CycleHeader cycle={cycle} />
+            {cycle.groups.map(group => (
+              <Group
+                key={group.id}
+                data-filter={group.pac}
+                onClick={onGroupClick}
+                {...group}
+              />
+            ))}
+          </Box>
+        ))}
+        {list.length === 0 && (
+          <Card variant="error" sx={{ mt: [3, 4] }}>
+            No results found
+          </Card>
+        )}
+      </Container>
+    </Box>
+  )
+}
 
 Page.getInitialProps = async ({ req }) => {
   const cycles = await fetch(req, '/groups')
-  // if (cycles.length < 10) return { statusCode: 422 }
+  if (cycles.length < 2) return { statusCode: 422 }
   return { cycles }
 }
 
