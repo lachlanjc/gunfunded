@@ -3,7 +3,7 @@ import Header from '../components/header'
 import Search from '../components/search'
 
 const Page = ({ address }) => (
-  <Box as="main" sx={{ bg: 'background' }}>
+  <Box as="main" sx={{ bg: 'background', minHeight: '80vh' }}>
     <Header
       title="Find Your Representative"
       desc="Enter your U.S. home address to locate your Congressional Representative."

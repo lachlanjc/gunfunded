@@ -199,9 +199,14 @@ const theme = merge(base, {
       boxShadow: 'small',
       transition: 'box-shadow .125s ease-in-out',
       border: 0,
-      ':hover,:focus': {
-        boxShadow: 'card'
-      }
+      ':hover,:focus': { boxShadow: 'card' },
+      '::-webkit-input-placeholder': { color: 'muted' },
+      '::-moz-placeholder': { color: 'muted' },
+      ':-ms-input-placeholder': { color: 'muted' }
+    },
+    label: {
+      color: 'text',
+      fontWeight: 'medium'
     },
     hidden: {
       position: 'absolute',
@@ -218,12 +223,22 @@ const theme = merge(base, {
       color: 'text',
       p: [3, 4],
       borderRadius: 'extra',
-      boxShadow: 'card'
+      boxShadow: 'card',
+      input: { boxShadow: 'none !important' }
     },
     sunken: {
       bg: 'sunken',
       p: [3, 4],
       borderRadius: 'extra'
+    },
+    error: {
+      bg: 'sunken',
+      borderRadius: 'extra',
+      p: [3, 4],
+      color: 'text',
+      fontWeight: 'bold',
+      display: 'flex',
+      placeContent: 'center'
     },
     nav: {
       bg: 'elevated',
@@ -276,7 +291,8 @@ const theme = merge(base, {
   },
   styles: {
     hr: {
-      borderColor: 'border'
+      borderColor: 'border',
+      my: [3, 4]
     }
   }
 })

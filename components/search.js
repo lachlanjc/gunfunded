@@ -6,21 +6,15 @@ import { Box, Card, Label, Input, Button, Spinner } from '@theme-ui/components'
 import { isEmpty } from 'lodash'
 
 const Loading = () => (
-  <Spinner size={24} color="currentColor" sx={{ margin: '-4px 0 -6px' }} />
+  <Spinner
+    size={24}
+    color="currentColor"
+    sx={{ margin: '0 !important', textAlign: 'center', minWidth: '54px' }}
+  />
 )
 
 const Error = ({ error = '' }) => (
-  <Card
-    variant="sunken"
-    sx={{
-      color: 'text',
-      display: 'flex',
-      placeContent: 'center',
-      py: [3, 4],
-      mb: [3, 4],
-      fontWeight: 'bold'
-    }}
-  >
+  <Card variant="error" sx={{ mb: [3, 4] }}>
     {error}
   </Card>
 )
@@ -51,7 +45,7 @@ export default ({ defaultAddress = '' }) => {
 
   const onSubmit = e => {
     setSubmit(<Loading />)
-    fetchRep()
+    // fetchRep()
     e.preventDefault()
   }
   const onChange = e => {
@@ -74,8 +68,8 @@ export default ({ defaultAddress = '' }) => {
           mb: [3, 4]
         }}
       >
-        <Box sx={{ color: 'text' }}>
-          <Label htmlFor="address">U.S home address</Label>
+        <div>
+          <Label htmlFor="address">U.S. home address</Label>
           <Input
             type="text"
             name="address"
@@ -84,7 +78,7 @@ export default ({ defaultAddress = '' }) => {
             ref={input}
             placeholder={placeholder}
           />
-        </Box>
+        </div>
         <Button
           type="submit"
           onClick={onSubmit}
