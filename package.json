@@ -25,12 +25,12 @@
     "load-json-file": "^6.2.0",
     "lodash": "^4.17.15",
     "neat-csv": "^5.1.0",
-    "next": "^9.1.1",
+    "next": "^9.1.5",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-feather": "^2.0.3",
     "react-usa-map": "^1.4.0",
-    "swr": "^0.1.12",
+    "swr": "^0.1.13",
     "theme-ui": "^0.2.49",
     "write-json-file": "^4.2.1"
   }
