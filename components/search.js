@@ -28,24 +28,24 @@ export default ({ defaultAddress = '' }) => {
     const res = await fetch(
       `/api/locate?address=${encodeURIComponent(address)}`
     )
+    setSubmit('Search')
     if (res.ok) {
       const data = await res.json()
-      if (isEmpty(data)) {
+      if (isEmpty(data) || data.error) {
         setValue(<Error error="Something went wrong" />)
-      } else if (!isEmpty(data.error)) {
-        setValue(<Error error="Invalid address" />)
       } else {
-        setSubmit('Search')
         setValue(<Profile data={data} />)
       }
     } else {
-      setValue(<Error error="Something went wrong" />)
+      setValue(
+        <Error error="Couldn’t find a Representative for this address." />
+      )
     }
   }
 
   const onSubmit = e => {
     setSubmit(<Loading />)
-    // fetchRep()
+    fetchRep()
     e.preventDefault()
   }
   const onChange = e => {
