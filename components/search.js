@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import fetch from 'isomorphic-unfetch'
+import useFocusable from '../lib/use-focusable'
 import Profile from './profile'
 import { Box, Card, Label, Input, Button, Spinner } from '@theme-ui/components'
 import { isEmpty } from 'lodash'
@@ -57,6 +58,9 @@ export default ({ defaultAddress = '' }) => {
     setAddress(e.target.value)
   }
 
+  const input = useRef(null)
+  const placeholder = useFocusable(input, '')
+
   return (
     <>
       <Box
@@ -71,12 +75,14 @@ export default ({ defaultAddress = '' }) => {
         }}
       >
         <Box sx={{ color: 'text' }}>
-          <Label htmlFor="address">Home address</Label>
+          <Label htmlFor="address">U.S home address</Label>
           <Input
             type="text"
             name="address"
             onChange={onChange}
             value={address}
+            ref={input}
+            placeholder={placeholder}
           />
         </Box>
         <Button
