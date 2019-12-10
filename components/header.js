@@ -1,7 +1,15 @@
 import { useColorMode } from 'theme-ui'
 import { Box, Container, Heading } from '@theme-ui/components'
+import Meta from './meta'
 
-export default ({ centered = false, title, desc, children, ...props }) => {
+export default ({
+  centered = false,
+  title,
+  desc,
+  children,
+  includeMeta = false,
+  ...props
+}) => {
   const [mode] = useColorMode()
   return (
     <Box
@@ -14,6 +22,7 @@ export default ({ centered = false, title, desc, children, ...props }) => {
         textAlign: centered && 'center'
       }}
     >
+      {includeMeta && <Meta title={title} description={desc} />}
       <Container>
         <Heading
           as="h1"

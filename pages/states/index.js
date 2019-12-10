@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Container, Heading, Box, Flex, Link as A } from '@theme-ui/components'
-import { filter } from '../'
-import Head from 'next/head'
+import { filter } from 'lodash'
 import Router from 'next/router'
 import Link from 'next/link'
 import Header from '../../components/header'
@@ -18,10 +17,7 @@ export default () => {
 
   return (
     <Box sx={{ minHeight: '100vh', bg: 'background' }}>
-      <Head>
-        <title>States – Gun Funded</title>
-      </Head>
-      <Header title="States" centered />
+      <Header title="All States" includeMeta />
       <Container
         as="article"
         variant="wide"
