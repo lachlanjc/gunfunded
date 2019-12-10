@@ -265,6 +265,11 @@ const theme = merge(base, {
       mx: 'auto',
       px: 3
     }
+  },
+  styles: {
+    hr: {
+      borderColor: 'border'
+    }
   }
 })
 theme.styles.root = {

@@ -6,6 +6,7 @@ import {
   Button,
   Flex,
   Grid,
+  Divider,
   Link as A
 } from '@theme-ui/components'
 import {
@@ -20,6 +21,7 @@ import {
 import Link from 'next/link'
 import Meta from '../../components/meta'
 import Profile from '../../components/profile'
+import Search from '../../components/search'
 import Methodology from '../../components/profile-methodology.mdx'
 import states from '../../data/states.json'
 import fetch from '../../lib/fetch'
@@ -90,6 +92,7 @@ const emailURL = (subject, body) =>
 
 const Page = ({ profile }) => {
   const state = find(states, ['abbrev', profile.state.toUpperCase()])
+  const role = profile.role === 'sen' ? 'Senator' : 'Representative'
   const url = `https://gunfunded.now.sh/profiles/${profile.id}`
   const name = `${profile.role === 'sen' ? 'Sen.' : 'Rep.'} ${
     profile.name.full
@@ -151,7 +154,8 @@ const Page = ({ profile }) => {
             <Contact id={profile.id} {...profile.contact} />
           </div>
         </Grid>
-        <Grid gap={4} columns={[null, 2]} as="section" sx={{ my: 4 }}>
+        <Divider sx={{ my: [3, 4] }} />
+        <Grid gap={4} columns={[null, 2]} as="section">
           <Link
             href="/states/[state]"
             as={`/states/${state.abbrev.toLowerCase()}`}
@@ -161,7 +165,23 @@ const Page = ({ profile }) => {
               See all from {state.name}
             </Card>
           </Link>
+          <Link href={`/top-${role.toLowerCase()}s`} passHref>
+            <Card as="a" variant="nav">
+              See top {role}s
+            </Card>
+          </Link>
         </Grid>
+        <Card
+          sx={{
+            mt: 4,
+            'input, a': { bg: 'sunken', boxShadow: 'none' }
+          }}
+        >
+          <Heading as="h2" variant="headline" sx={{ mt: 0 }}>
+            Find your Representative
+          </Heading>
+          <Search />
+        </Card>
         <Card
           variant="sunken"
           sx={{
