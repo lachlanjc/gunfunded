@@ -6,13 +6,11 @@ import {
   Image,
   Text,
   Link as A,
-  IconButton,
-  Button
+  IconButton
 } from '@theme-ui/components'
 import { ChevronsRight } from 'react-feather'
 import Stat, { StatGrid } from '../components/stat'
 import Link from 'next/link'
-
 import commaNumber from 'comma-number'
 
 const getYear = date => date.slice(0, 4)

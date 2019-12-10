@@ -2,11 +2,10 @@ import fetch from 'isomorphic-unfetch'
 import { Box, Heading, Card } from '@theme-ui/components'
 import commaNumber from 'comma-number'
 import Grouping, { ProfileGrouping } from '../../components/grouping'
-import Breakdown from '../../components/breakdown'
 import Stat, { StatGrid } from '../../components/stat'
 import Search from '../../components/search'
 import states from '../../data/states.json'
-import { find, last, sum, map, filter, round } from 'lodash'
+import { find, sum, map, filter, round } from 'lodash'
 
 const Page = ({ profiles, abbrev, stats }) => {
   const state = find(states, ['abbrev', abbrev.toUpperCase()])
@@ -16,7 +15,7 @@ const Page = ({ profiles, abbrev, stats }) => {
     <Grouping
       centered
       title={state.name}
-      desc={`All US Congress members from ${state.name}, sorted by gun money.`}
+      desc={`All U.S. Congress members from ${state.name}, sorted by gun money.`}
       profiles={reps}
       footer={
         <Card
@@ -89,7 +88,8 @@ const Page = ({ profiles, abbrev, stats }) => {
 
 Page.getInitialProps = async context => {
   const abbrev = context.query.state
-  if (!map(states, 'abbrev').includes(abbrev.toUpperCase())) return { statusCode: 404 }
+  if (!map(states, 'abbrev').includes(abbrev.toUpperCase()))
+    return { statusCode: 404 }
   const api = await fetch(
     `https://gunfunded.now.sh/api/profiles?state=${abbrev}&order=rank`
   )

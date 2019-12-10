@@ -3,8 +3,8 @@ import Grouping from '../components/grouping'
 import Search from '../components/search'
 import Link from 'next/link'
 import Map from 'react-usa-map'
-import { Box, Card, Link as A, Flex, Grid, Heading } from '@theme-ui/components'
-import { Briefcase, Users, Search as SearchIcon } from 'react-feather'
+import { Box, Card, Grid, Heading } from '@theme-ui/components'
+import { Briefcase, Users } from 'react-feather'
 
 const Page = ({ profiles }) => (
   <Grouping
@@ -21,11 +21,7 @@ const Page = ({ profiles }) => (
     <Heading as="h2" variant="headline" sx={{ mt: 4 }}>
       Explore
     </Heading>
-    <Grid
-      gap={3}
-      columns={[2, 6]}
-      sx={{ textAlign: 'left' }}
-    >
+    <Grid gap={3} columns={[2, 6]} sx={{ textAlign: 'left' }}>
       <Link href="/states" passHref>
         <Card
           variant="nav"
@@ -64,15 +60,13 @@ const Page = ({ profiles }) => (
       </Link>
       <Link href="/top-senators" passHref>
         <Card variant="nav" as="a" sx={{ gridColumn: [null, null, 'span 2'] }}>
-          Top US{' '}
-          <br />
+          Top US <br />
           Senators
         </Card>
       </Link>
       <Link href="/top-representatives" passHref>
         <Card variant="nav" as="a" sx={{ gridColumn: [null, null, 'span 2'] }}>
-          Top US{' '}
-          <br />
+          Top US <br />
           Reps
         </Card>
       </Link>
@@ -83,8 +77,7 @@ const Page = ({ profiles }) => (
           sx={{ gridColumn: [null, null, 'span 2'], svg: { stroke: 'green' } }}
         >
           <Users size={32} />
-          All Members{' '}
-          <br />
+          All Members <br />
           of Congress
         </Card>
       </Link>

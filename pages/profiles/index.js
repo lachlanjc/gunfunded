@@ -2,7 +2,7 @@ import fetch from 'isomorphic-unfetch'
 import commaNumber from 'comma-number'
 import Grouping from '../../components/grouping'
 import Stat, { StatGrid } from '../../components/stat'
-import { find, last, sum, map, filter, round } from 'lodash'
+import { sum, map, filter, round } from 'lodash'
 
 const Page = ({ profiles, abbrev, stats }) => (
   <Grouping

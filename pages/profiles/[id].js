@@ -1,4 +1,3 @@
-import useSWR from 'swr'
 import Link from 'next/link'
 import {
   Box,
@@ -24,7 +23,7 @@ import Profile from '../../components/profile'
 import Methodology from '../../components/profile-methodology.mdx'
 import states from '../../data/states.json'
 import commaNumber from 'comma-number'
-import { capitalize, find, last } from 'lodash'
+import { capitalize, find } from 'lodash'
 
 const Item = ({ label, color, ...props }) => {
   const Icon = {

@@ -1,4 +1,4 @@
-import { Container, Box, Heading } from '@theme-ui/components'
+import { Container, Box } from '@theme-ui/components'
 import Header from '../components/header'
 import Search from '../components/search'
 

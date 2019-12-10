@@ -6,14 +6,13 @@ import {
   Flex,
   Grid,
   Heading,
-  Card,
   Text
 } from '@theme-ui/components'
 import Header from '../components/header'
 import Breakdown from '../components/breakdown'
-import Stat, { StatGrid } from '../components/stat'
+import Stat from '../components/stat'
 import commaNumber from 'comma-number'
-import { capitalize, map, sum, groupBy, reverse, filter } from 'lodash'
+import { capitalize } from 'lodash'
 
 const Group = ({ id, pac, cycle, amount, type }) => (
   <Flex

@@ -1,4 +1,4 @@
-import { Heading, Text, Box, Container } from '@theme-ui/components'
+import { Box, Container } from '@theme-ui/components'
 import Meta from './meta'
 import Header from './header'
 import Profile from './profile'
@@ -37,14 +37,10 @@ const Grouping = ({
 }) => (
   <Box
     as="main"
-    sx={{ bg: 'background', textAlign: centered && ['left', 'center'], ...sx }}>
+    sx={{ bg: 'background', textAlign: centered && ['left', 'center'], ...sx }}
+  >
     <Meta title={title.replace('&nbsp;', ' ')} description={desc} />
-    <Header
-      title={title}
-      desc={desc}
-      centered={centered}
-      children={header}
-    />
+    <Header title={title} desc={desc} centered={centered} children={header} />
     {children && (
       <Container as="section" sx={{ pt: [3, 4] }}>
         {children}

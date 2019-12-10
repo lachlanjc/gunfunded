@@ -1,6 +1,5 @@
 import React from 'react'
 import ErrorPage from 'next/error'
-import { isEmpty } from 'lodash'
 
 const withError = App => {
   const WithErrorComponent = props => {
