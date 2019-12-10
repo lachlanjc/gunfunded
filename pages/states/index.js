@@ -48,7 +48,7 @@ const StateList = () => {
     </Label>,
     <Input
       key="input"
-      type="text"
+      type="search"
       name="state"
       placeholder={placeholder}
       onChange={onChange}

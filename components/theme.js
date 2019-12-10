@@ -202,7 +202,8 @@ const theme = merge(base, {
       ':hover,:focus': { boxShadow: 'card' },
       '::-webkit-input-placeholder': { color: 'muted' },
       '::-moz-placeholder': { color: 'muted' },
-      ':-ms-input-placeholder': { color: 'muted' }
+      ':-ms-input-placeholder': { color: 'muted' },
+      '&[type="search"]::-webkit-search-decoration': { display: 'none' }
     },
     label: {
       color: 'text',
