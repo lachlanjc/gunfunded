@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import {
   Box,
   Container,
@@ -18,10 +17,12 @@ import {
   Mail as MailIcon,
   Share as ShareIcon
 } from 'react-feather'
+import Link from 'next/link'
 import Meta from '../../components/meta'
 import Profile from '../../components/profile'
 import Methodology from '../../components/profile-methodology.mdx'
 import states from '../../data/states.json'
+import fetch from '../../lib/fetch'
 import commaNumber from 'comma-number'
 import { capitalize, find } from 'lodash'
 
@@ -177,15 +178,10 @@ const Page = ({ profile }) => {
   )
 }
 
-Page.getInitialProps = async context => {
-  const { id } = context.query
-  const data = await fetch(`https://gunfunded.now.sh/api/profiles?id=${id}`)
-  if (data.ok) {
-    const profile = await data.json()
-    return { profile }
-  } else {
-    return { statusCode: 404 }
-  }
+Page.getInitialProps = async ({ req, query }) => {
+  const profile = await fetch(req, `/profiles?id=${query.id}`)
+  if (!profile.id) return { statusCode: 404 }
+  return { profile }
 }
 
 export default Page

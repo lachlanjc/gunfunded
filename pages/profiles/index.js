@@ -1,5 +1,5 @@
-import fetch from 'isomorphic-unfetch'
 import commaNumber from 'comma-number'
+import fetch from '../../lib/fetch'
 import Grouping from '../../components/grouping'
 import Stat, { StatGrid } from '../../components/stat'
 import { sum, map, filter, round } from 'lodash'
@@ -48,10 +48,9 @@ const Page = ({ profiles, abbrev, stats }) => (
 )
 
 Page.getInitialProps = async ({ req }) => {
-  const origin = req ? `http://${req.headers.host}` : ''
-  const api = await fetch(`${origin}/api/profiles?order=rank`)
-  const profiles = await api.json()
+  const profiles = await fetch(req, '/profiles?order=rank')
   const count = profiles.length
+  if (count < 100) return { statusCode: 422 }
 
   const totals = map(profiles, 'gunRightsTotal')
   const funds = filter(totals, t => t > 0)

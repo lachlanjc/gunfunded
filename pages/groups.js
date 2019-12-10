@@ -1,4 +1,3 @@
-import fetch from 'isomorphic-unfetch'
 import {
   Container,
   Box,
@@ -11,6 +10,7 @@ import {
 import Header from '../components/header'
 import Breakdown from '../components/breakdown'
 import Stat from '../components/stat'
+import fetch from '../lib/fetch'
 import commaNumber from 'comma-number'
 import { capitalize } from 'lodash'
 
@@ -117,9 +117,8 @@ const Page = ({ cycles }) => (
 )
 
 Page.getInitialProps = async ({ req }) => {
-  const origin = req ? `http://${req.headers.host}` : ''
-  const data = await fetch(`${origin}/api/groups`)
-  const cycles = await data.json()
+  const cycles = await fetch(req, '/groups')
+  // if (cycles.length < 10) return { statusCode: 422 }
   return { cycles }
 }
 

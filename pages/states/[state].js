@@ -1,10 +1,10 @@
-import fetch from 'isomorphic-unfetch'
 import { Box, Heading, Card } from '@theme-ui/components'
 import commaNumber from 'comma-number'
 import Grouping, { ProfileGrouping } from '../../components/grouping'
 import Stat, { StatGrid } from '../../components/stat'
 import Search from '../../components/search'
 import states from '../../data/states.json'
+import fetch from '../../lib/fetch'
 import { find, sum, map, filter, round } from 'lodash'
 
 const Page = ({ profiles, abbrev, stats }) => {
@@ -86,15 +86,12 @@ const Page = ({ profiles, abbrev, stats }) => {
   )
 }
 
-Page.getInitialProps = async context => {
-  const abbrev = context.query.state
+Page.getInitialProps = async ({ req, query }) => {
+  const abbrev = query.state
   if (!map(states, 'abbrev').includes(abbrev.toUpperCase()))
     return { statusCode: 404 }
-  const api = await fetch(
-    `https://gunfunded.now.sh/api/profiles?state=${abbrev}&order=rank`
-  )
-  const statusCode = api.ok ? 200 : 422
-  const profiles = await api.json()
+  const profiles = await fetch(req, `/profiles?state=${abbrev}&order=rank`)
+  if (profiles.length < 3) return { statusCode: 422 }
   const count = profiles.length
 
   const totals = map(profiles, 'gunRightsTotal')
@@ -116,7 +113,7 @@ Page.getInitialProps = async context => {
 
   const stats = { total, avg, percent, male, fundedMale, rep, fundedRep }
 
-  return { statusCode, profiles, abbrev, stats }
+  return { profiles, abbrev, stats }
 }
 
 export default Page

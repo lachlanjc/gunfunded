@@ -1,4 +1,4 @@
-import fetch from 'isomorphic-unfetch'
+import fetch from '../lib/fetch'
 import Grouping from '../components/grouping'
 import Stat, { StatGrid } from '../components/stat'
 import commaNumber from 'comma-number'
@@ -36,9 +36,8 @@ const Page = ({ profiles, stats }) => (
 )
 
 Page.getInitialProps = async ({ req }) => {
-  const origin = req ? `http://${req.headers.host}` : ''
-  const data = await fetch(`${origin}/api/profiles?role=sen&limit=25`)
-  const profiles = await data.json()
+  const profiles = await fetch(req, '/profiles?role=sen&limit=25')
+  if (profiles.length !== 25) return { statusCode: 422 }
   const total = sum(map(profiles, 'gunRightsTotal'))
   const avg = round(total / profiles.length)
   const repub =
