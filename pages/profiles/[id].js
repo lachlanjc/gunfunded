@@ -92,10 +92,9 @@ const emailURL = (subject, body) =>
 const Page = ({ profile }) => {
   const state = find(states, ['abbrev', profile.state.toUpperCase()])
   const role = profile.role === 'sen' ? 'Senator' : 'Representative'
-  const url = `https://gunfunded.now.sh/profiles/${profile.id}`
-  const name = `${profile.role === 'sen' ? 'Sen.' : 'Rep.'} ${
-    profile.name.full
-  }`
+  const url = `https://gunfunded.com/profiles/${profile.id}`
+  const img = `https://cards.gunfunded.com/${profile.id}.png`
+  const name = `${role.slice(0, 3)}. ${profile.name.full}`
   const title = `${name} on Gun Funded`
   const desc = `View ${state.name} ${
     profile.role === 'sen' ? 'Senator' : 'Representative'
@@ -105,7 +104,7 @@ const Page = ({ profile }) => {
   const body = [desc, url].join('\n\n')
   return (
     <Box as="main" sx={{ bg: 'background' }}>
-      <Meta title={name} description={desc} />
+      <Meta title={name} description={desc} image={img} />
       <Container sx={{ py: [3, 4] }}>
         <Profile data={profile} full />
         <Grid gap={4} columns={[null, 2]} as="section" sx={{ my: 4 }}>
