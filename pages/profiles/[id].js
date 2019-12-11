@@ -79,7 +79,6 @@ const Contact = ({ phone, form, twitter, facebook, instagram }) => (
   </div>
 )
 
-const url = 'http://hackpenn.com/'
 const twitterURL = (text, u) =>
   `https://twitter.com/intent/tweet?text=${text
     .split(' ')

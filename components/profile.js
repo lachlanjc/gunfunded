@@ -14,9 +14,7 @@ import Link from 'next/link'
 import commaNumber from 'comma-number'
 
 const getYear = date => date.slice(0, 4)
-
-const avatarUrl = id =>
-  `https://lachlanjc.me/congress-images/congress/225x275/${id}.jpg`
+const avatarUrl = id => `https://avatars.gunfunded.com/${id}.jpg`
 
 const Badge = ({ party, sx, ...props }) => (
   <Box
@@ -62,6 +60,7 @@ const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
         <Image
           src={avatarUrl(data.ids.bioguide)}
           variant="avatar"
+          loading="lazy"
           sx={{
             width: [64, 72],
             height: [64, 72]

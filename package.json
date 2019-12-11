@@ -30,7 +30,6 @@
     "react-dom": "^16.12.0",
     "react-feather": "^2.0.3",
     "react-usa-map": "^1.4.0",
-    "swr": "^0.1.13",
     "theme-ui": "^0.2.49",
     "write-json-file": "^4.2.1"
   }

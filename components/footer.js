@@ -1,6 +1,5 @@
 import Footer from './footer.mdx'
-import { Flex, Box, Text, Link as A } from '@theme-ui/components'
-import { Flag } from 'react-feather'
+import { Flex, Box } from '@theme-ui/components'
 
 export default () => (
   <Box
