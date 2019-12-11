@@ -5,7 +5,7 @@ import Stat, { StatGrid } from '../../components/stat'
 import Search from '../../components/search'
 import states from '../../data/states.json'
 import fetch from '../../lib/fetch'
-import { find, sum, map, filter, round } from 'lodash'
+import { find, map, filter } from 'lodash'
 
 const Page = ({ profiles, abbrev, stats }) => {
   const state = find(states, ['abbrev', abbrev.toUpperCase()])
@@ -89,29 +89,9 @@ Page.getInitialProps = async ({ req, query }) => {
   const abbrev = query.state
   if (!map(states, 'abbrev').includes(abbrev.toUpperCase()))
     return { statusCode: 404 }
-  const profiles = await fetch(req, `/profiles?state=${abbrev}&order=rank`)
-  if (profiles.length < 3) return { statusCode: 422 }
-  const count = profiles.length
-
-  const totals = map(profiles, 'gunRightsTotal')
-  const funds = filter(totals, t => t > 0)
-  const total = sum(totals)
-  const avg = round(total / count)
-  const p = (a, b) => round((a / b) * 100)
-  const percent = p(funds.length, count)
-
-  const profilesMale = filter(profiles, ['gender', 'M'])
-  const male = p(profilesMale.length, count)
-  const fundedMale =
-    p(filter(profilesMale, n => n.gunRightsTotal > 0).length, funds.length) || 0
-
-  const profilesRep = filter(profiles, ['party', 'Republican'])
-  const rep = p(profilesRep.length, count)
-  const fundedRep =
-    p(filter(profilesRep, n => n.gunRightsTotal > 0).length, funds.length) || 0
-
-  const stats = { total, avg, percent, male, fundedMale, rep, fundedRep }
-
+  const state = await fetch(req, `/state?abbrev=${abbrev}`)
+  if (!state) return { statusCode: 422 }
+  const { stats, profiles } = state
   return { profiles, abbrev, stats }
 }
 
