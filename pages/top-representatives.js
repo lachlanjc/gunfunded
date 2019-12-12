@@ -6,8 +6,8 @@ import { map, filter, sum, round } from 'lodash'
 
 const Page = ({ profiles, stats }) => (
   <Grouping
-    title="Top US Representatives"
-    desc="The top 25 Representatives in the U.S. Congress, ranked by their gun lobby funding."
+    title="Top U.S. Representatives"
+    desc="The top 25 Representatives in U.S. Congress, ranked by their gun lobby funding."
     profiles={profiles}
   >
     <StatGrid sx={{ mt: [2, 3], mb: [4, 5] }}>

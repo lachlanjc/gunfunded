@@ -55,7 +55,18 @@ const Page = ({ profiles }) => (
           }}
         >
           <Briefcase />
-          Explore PACs
+          Contributing<br />PACs
+        </Card>
+      </Link>
+      <Link href="/profiles" passHref>
+        <Card
+          variant="nav"
+          as="a"
+          sx={{ gridColumn: [null, null, 'span 2'], svg: { stroke: 'green' } }}
+        >
+          <Users size={32} />
+          All Members <br />
+          of Congress
         </Card>
       </Link>
       <Link href="/top-senators" passHref>
@@ -68,17 +79,6 @@ const Page = ({ profiles }) => (
         <Card variant="nav" as="a" sx={{ gridColumn: [null, null, 'span 2'] }}>
           Top US <br />
           Reps
-        </Card>
-      </Link>
-      <Link href="/profiles" passHref>
-        <Card
-          variant="nav"
-          as="a"
-          sx={{ gridColumn: [null, null, 'span 2'], svg: { stroke: 'green' } }}
-        >
-          <Users size={32} />
-          All Members <br />
-          of Congress
         </Card>
       </Link>
     </Grid>

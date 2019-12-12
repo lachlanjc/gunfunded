@@ -73,8 +73,8 @@ const Page = ({ cycles }) => {
         description="Explore the top gun lobby and gun control PACs giving money to U.S. Congress every year."
       />
       <Header
-        title="PACs"
-        desc="These are the top PACs giving money to Congress on gun issues."
+        title="Contributors"
+        desc="These are the top PAC groups giving money to Congress on gun issues."
       />
       <Container as="article" sx={{ py: [3, 4] }}>
         <Grid
