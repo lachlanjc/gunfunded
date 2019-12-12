@@ -1,5 +1,7 @@
 import { Box, Heading, Card } from '@theme-ui/components'
 import commaNumber from 'comma-number'
+import Link from 'next/link'
+import Map from 'react-usa-map'
 import Grouping, { ProfileGrouping } from '../../components/grouping'
 import Stat, { StatGrid } from '../../components/stat'
 import Search from '../../components/search'
@@ -17,8 +19,9 @@ const Page = ({ profiles, abbrev, stats }) => {
       title={state.name}
       desc={`All U.S. Congress members from ${state.name}, sorted by gun money.`}
       profiles={reps}
-      footer={
+      footer={[
         <Card
+          key="search"
           sx={{
             textAlign: 'left',
             'input, a': { bg: 'sunken', boxShadow: 'none' }
@@ -28,8 +31,25 @@ const Page = ({ profiles, abbrev, stats }) => {
             Find your Representative
           </Heading>
           <Search />
-        </Card>
-      }
+        </Card>,
+        <Link href="/states" passHref key="states">
+          <Card
+            variant="nav"
+            as="a"
+            sx={{
+              fontSize: [2, 3],
+              py: 3,
+              svg: {
+                fill: 'sunken',
+                mb: [2, 3]
+              }
+            }}
+          >
+            <Map width={256} height={128} />
+            Other States
+          </Card>
+        </Link>
+      ]}
     >
       <StatGrid quad sx={{ mt: [2, 3], mb: [4, 5] }}>
         <Stat
