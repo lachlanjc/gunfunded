@@ -138,6 +138,7 @@ const Page = ({ profile }) => {
                 )}
                 label="Twitter"
               />
+              <Item href={`${img}?variant=story`} label="Instagram" />
               <Item href={facebookURL(url)} label="Facebook" />
             </Flex>
           </div>
