@@ -86,11 +86,11 @@ const Page = ({ cycles }) => {
           }}
         >
           <div>
-            <Label htmlFor="filter">Filter list</Label>
+            <Label htmlFor="filter" variant="hidden">Filter list</Label>
             <Input
               type="search"
               name="filter"
-              placeholder={placeholder}
+              placeholder="Filter list…"
               onChange={onChange}
               value={jump}
               ref={input}

@@ -20,6 +20,7 @@ import {
 } from 'react-feather'
 import Link from 'next/link'
 import Meta from '../../components/meta'
+import Header from '../../components/header'
 import Profile from '../../components/profile'
 import Search from '../../components/search'
 import Methodology from '../../components/profile-methodology.mdx'
@@ -104,7 +105,7 @@ const Page = ({ profile }) => {
   const body = [desc, url].join('\n\n')
   return (
     <Box as="main" sx={{ bg: 'background' }}>
-      <Meta title={name} description={desc} image={img} />
+      <Header title={name} desc={desc} img={img} includeMeta />
       <Container sx={{ py: [3, 4] }}>
         <Profile data={profile} full />
         <Grid gap={4} columns={[null, 2]} as="section" sx={{ my: 4 }}>

@@ -9,7 +9,7 @@ export const Group = ({ id, pac, cycle, amount, type, ...props }) => (
     as="section"
     {...props}
     sx={{
-      flexWrap: 'wrap',
+      flexDirection: ['column', 'row'],
       borderTop: '1px solid',
       borderColor: 'border',
       color: 'text',

@@ -1,7 +1,7 @@
 import { base } from '@theme-ui/presets'
 import { merge } from 'lodash'
 
-export const breakpoints = [32, 48, 64].map(w => `${w}em`)
+export const breakpoints = [32, 48, 64, 72, 96].map(w => `${w}em`)
 
 export const space = [0, 4, 8, 16, 32, 64, 128, 256, 512]
 
@@ -93,8 +93,12 @@ const theme = merge(base, {
     headline: '0.009em'
   },
   sizes: {
+    ultrawide: 1536,
     wide: 1200,
+    subwide: 896,
     container: 768,
+    subcontainer: 640,
+    narrowplus: 576,
     narrow: 512
   },
   radii: {
@@ -117,10 +121,10 @@ const theme = merge(base, {
       fontWeight: 'heading',
       lineHeight: 'title',
       letterSpacing: 'title',
-      fontSize: [6, 7]
+      fontSize: [5, 6, 7, 8]
     },
     subtitle: {
-      fontSize: [3, 4],
+      fontSize: [3, 4, null, 5],
       fontWeight: 'body',
       letterSpacing: 'headline',
       lineHeight: 'subheading',
@@ -279,13 +283,13 @@ const theme = merge(base, {
   layout: {
     container: {
       width: '100%',
-      maxWidth: 'container',
+      maxWidth: ['container', null, null, 'wide'],
       mx: 'auto',
       px: 3
     },
     wide: {
       width: '100%',
-      maxWidth: 'wide',
+      maxWidth: ['wide', null, null, 'ultrawide'],
       mx: 'auto',
       px: 3
     }

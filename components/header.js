@@ -6,6 +6,7 @@ export default ({
   centered = false,
   title,
   desc,
+  img,
   children,
   includeMeta = false,
   ...props
@@ -16,13 +17,13 @@ export default ({
       as="header"
       sx={{
         bg: mode === 'dark' ? 'darkless' : 'red',
-        pt: 4,
-        pb: [4, 5],
+        pt: [4, null, null, null, 5],
+        pb: [4, 5, null, null, 6],
         px: [2, 3],
-        textAlign: centered && 'center'
+        textAlign: centered && [null, 'center']
       }}
     >
-      {includeMeta && <Meta title={title} description={desc} />}
+      {includeMeta && <Meta title={title} description={desc} image={img} />}
       <Container>
         <Heading
           as="h1"
@@ -37,8 +38,8 @@ export default ({
             sx={{
               mt: 3,
               color: 'snow',
-              maxWidth: 576,
-              mx: centered ? 'auto' : null
+              maxWidth: ['narrowplus', null, 'subcontainer', 'subwide'],
+              mx: centered ? [null, 'auto'] : null
             }}
             children={desc}
           />

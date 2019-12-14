@@ -40,7 +40,7 @@ const StateList = () => {
   }, [jump])
 
   const input = useRef(null)
-  const placeholder = useFocusable(input, 'Filter list')
+  const focus = useFocusable(input, 'Filter list')
 
   return [
     <Label htmlFor="state" variant="hidden" key="label">
@@ -50,8 +50,8 @@ const StateList = () => {
       key="input"
       type="search"
       name="state"
-      placeholder={placeholder}
       onChange={onChange}
+      placeholder="Filter list…"
       value={jump}
       ref={input}
     />,
@@ -97,8 +97,9 @@ export default () => (
       sx={{
         display: 'flex',
         justifyContent: 'center',
-        py: [0, 3, 4],
-        px: 0
+        py: [1, 3, 4],
+        px: 0,
+        svg: { maxHeight: ['50vh', 'auto'] }
       }}
     >
       <Map onClick={mapHandler} />
