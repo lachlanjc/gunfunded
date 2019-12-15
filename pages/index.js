@@ -9,7 +9,7 @@ import { Briefcase, Users } from 'react-feather'
 const Page = ({ profiles }) => (
   <Grouping
     title="Gun&nbsp;Funded"
-    desc="See & understand the gun lobby’s funding of the U.S. Congress."
+    desc="Visualize & analyze the gun lobby’s funding of the U.S. Congress."
     profiles={profiles}
     centered
     sx={{ h2: { textAlign: ['left', 'center'] } }}
