@@ -19,6 +19,9 @@ const process = (profile, congressData) => {
   // if (flag) console.log('Flag!', profile, record)
 
   const fields = _.mapValues(_.pick(record, congressFields), _.toNumber)
+  fields.gunRightsTotal = _.sum([fields.gunRightsDirect, fields.gunRightsSupport, fields.gunControlOpposition])
+  fields.gunControlTotal = _.sum([fields.gunControlDirect, fields.gunControlSupport, fields.gunRightsOpposition])
+  fields.fundingType = fields.gunRightsTotal < fields.gunControlTotal ? 'control' : 'rights'
 
   return {
     ...profile,

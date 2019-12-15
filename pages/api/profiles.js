@@ -27,15 +27,5 @@ export default (req, res) => {
   if (limit) {
     profiles = slice(profiles, 0, limit)
   }
-  // profiles = filter(profiles, ['district', 53])
-  // profiles = map(
-  //   filter(
-  //     profiles,
-  //     p => p.role !== 'sen' //&& typeof p.district === 'undefined'
-  //   ),
-  //   'district'
-  // ).sort()
-
-  // profiles = filter(profiles, p => typeof p.gunRightsDirect !== 'number')
   res.json(profiles)
 }

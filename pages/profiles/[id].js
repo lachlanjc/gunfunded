@@ -138,9 +138,10 @@ const Page = ({ profile }) => {
   const img = `https://cards.gunfunded.com/${profile.id}.png`
   const name = `${role.slice(0, 3)}. ${profile.name.full}`
   const title = `${name} on Gun Funded`
-  const desc = `View ${state.name} ${role} ${profile.name.full}’s gun lobby funding ($${commaNumber(
-    profile.gunRightsDirect
-  )}) on Gun Funded.`
+  const total = (
+    profile.fundingType === 'control' ? profile.gunControlTotal : profile.gunRightsTotal
+  )
+  const desc = `View ${state.name} ${role} ${profile.name.full}’s gun lobby funding ($${commaNumber(total)}) on Gun Funded.`
   const body = [desc, url].join('\n\n')
   return (
     <Box as="main" sx={{ bg: 'background' }}>

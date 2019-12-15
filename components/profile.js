@@ -137,8 +137,23 @@ const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
             half
           />
         </>
-      ) : null}
-      <Stat value={commaNumber(data.net)} label="net gun funding" lg />
+      ) : data.fundingType === 'control' ? (
+        <Stat
+          value={commaNumber(data.gunControlTotal)}
+          color="dem"
+          unit="$"
+          label="gun control funding"
+          lg
+        />
+      ) : (
+        <Stat
+          value={commaNumber(data.gunRightsTotal)}
+          color="rep"
+          unit="$"
+          label="gun rights funding"
+          lg
+        />
+      )}
       <Stat
         value={data.rank}
         unit="#"
