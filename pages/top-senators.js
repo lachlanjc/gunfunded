@@ -38,7 +38,7 @@ const Page = ({ profiles, stats }) => (
 Page.getInitialProps = async ({ req }) => {
   const profiles = await fetch(req, '/profiles?role=sen&limit=25')
   if (profiles.length !== 25) return { statusCode: 422 }
-  const total = sum(map(profiles, 'gunRightsTotal'))
+  const total = sum(map(profiles, 'gunRightsDirect'))
   const avg = round(total / profiles.length)
   const repub =
     filter(profiles, ['party', 'Republican']).length / profiles.length

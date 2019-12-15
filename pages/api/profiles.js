@@ -36,6 +36,6 @@ export default (req, res) => {
   //   'district'
   // ).sort()
 
-  // profiles = filter(profiles, p => typeof p.gunRightsTotal !== 'number')
+  // profiles = filter(profiles, p => typeof p.gunRightsDirect !== 'number')
   res.json(profiles)
 }

@@ -101,7 +101,7 @@ const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
       {full ? (
         <>
           <Stat
-            value={commaNumber(data.gunRightsTotal)}
+            value={commaNumber(data.gunRightsDirect)}
             label="gun rights direct"
             color={full ? 'rep' : 'text'}
             lg
@@ -119,7 +119,7 @@ const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
             half
           />
           <Stat
-            value={commaNumber(data.gunControlTotal)}
+            value={commaNumber(data.gunControlDirect)}
             label="gun control direct"
             color="dem"
             lg

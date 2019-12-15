@@ -52,7 +52,7 @@ Page.getInitialProps = async ({ req }) => {
   const count = profiles.length
   if (count < 100) return { statusCode: 422 }
 
-  const totals = map(profiles, 'gunRightsTotal')
+  const totals = map(profiles, 'gunRightsDirect')
   const funds = filter(totals, t => t > 0)
   const total = sum(totals)
   const avg = round(total / count)
@@ -62,14 +62,14 @@ Page.getInitialProps = async ({ req }) => {
   const profilesMale = filter(profiles, ['gender', 'M'])
   const male = p(profilesMale.length, count)
   const fundedMale = p(
-    filter(profilesMale, n => n.gunRightsTotal > 0).length,
+    filter(profilesMale, n => n.gunRightsDirect > 0).length,
     funds.length
   )
 
   const profilesRep = filter(profiles, ['party', 'Republican'])
   const rep = p(profilesRep.length, count)
   const fundedRep = p(
-    filter(profilesRep, n => n.gunRightsTotal > 0).length,
+    filter(profilesRep, n => n.gunRightsDirect > 0).length,
     funds.length
   )
 

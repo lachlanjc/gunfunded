@@ -5,7 +5,7 @@ const writeJsonFile = require('write-json-file')
 const loadJsonFile = require('load-json-file')
 
 const congressDataCsv = fs.readFileSync('./data/raw/career-congress.csv')
-const congressFields = 'gunRightsTotal,gunRightsSupport,gunRightsOpposed,gunControlTotal,gunControlSupport,gunControlOpposed,net,rank'.split(
+const congressFields = 'gunRightsDirect,gunRightsSupport,gunRightsOpposed,gunControlDirect,gunControlSupport,gunControlOpposed,net,rank'.split(
   ','
 )
 

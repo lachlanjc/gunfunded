@@ -13,7 +13,7 @@ export default (req, res) => {
   )
   const count = profiles.length
 
-  const totals = map(profiles, 'gunRightsTotal')
+  const totals = map(profiles, 'gunRightsDirect')
   const funds = filter(totals, t => t > 0)
   const total = sum(totals)
   const avg = round(total / count)
@@ -23,12 +23,12 @@ export default (req, res) => {
   const profilesMale = filter(profiles, ['gender', 'M'])
   const male = p(profilesMale.length, count)
   const fundedMale =
-    p(filter(profilesMale, n => n.gunRightsTotal > 0).length, funds.length) || 0
+    p(filter(profilesMale, n => n.gunRightsDirect > 0).length, funds.length) || 0
 
   const profilesRep = filter(profiles, ['party', 'Republican'])
   const rep = p(profilesRep.length, count)
   const fundedRep =
-    p(filter(profilesRep, n => n.gunRightsTotal > 0).length, funds.length) || 0
+    p(filter(profilesRep, n => n.gunRightsDirect > 0).length, funds.length) || 0
 
   const stats = { total, avg, percent, male, fundedMale, rep, fundedRep }
 

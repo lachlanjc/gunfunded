@@ -139,7 +139,7 @@ const Page = ({ profile }) => {
   const name = `${role.slice(0, 3)}. ${profile.name.full}`
   const title = `${name} on Gun Funded`
   const desc = `View ${state.name} ${role} ${profile.name.full}’s gun lobby funding ($${commaNumber(
-    profile.gunRightsTotal
+    profile.gunRightsDirect
   )}) on Gun Funded.`
   const body = [desc, url].join('\n\n')
   return (

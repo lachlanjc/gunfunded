@@ -1,4 +1,4 @@
-name,party,office,id,gunControlTotal,gunRightsTotal,gunControlSupport,gunControlOpposed,gunRightsSupport,gunRightsOpposed,net,rank
+name,party,office,id,gunControlDirect,gunRightsDirect,gunControlSupport,gunControlOpposed,gunRightsSupport,gunRightsOpposed,net,rank
 "Romney, Mitt",R,S,UTS1,0,0,0,0,3283524,1909,3281615,1
 "McSally, Martha",R,S,AZS1,0,413630,0,1823627,186011,0,2423268,2
 "Cotton, Tom",R,S,ARS1,0,86270,0,861,1965941,0,2053072,3
