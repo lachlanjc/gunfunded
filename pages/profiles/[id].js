@@ -57,15 +57,12 @@ const Item = ({ label, color, ...props }) => {
 const tel = num => `tel:` + num.match(/\d+/g).join('')
 
 const Contact = ({ phone, form, twitter, facebook, instagram }) => (
-  <div>
+  <Flex sx={{ alignItems: 'center' }}>
     {phone && (
-      <Item
-        href={tel(phone)}
-        label="Call"
-        icon="notification"
-        color="red"
-        title={`Call ${phone}`}
-      />
+      <Button as="a" href={tel(phone)} title={`Call ${phone}`} sx={{ mr: 4 }}>
+        <PhoneIcon />
+        Call
+      </Button>
     )}
     {form && <Item href={form} label="Contact" color="orange" />}
     {twitter && (
@@ -77,7 +74,7 @@ const Contact = ({ phone, form, twitter, facebook, instagram }) => (
     {instagram && (
       <Item href={`https://instagram.com/${instagram}`} label="Instagram" />
     )}
-  </div>
+  </Flex>
 )
 
 const twitterURL = (text, u) =>
@@ -97,9 +94,7 @@ const Page = ({ profile }) => {
   const img = `https://cards.gunfunded.com/${profile.id}.png`
   const name = `${role.slice(0, 3)}. ${profile.name.full}`
   const title = `${name} on Gun Funded`
-  const desc = `View ${state.name} ${
-    profile.role === 'sen' ? 'Senator' : 'Representative'
-  } ${profile.name.full}’s gun lobby funding ($${commaNumber(
+  const desc = `View ${state.name} ${role} ${profile.name.full}’s gun lobby funding ($${commaNumber(
     profile.gunRightsTotal
   )}) on Gun Funded.`
   const body = [desc, url].join('\n\n')
