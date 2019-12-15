@@ -32,6 +32,7 @@ export default () => {
   const [mode] = useColorMode()
   const router = useRouter()
   const home = router.pathname === '/'
+  const states = router.pathname.startsWith('/states/')
   return (
     <Box
       as="nav"
@@ -66,12 +67,17 @@ export default () => {
             Gun&nbsp;Funded
           </Text>
         </Link>
-        <ColorSwitcher sx={{ ml: 'auto' }} />
         {home && (
           <Link href="/about" passHref>
             <NavLink sx={{ mr: [3, 4] }}>About</NavLink>
           </Link>
         )}
+        {states && (
+          <Link href="/states" passHref>
+            <NavLink sx={{ mr: [3, 4] }}>All States</NavLink>
+          </Link>
+        )}
+        <ColorSwitcher />
       </Container>
     </Box>
   )
