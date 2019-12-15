@@ -18,9 +18,9 @@ import {
   Mail as MailIcon,
   Share as ShareIcon
 } from 'react-feather'
+import { useColorMode } from 'theme-ui'
 import Link from 'next/link'
 import Meta from '../../components/meta'
-import Header from '../../components/header'
 import Profile from '../../components/profile'
 import Search from '../../components/search'
 import Methodology from '../../components/profile-methodology.mdx'
@@ -29,9 +29,53 @@ import fetch from '../../lib/fetch'
 import commaNumber from 'comma-number'
 import { capitalize, find } from 'lodash'
 
+const Header = ({ title, desc, img, ...props }) => {
+  const [mode] = useColorMode()
+  return (
+    <Box
+      as="header"
+      sx={{
+        bg: mode === 'dark' ? 'darkless' : 'red',
+        pt: [4, null, null, null, 5],
+        pb: [4, 5, null, null, 6],
+        px: [2, 3]
+      }}
+    >
+      <Container>
+        <Heading
+          as="h1"
+          sx={{
+            color: mode === 'dark' ? 'red' : 'white',
+            fontSize: [4, 5],
+            fontWeight: 'heading',
+            lineHeight: 'heading',
+            letterSpacing: 'heading'
+          }}
+          children={title}
+        />
+        {desc && (
+          <Heading
+            as="h2"
+            variant="subtitle"
+            sx={{
+              mt: 3,
+              color: 'snow',
+              maxWidth: ['narrowplus', null, null, 'subcontainer', 'subwide'],
+              fontSize: [2, 3, null, 4],
+              fontWeight: 'body',
+              letterSpacing: 'headline',
+              lineHeight: 'subheading'
+            }}
+            children={desc}
+          />
+        )}
+      </Container>
+    </Box>
+  )
+}
+
 const Item = ({ label, color, ...props }) => {
   const Icon = {
-    Call: PhoneIcon,
     Email: MailIcon,
     Contact: FormIcon,
     Twitter: TwitterIcon,
@@ -68,11 +112,11 @@ const Contact = ({ phone, form, twitter, facebook, instagram }) => (
     {twitter && (
       <Item href={`https://twitter.com/${twitter}`} label="Twitter" />
     )}
-    {facebook && (
-      <Item href={`https://facebook.com/${facebook}`} label="Facebook" />
-    )}
     {instagram && (
       <Item href={`https://instagram.com/${instagram}`} label="Instagram" />
+    )}
+    {facebook && (
+      <Item href={`https://facebook.com/${facebook}`} label="Facebook" />
     )}
   </Flex>
 )
@@ -100,7 +144,8 @@ const Page = ({ profile }) => {
   const body = [desc, url].join('\n\n')
   return (
     <Box as="main" sx={{ bg: 'background' }}>
-      <Header title={name} desc={desc} img={img} includeMeta />
+      <Meta title={name} description={desc} image={img} />
+      <Header title={name} desc={desc} />
       <Container sx={{ py: [3, 4] }}>
         <Profile data={profile} full />
         <Grid gap={4} columns={[null, 2]} as="section" sx={{ my: 4 }}>
@@ -115,10 +160,12 @@ const Page = ({ profile }) => {
             <Flex sx={{ alignItems: 'center' }}>
               <Button
                 sx={{ mr: 4 }}
-                onClick={e => {
+                onClick={async e => {
                   try {
-                    navigator.share({ title, body, url })
-                  } catch {}
+                    await navigator.share({ title, body, url })
+                  } catch (error) {
+                    console.error(error)
+                  }
                 }}
               >
                 <ShareIcon />

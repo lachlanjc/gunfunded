@@ -1,7 +1,7 @@
 import { base } from '@theme-ui/presets'
 import { merge } from 'lodash'
 
-export const breakpoints = [32, 48, 64, 72, 96].map(w => `${w}em`)
+export const breakpoints = [32, 48, 64, 96, 128].map(w => `${w}em`)
 
 export const space = [0, 4, 8, 16, 32, 64, 128, 256, 512]
 
@@ -71,8 +71,9 @@ const theme = merge(base, {
     }
   },
   fonts: {
-    body: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-    monospace: '"SFMono-Regular", "Roboto Mono", Menlo, Consolas, monospace'
+    body: 'system-ui, sans-serif',
+    heading: 'inherit',
+    monospace: 'Menlo, monospace'
   },
   lineHeights: {
     title: 1,
@@ -116,13 +117,14 @@ const theme = merge(base, {
       lineHeight: 'heading'
     },
     title: {
+      fontFamily: 'heading',
       fontWeight: 'heading',
       lineHeight: 'title',
       letterSpacing: 'title',
-      fontSize: [5, 6, 7, 8]
+      fontSize: [5, 6, 7, null, 8]
     },
     subtitle: {
-      fontSize: [3, 4, null, 5],
+      fontSize: [3, 4, null, null, 5],
       fontWeight: 'body',
       letterSpacing: 'headline',
       lineHeight: 'subheading',
@@ -281,13 +283,13 @@ const theme = merge(base, {
   layout: {
     container: {
       width: '100%',
-      maxWidth: ['container', null, null, 'wide'],
+      maxWidth: ['container', null, null, null, 'wide'],
       mx: 'auto',
       px: 3
     },
     wide: {
       width: '100%',
-      maxWidth: ['wide', null, null, 'ultrawide'],
+      maxWidth: ['wide', null, null, null, 'ultrawide'],
       mx: 'auto',
       px: 3
     }

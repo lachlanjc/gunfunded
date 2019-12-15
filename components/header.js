@@ -38,7 +38,7 @@ export default ({
             sx={{
               mt: 3,
               color: 'snow',
-              maxWidth: ['narrowplus', null, 'subcontainer', 'subwide'],
+              maxWidth: ['narrowplus', null, null, 'subcontainer', 'subwide'],
               mx: centered ? [null, 'auto'] : null
             }}
             children={desc}
