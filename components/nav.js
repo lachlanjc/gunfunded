@@ -1,7 +1,8 @@
 /** @jsx jsx */
 import { jsx, useColorMode } from 'theme-ui'
-import { Box, Container, IconButton, Text } from '@theme-ui/components'
+import { Box, Container, IconButton, Text, NavLink } from '@theme-ui/components'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { Moon } from 'react-feather'
 
 const ColorSwitcher = props => {
@@ -29,29 +30,48 @@ const ColorSwitcher = props => {
 
 export default () => {
   const [mode] = useColorMode()
+  const router = useRouter()
+  const home = router.pathname === '/'
   return (
     <Box
       as="nav"
       sx={{
         bg: mode === 'dark' ? 'darkless' : 'red',
         color: 'nav',
-        textAlign: 'center',
         px: [2, 3],
         py: 3
       }}
       key="nav"
     >
-      <Container sx={{ display: 'flex', alignItems: 'center' }}>
+      <Container
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          a: {
+            fontSize: 1,
+            color: mode === 'dark' ? 'red' : 'white',
+            textDecoration: 'none',
+            ':focus,:hover': { color: mode === 'dark' ? 'red' : 'white' }
+          }
+        }}
+      >
         <Link href="/" passHref>
           <Text
             as="a"
             variant="logo"
-            sx={{ color: 'inherit', fontSize: 1, textDecoration: 'none' }}
+            sx={{
+              flex: '1 1 auto'
+            }}
           >
             Gun&nbsp;Funded
           </Text>
         </Link>
         <ColorSwitcher sx={{ ml: 'auto' }} />
+        {home && (
+          <Link href="/about" passHref>
+            <NavLink sx={{ mr: [3, 4] }}>About</NavLink>
+          </Link>
+        )}
       </Container>
     </Box>
   )

@@ -1,0 +1,59 @@
+import { Box, Container, Heading, Avatar } from '@theme-ui/components'
+import Header from '../components/header'
+import Lobbying from '../components/lobbying'
+
+<Box as="main" sx={{ page: 'background' }}>
+
+<Header title="About" desc="" includeMeta />
+
+<Container
+  sx={{
+    py: [3, 4],
+    color: 'text',
+    p: { fontSize: [1, 2], lineHeight: 'body', my: 3 },
+    h2: {
+      color: 'secondary',
+      fontWeight: 'heading',
+      lineHeight: 'heading',
+      letterSpacing: 'heading',
+      fontSize: 4,
+      mt: [3, 4],
+      mb: 3
+    },
+    a: { color: 'accent', fontWeight: 'bold' },
+    '.recharts-wrapper': {
+      mx: 'auto',
+      mt: 4,
+      text: {
+        color: 'text',
+        tspan: { fill: 'currentColor' }
+      }
+    }
+  }}
+>
+
+Gun violence is a growing epidemic across the U.S., and Americans by-and-large [support gun control](https://www.vox.com/2015/10/3/9444417/gun-violence-mass-shootings-us-america), yet Congress refuses to pass it as legislation. Meanwhile, the gun lobby is directly funding our representatives: the current members of Congress have accepted [$40M from gun rights](https://www.opensecrets.org/industries/summary.php?ind=Q13&recipdetail=A&sortorder=U&cycle=All) groups and [about $6M from gun control](https://www.opensecrets.org/industries/summary.php?ind=Q12&recipdetail=A&sortorder=U&cycle=All) groups (about 2/3 of which since 2016).
+
+<Lobbying />
+
+## The data
+
+The data all comes from the [Center for Responsive Politics](https://www.opensecrets.org), which gets it directly from the filings every Congressperson is required to file with the federal government listing their funders.
+
+## The site
+
+This project debuted at the [NYU ITP/IMA Winter Show 2019](https://itp.nyu.edu/shows/winter2019/). It runs on [React](https://reactjs.org), [Next.js](https://nextjs.org), and [Theme UI](http://theme-ui.com), hosted on [Now](https://zeit.co). The code is entirely [open source](https://github.com/lachlanjc/gunfunded).
+
+## & me
+
+<Avatar
+  src="https://github.com/lachlanjc.png"
+  sx={{ width: [48, 72], height: [48, 72], float: 'left', mr: 3 }}
+  alt="Lachlan Campbell"
+/>
+
+Hi, I’m [Lachlan Campbell](https://lachlanjc.me)! I’m a web designer-developer & first-year student in Interactive Media Arts at NYU.
+
+</Container>
+
+</Box>
