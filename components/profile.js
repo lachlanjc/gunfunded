@@ -98,14 +98,14 @@ const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
       )}
     </Flex>
     <StatGrid as="article" quad={full} sx={{ mt: [2, 3], mb: 0 }}>
-      <Stat
-        value={commaNumber(data.gunRightsTotal)}
-        label="from gun rights"
-        color={full ? 'rep' : 'text'}
-        lg
-      />
       {full ? (
         <>
+          <Stat
+            value={commaNumber(data.gunRightsTotal)}
+            label="gun rights direct"
+            color={full ? 'rep' : 'text'}
+            lg
+          />
           <Stat
             value={commaNumber(data.gunRightsSupport)}
             label="rights support"
@@ -120,7 +120,7 @@ const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
           />
           <Stat
             value={commaNumber(data.gunControlTotal)}
-            label="from gun control"
+            label="gun control direct"
             color="dem"
             lg
           />
@@ -136,24 +136,16 @@ const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
             color="rep"
             half
           />
-          <Stat value={commaNumber(data.net)} label="net gun funding" lg />
-          <Stat
-            value={data.rank}
-            unit="#"
-            of="539"
-            label="rank in Congress"
-            lg
-          />
         </>
-      ) : (
-        <Stat
-          value={data.rank}
-          unit="#"
-          of="539"
-          label="gun-funded in Congress"
-          lg
-        />
-      )}
+      ) : null}
+      <Stat value={commaNumber(data.net)} label="net gun funding" lg />
+      <Stat
+        value={data.rank}
+        unit="#"
+        of="539"
+        label={`${full ? 'rank' : 'gun-funded'} in Congress`}
+        lg
+      />
     </StatGrid>
   </Card>
 )

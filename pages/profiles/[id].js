@@ -145,7 +145,7 @@ const Page = ({ profile }) => {
   return (
     <Box as="main" sx={{ bg: 'background' }}>
       <Meta title={name} description={desc} image={img} />
-      <Header title={name} desc={desc} />
+      <Header title={name} />
       <Container sx={{ py: [3, 4] }}>
         <Profile data={profile} full />
         <Grid gap={4} columns={[null, 2]} as="section" sx={{ my: 4 }}>

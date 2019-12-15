@@ -10,13 +10,13 @@ const congressFields = 'gunRightsTotal,gunRightsSupport,gunRightsOpposed,gunCont
 )
 
 const process = (profile, congressData) => {
-  const flag = profile.name.last === 'Schultz'
+  // const flag = profile.name.last === 'Schultz'
   const record = _.find(congressData, c => {
     const lastName = c.name.split(',')[0].replace("'", '’')
     const state = c.id.substring(0, 2)
     return _.deburr(profile.name.last) === lastName && profile.state === state
   })
-  if (flag) console.log('Flag!', profile, record)
+  // if (flag) console.log('Flag!', profile, record)
 
   const fields = _.mapValues(_.pick(record, congressFields), _.toNumber)
 

@@ -22,13 +22,15 @@ const getAccounts = () =>
     })
 const findAccount = (profile, accounts) =>
   find(accounts, ['id.bioguide', profile.id.bioguide])
+const sens = {}
 const makeId = term => {
   if (term.type === 'rep') {
     let { district } = term
     if (district.toString().length === 1) district = `0${district}`
     return `${term.state}-${district}`
   } else if (term.type === 'sen') {
-    return `${term.state}-sen-${term.class}`
+    sens[term.state] = (sens[term.state] || 0) + 1
+    return `${term.state}-sen-${sens[term.state]}`
   }
 }
 const processProfile = (profile, account) => {
