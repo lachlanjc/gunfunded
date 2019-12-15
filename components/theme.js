@@ -3,10 +3,6 @@ import { merge } from 'lodash'
 
 export const breakpoints = [32, 48, 64, 96, 128].map(w => `${w}em`)
 
-export const space = [0, 4, 8, 16, 32, 64, 128, 256, 512]
-
-export const fontSizes = [12, 16, 20, 24, 32, 48, 64, 96, 128]
-
 export const palette = {
   darker: '#121217',
   dark: '#17171d',
@@ -31,8 +27,8 @@ export const palette = {
 
 const theme = merge(base, {
   breakpoints,
-  space,
-  fontSizes,
+  space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
+  fontSizes: [12, 16, 20, 24, 32, 48, 64, 96, 128],
   initialColorMode: 'light',
   useColorSchemeMediaQuery: true,
   colors: {
@@ -71,9 +67,8 @@ const theme = merge(base, {
     }
   },
   fonts: {
-    body: 'system-ui, sans-serif',
-    heading: 'inherit',
-    monospace: 'Menlo, monospace'
+    body: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+     monospace: '"SFMono-Regular", "Roboto Mono", Menlo, Consolas, monospace'
   },
   lineHeights: {
     title: 1,
@@ -117,7 +112,6 @@ const theme = merge(base, {
       lineHeight: 'heading'
     },
     title: {
-      fontFamily: 'heading',
       fontWeight: 'heading',
       lineHeight: 'title',
       letterSpacing: 'title',
