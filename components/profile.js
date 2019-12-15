@@ -101,6 +101,7 @@ const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
       <Stat
         value={commaNumber(data.gunRightsTotal)}
         label="from gun rights"
+        color={full ? 'rep' : 'text'}
         lg
       />
       {full ? (
@@ -108,26 +109,31 @@ const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
           <Stat
             value={commaNumber(data.gunRightsSupport)}
             label="rights support"
+            color="rep"
             half
           />
           <Stat
             value={commaNumber(data.gunRightsOpposed)}
             label="rights opposition"
+            color="dem"
             half
           />
           <Stat
             value={commaNumber(data.gunControlTotal)}
             label="from gun control"
+            color="dem"
             lg
           />
           <Stat
             value={commaNumber(data.gunControlSupport)}
             label="control support"
+            color="dem"
             half
           />
           <Stat
             value={commaNumber(data.gunControlOpposed)}
             label="control opposition"
+            color="rep"
             half
           />
           <Stat value={commaNumber(data.net)} label="net gun funding" lg />

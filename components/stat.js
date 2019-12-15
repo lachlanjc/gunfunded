@@ -24,6 +24,7 @@ export default ({
   value,
   label,
   unit = '$',
+  color = 'text',
   of,
   reversed = false,
   half = false,
@@ -34,7 +35,11 @@ export default ({
     {...props}
     sx={{
       flexDirection: reversed ? 'column-reverse' : 'column',
-      gridColumn: lg ? ['initial', 'span 1'] : half ? 'span 1 !important' : 'initial',
+      gridColumn: lg
+        ? ['initial', 'span 1']
+        : half
+        ? 'span 1 !important'
+        : 'initial',
       lineHeight: 1,
       ...props.sx
     }}
@@ -53,7 +58,7 @@ export default ({
           as="sup"
           sx={{
             fontSize: lg ? [2, 3] : [1, 2],
-            color: 'secondary',
+            color: color === 'text' ? 'secondary' : color,
             position: [null, null, unit === '%' ? null : 'absolute'],
             left: [null, null, -3],
             ml: [null, unit === '%' ? 1 : null],
@@ -66,7 +71,7 @@ export default ({
       <Text
         as="span"
         sx={{
-          color: 'text',
+          color,
           fontSize: lg ? [4, 5] : 4,
           fontWeight: 'stat',
           my: 0
