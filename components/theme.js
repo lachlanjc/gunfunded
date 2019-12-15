@@ -71,9 +71,8 @@ const theme = merge(base, {
     }
   },
   fonts: {
-    body: 'system-ui, sans-serif',
-    heading: 'inherit',
-    monospace: 'Menlo, monospace'
+    body: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+    monospace: '"SFMono-Regular", "Roboto Mono", Menlo, Consolas, monospace'
   },
   lineHeights: {
     title: 1,
@@ -117,7 +116,6 @@ const theme = merge(base, {
       lineHeight: 'heading'
     },
     title: {
-      fontFamily: 'heading',
       fontWeight: 'heading',
       lineHeight: 'title',
       letterSpacing: 'title',
