@@ -12,6 +12,7 @@ export default (req, res) => {
     }
   }
   let profiles = orderBy(records, order)
+  profiles = filter(profiles, p => p.rank > 0)
   if (role) {
     profiles = filter(profiles, ['role', role.toLowerCase()])
   }
