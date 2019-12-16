@@ -64,7 +64,7 @@ const Page = ({ cycles }) => {
   }, [jump])
 
   const input = useRef(null)
-  const placeholder = useFocusable(input, '')
+  useFocusable(input)
 
   return (
     <Box as="main" sx={{ bg: 'background' }}>
@@ -86,11 +86,11 @@ const Page = ({ cycles }) => {
           }}
         >
           <div>
-            <Label htmlFor="filter" variant="hidden">Filter list</Label>
+            <Label htmlFor="filter">Filter list</Label>
             <Input
               type="search"
               name="filter"
-              placeholder="Filter list…"
+              placeholder="NRA"
               onChange={onChange}
               value={jump}
               ref={input}

@@ -38,6 +38,7 @@ const theme = merge(base, {
     elevated: palette.white,
     sunken: palette.smoke,
     border: palette.smoke,
+    placeholder: palette.smoke,
     secondary: palette.slate,
     primary: palette.red,
     muted: palette.muted,
@@ -57,6 +58,7 @@ const theme = merge(base, {
         elevated: palette.darkless,
         sunken: palette.darker,
         border: palette.darkless,
+        placeholder: palette.slate,
         secondary: palette.muted,
         muted: palette.muted,
         accent: palette.cyan,
@@ -198,9 +200,9 @@ const theme = merge(base, {
       transition: 'box-shadow .125s ease-in-out',
       border: 0,
       ':hover,:focus': { boxShadow: 'card' },
-      '::-webkit-input-placeholder': { color: 'muted' },
-      '::-moz-placeholder': { color: 'muted' },
-      ':-ms-input-placeholder': { color: 'muted' },
+      '::-webkit-input-placeholder': { color: 'placeholder' },
+      '::-moz-placeholder': { color: 'placeholder' },
+      ':-ms-input-placeholder': { color: 'placeholder' },
       '&[type="search"]::-webkit-search-decoration': { display: 'none' }
     },
     label: {

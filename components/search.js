@@ -69,7 +69,7 @@ export default ({ defaultAddress = '' }) => {
   }
 
   const input = useRef(null)
-  const focus = useFocusable(input)
+  useFocusable(input)
 
   return (
     <>
@@ -92,6 +92,7 @@ export default ({ defaultAddress = '' }) => {
             onChange={onChange}
             value={address}
             ref={input}
+            placeholder="725 5th Ave, New York, NY"
           />
         </div>
         <Button
