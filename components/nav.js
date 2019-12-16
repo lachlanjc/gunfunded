@@ -31,7 +31,6 @@ const ColorSwitcher = props => {
 export default () => {
   const [mode] = useColorMode()
   const router = useRouter()
-  const home = router.pathname === '/'
   const states = router.pathname.startsWith('/states/')
   return (
     <Box
@@ -52,6 +51,7 @@ export default () => {
             fontSize: 1,
             color: mode === 'dark' ? 'red' : 'white',
             textDecoration: 'none',
+            mr: [3, 4],
             ':focus,:hover': { color: mode === 'dark' ? 'red' : 'white' }
           }
         }}
@@ -67,16 +67,14 @@ export default () => {
             Gun&nbsp;Funded
           </Text>
         </Link>
-        {home && (
-          <Link href="/about" passHref>
-            <NavLink sx={{ mr: [3, 4] }}>About</NavLink>
-          </Link>
-        )}
-        {states && (
-          <Link href="/states" passHref>
-            <NavLink sx={{ mr: [3, 4] }}>All States</NavLink>
-          </Link>
-        )}
+        <Link href="/states" passHref>
+          <NavLink sx={{ display: states ? null : ['none', 'inline-block'] }}>
+            {states && 'All '}States
+          </NavLink>
+        </Link>
+        <Link href="/about" passHref>
+          <NavLink>About</NavLink>
+        </Link>
         <ColorSwitcher />
       </Container>
     </Box>
