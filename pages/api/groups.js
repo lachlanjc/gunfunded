@@ -1,5 +1,5 @@
 import records from '../../data/groups.json'
-import { orderBy, reverse, filter, capitalize, sum, map, groupBy } from 'lodash'
+import { orderBy, reverse, filter, sum, map, groupBy } from 'lodash'
 
 const getTotal = records => sum(map(records, 'amount'))
 
@@ -19,6 +19,10 @@ export default (req, res) => {
   cycles = Object.keys(cycles).map(cycle => {
     const groups = cycles[cycle]
     const rightsGroups = filter(groups, ['type', 'rights'])
+    rightsGroups.map(g => {
+      if (g.pac === 'National Rifle Assn') g.pac = 'NRA'
+      return g
+    })
     const controlGroups = filter(groups, ['type', 'control'])
     const stats = {
       total: getTotal(groups),
