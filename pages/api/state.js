@@ -23,12 +23,12 @@ export default (req, res) => {
   const profilesMale = filter(profiles, ['gender', 'M'])
   const male = p(profilesMale.length, count)
   const fundedMale =
-    p(filter(profilesMale, ['fundingType', 'rights']).length, funds.length) || 0
+    p(filter(profilesMale, m => m.gunRightsTotal > 0).length, funds.length) || 0
 
   const profilesRep = filter(profiles, ['party', 'Republican'])
   const rep = p(profilesRep.length, count)
   const fundedRep =
-    p(filter(profilesRep, ['fundingType', 'rights']).length, funds.length) || 0
+    p(filter(profilesRep, r => r.gunRightsTotal > 0).length, funds.length) || 0
 
   const stats = { total, avg, percent, male, fundedMale, rep, fundedRep }
 

@@ -62,14 +62,14 @@ Page.getInitialProps = async ({ req }) => {
   const profilesMale = filter(profiles, ['gender', 'M'])
   const male = p(profilesMale.length, count)
   const fundedMale = p(
-    filter(profilesMale, ['fundingType', 'rights']).length,
+    filter(profilesMale, m => m.gunRightsTotal > 0).length,
     funds.length
   )
 
   const profilesRep = filter(profiles, ['party', 'Republican'])
   const rep = p(profilesRep.length, count)
   const fundedRep = p(
-    filter(profilesRep, ['fundingType', 'rights']).length,
+    filter(profilesRep, m => m.gunRightsTotal > 0).length,
     funds.length
   )
 
