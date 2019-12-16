@@ -11,5 +11,8 @@
       "dest": "/api/$1",
       "continue": true
     }
-  ]
+  ],
+  "github": {
+    "silent": true
+  }
 }
