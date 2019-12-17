@@ -149,7 +149,7 @@ const Page = ({ profile }) => {
       <Header title={name} />
       <Container sx={{ py: [3, 4] }}>
         <Profile data={profile} full />
-        <Grid gap={4} columns={[null, 2]} as="section" sx={{ my: 4 }}>
+        <Grid gap={4} columns={[null, null, 2]} as="section" sx={{ my: 4 }}>
           <div>
             <Heading
               as="h2"

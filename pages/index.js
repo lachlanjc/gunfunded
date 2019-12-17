@@ -21,7 +21,7 @@ const Page = ({ profiles }) => (
     <Heading as="h2" variant="headline" sx={{ mt: 4 }}>
       Explore
     </Heading>
-    <Grid gap={3} columns={[2, 6]} sx={{ textAlign: 'left' }}>
+    <Grid gap={3} columns={[2, null, 6]} sx={{ textAlign: 'left' }}>
       <Link href="/states" passHref>
         <Card
           variant="nav"
