@@ -13,7 +13,7 @@
     "data:groups": "node data/process-groups.js"
   },
   "dependencies": {
-    "@mdx-js/react": "^1.5.1",
+    "@mdx-js/react": "^1.5.2",
     "@theme-ui/components": "^0.2.50",
     "@theme-ui/presets": "^0.2.44",
     "@zeit/next-mdx": "^1.2.0",
@@ -31,7 +31,7 @@
     "react-feather": "^2.0.3",
     "react-usa-map": "^1.4.0",
     "recharts": "^2.0.0-beta.1",
-    "theme-ui": "^0.2.49",
+    "theme-ui": "^0.2.52",
     "write-json-file": "^4.2.1"
   }
 }
