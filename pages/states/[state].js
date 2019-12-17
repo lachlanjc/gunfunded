@@ -13,6 +13,8 @@ const Page = ({ profiles, abbrev, stats }) => {
   const state = find(states, ['abbrev', abbrev.toUpperCase()])
   const sens = filter(profiles, ['role', 'sen'])
   const reps = filter(profiles, ['role', 'rep'])
+  const partyKey = `circle:${stats.party === 'Democrat' ? 'last' : 'first'}-of-type`
+  const partyValue = { opacity: '1 !important', stroke: 'dem' }
   return (
     <Grouping
       centered
@@ -69,20 +71,16 @@ const Page = ({ profiles, abbrev, stats }) => {
         <Stat
           value={stats.rep}
           unit="%"
-          label="total are Republicans"
+          label={`total are ${stats.party}`}
           half
-          sx={{
-            'circle:first-of-type': { opacity: '1 !important', stroke: 'blue' }
-          }}
+          sx={{ [partyKey]: partyValue }}
         />
         <Stat
           value={stats.fundedRep}
           unit="%"
-          label="funded are Republicans"
+          label={`funded are ${stats.party}`}
           half
-          sx={{
-            'circle:first-of-type': { opacity: '1 !important', stroke: 'blue' }
-          }}
+          sx={{ [partyKey]: partyValue }}
         />
       </StatGrid>
       <Heading as="h2" variant="headline">
@@ -112,6 +110,13 @@ Page.getInitialProps = async ({ req, query }) => {
   const state = await fetch(req, `/state?abbrev=${abbrev}`)
   if (!state) return { statusCode: 422 }
   const { stats, profiles } = state
+  stats.party = 'Republican'
+  const dem = stats.rep < 50 && stats.fundedRep < 50
+  if (dem) {
+    stats.party = 'Democrat'
+    stats.rep = 100 - stats.rep
+    stats.fundedRep = 100 - stats.fundedRep
+  }
   return { profiles, abbrev, stats }
 }
 

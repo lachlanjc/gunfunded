@@ -40,7 +40,7 @@ const StateList = () => {
   }, [jump])
 
   const input = useRef(null)
-  const focus = useFocusable(input, 'Filter list')
+  useFocusable(input, 'Filter list')
 
   return [
     <Label htmlFor="state" variant="hidden" key="label">
@@ -85,7 +85,7 @@ const StateList = () => {
 }
 
 const mapHandler = e => {
-  Router.push('/states/' + e.target.dataset.name.toLowerCase())
+  Router.push('/states/' + e.target.dataset.name)
 }
 
 export default () => (
