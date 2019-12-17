@@ -8,7 +8,8 @@ export default ({
   desc,
   img,
   children,
-  includeMeta = false
+  includeMeta = false,
+  sx = {}
 }) => {
   const [mode] = useColorMode()
   return (
@@ -18,7 +19,8 @@ export default ({
         bg: mode === 'dark' ? 'darkless' : 'red',
         pt: [4, null, null, null, 5],
         pb: [4, 5, null, null, 6],
-        textAlign: centered && [null, 'center']
+        textAlign: centered && [null, 'center'],
+        ...sx
       }}
     >
       {includeMeta && <Meta title={title} description={desc} image={img} />}

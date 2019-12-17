@@ -129,7 +129,7 @@ const theme = merge(base, {
     headline: {
       fontWeight: 'heading',
       lineHeight: 'heading',
-      letterSpacing: 'heading',
+      letterSpacing: 'headline',
       fontSize: 4,
       color: 'accent',
       mt: 3,
@@ -139,7 +139,7 @@ const theme = merge(base, {
       fontWeight: 'heading',
       lineHeight: 'heading',
       textTransform: 'uppercase',
-      letterSpacing: 'heading',
+      letterSpacing: 'headline',
       fontSize: [1, 2],
       mt: 0,
       mb: 3

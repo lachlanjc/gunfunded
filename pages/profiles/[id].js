@@ -49,7 +49,7 @@ const Header = ({ title, desc, img, ...props }) => {
             fontSize: [4, 5],
             fontWeight: 'heading',
             lineHeight: 'heading',
-            letterSpacing: 'heading'
+            letterSpacing: 'headline'
           }}
           children={title}
         />

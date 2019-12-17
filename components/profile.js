@@ -41,7 +41,7 @@ const Badge = ({ party, sx, ...props }) => (
 const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
   <Card
     as={full ? 'article' : 'a'}
-    sx={{ p: [3, 4], textAlign: 'left', ...sx }}
+    sx={{ display: 'block', p: [3, 4], textAlign: 'left', ...sx }}
     {...props}
   >
     {label && (
@@ -72,7 +72,7 @@ const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
         <Heading
           as="h2"
           variant="headline"
-          sx={{ color: 'text', textAlign: 'left !important', my: 0 }}
+          sx={{ color: 'text', textAlign: 'left !important', mt: 0, mb: 0 }}
         >
           {data.role === 'sen' ? 'Sen.' : 'Rep.'} {data.name.full}
         </Heading>
