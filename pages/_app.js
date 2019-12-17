@@ -15,7 +15,7 @@ class Root extends App {
     const { Component, pageProps } = this.props
     return (
       <>
-        <Meta color={theme.colors.primary} />
+        <Meta />
         <ThemeProvider theme={theme}>
           <ColorMode />
           <Global styles={theme => ({ body: theme.styles.root })} />
