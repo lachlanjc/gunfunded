@@ -131,7 +131,7 @@ const Page = ({ cycles }) => {
 }
 
 Page.getInitialProps = async ({ req }) => {
-  const cycles = await fetch(req, '/groups')
+  const cycles = await fetch(req, '/contributors')
   if (cycles.length < 2) return { statusCode: 422 }
   return { cycles }
 }

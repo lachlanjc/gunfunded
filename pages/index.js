@@ -40,7 +40,7 @@ const Page = ({ profiles }) => (
           Explore States
         </Card>
       </Link>
-      <Link href="/groups" passHref>
+      <Link href="/contributors" passHref>
         <Card
           variant="nav"
           as="a"
