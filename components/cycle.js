@@ -36,7 +36,13 @@ export const Group = ({ id, pac, cycle, amount, type, ...props }) => (
   </Flex>
 )
 
-export const CycleStats = ({ total, rightsTotal, controlTotal, ...props }) => (
+export const CycleStats = ({
+  total,
+  rightsTotal,
+  controlTotal,
+  totalLabel = 'total funding',
+  ...props
+}) => (
   <Grid
     as="aside"
     gap={[2, null, 3, 4]}
@@ -46,7 +52,7 @@ export const CycleStats = ({ total, rightsTotal, controlTotal, ...props }) => (
   >
     <Stat
       value={commaNumber(total)}
-      label="total funding"
+      label={totalLabel}
       sx={{
         justifySelf: [null, null, null, 'end']
       }}

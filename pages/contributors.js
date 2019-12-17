@@ -69,7 +69,7 @@ const Page = ({ cycles }) => {
   return (
     <Box as="main" sx={{ bg: 'background' }}>
       <Meta
-        title="Gun Money PACs"
+        title="Top Gun Money PACs"
         description="Explore the top gun lobby and gun control PACs giving money to U.S. Congress every year."
       />
       <Header
@@ -96,7 +96,7 @@ const Page = ({ cycles }) => {
               ref={input}
             />
           </div>
-          <CycleStats {...stats} />
+          <CycleStats {...stats} totalLabel="total funding since 2010" />
         </Grid>
         <Divider sx={{ mt: [4, 5], mb: [3, 4] }} />
         {list.map(cycle => (
