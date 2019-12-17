@@ -5,7 +5,7 @@ const makeTitle = title => title === 'Gun Funded' ? title : `${title} – Gun Fu
 
 export default ({
   title = 'Gun Funded',
-  description = 'Visualize & analyze the gun lobby’s funding of the U.S. Congress.',
+  description = 'Visualization of the gun lobby’s $40M+ funding of the U.S. Congress.',
   image = 'https://cdn.glitch.com/00f3a6a0-e06b-437a-9b4f-558bc4fa01b1%2Fcard.png?v=1576435737382',
   color = palette.red
 }) => (
