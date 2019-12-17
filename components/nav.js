@@ -2,7 +2,6 @@
 import { jsx, useColorMode } from 'theme-ui'
 import { Box, Container, IconButton, Text, NavLink } from '@theme-ui/components'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import { Moon } from 'react-feather'
 
 const ColorSwitcher = props => {
@@ -30,8 +29,6 @@ const ColorSwitcher = props => {
 
 export default () => {
   const [mode] = useColorMode()
-  const router = useRouter()
-  const states = router.pathname.startsWith('/states/')
   return (
     <Box
       as="nav"
@@ -67,9 +64,10 @@ export default () => {
           </Text>
         </Link>
         <Link href="/states" passHref>
-          <NavLink sx={{ display: states ? null : ['none', 'inline-block'] }}>
-            {states && 'All '}States
-          </NavLink>
+          <NavLink>States</NavLink>
+        </Link>
+        <Link href="/contributors" passHref>
+          <NavLink>PACs</NavLink>
         </Link>
         <Link href="/about" passHref>
           <NavLink>About</NavLink>
