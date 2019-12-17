@@ -149,7 +149,7 @@ const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
       <Stat
         value={data.rank}
         unit="#"
-        of="539"
+        of="531"
         label={`${full ? 'rank' : 'gun-funded'} in Congress`}
         lg
       />

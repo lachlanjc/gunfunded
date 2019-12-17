@@ -53,14 +53,14 @@ const process = (p, congressData) => {
     fundingType
   }
 
-  let flag = !(gunRightsTotal >= 0)
-  if (flag) console.log('Issue!', result)
+  // let flag = !(gunRightsTotal >= 0)
+  // if (flag) console.log('Issue!', result)
 
   return result
 }
 
 const setRank = (p, i) => {
-  if (p.net) p.rank = i + 1
+  p.rank = i + 1
   return p
 }
 
@@ -75,11 +75,5 @@ neatCsv(congressDataCsv).then(congressData => {
     .then(profiles => _.map(profiles, p => process(p, congressData)))
     .then(profiles => _.orderBy(profiles, ['net'], ['desc']))
     .then(profiles => _.map(profiles, (p, i) => setRank(p, i)))
-    .then(profiles => _.map(profiles, p => {
-      // let flag = p.gunRightsDirect > 5000 && p.gunControlDirect > 5000
-      let flag = (typeof p.rank !== 'number')
-      if (flag) console.log(p)
-      return p
-    }))
     .then(data => writeJsonFile('./data/records.json', data, { indent: '' }))
 })
