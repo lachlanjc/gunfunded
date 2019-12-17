@@ -5,6 +5,7 @@ import { Global } from '@emotion/core'
 
 import theme from '../components/theme'
 import Meta from '../components/meta'
+import NProgress from '../components/nprogress'
 import Nav from '../components/nav'
 import Footer from '../components/footer'
 import withError from '../components/with-error'
@@ -14,10 +15,11 @@ class Root extends App {
     const { Component, pageProps } = this.props
     return (
       <>
-        <Meta />
+        <Meta color={theme.colors.primary} />
         <ThemeProvider theme={theme}>
           <ColorMode />
           <Global styles={theme => ({ body: theme.styles.root })} />
+          <NProgress color={theme.colors.nav} />
           <Nav />
           <Component {...pageProps} />
           <Footer />
