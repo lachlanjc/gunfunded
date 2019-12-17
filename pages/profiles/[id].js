@@ -231,6 +231,7 @@ const Page = ({ profile }) => {
             color: 'secondary',
             mt: [3, 4],
             a: { color: 'accent' },
+            ul: { pl: 0, mb: 0 },
             'p:last-of-type': { mb: 0 }
           }}
         >

@@ -1,44 +1,203 @@
-import { Box, Container, Heading, Avatar } from '@theme-ui/components'
+import {
+  Box,
+  Container,
+  Card,
+  Heading,
+  Avatar,
+  Text
+} from '@theme-ui/components'
+import Meta from '../components/meta'
 import Header from '../components/header'
+import AboutHeader from '../components/about-header.mdx'
 import Lobbying from '../components/lobbying'
+import Profile from '../components/profile'
+import Stat, { StatGrid } from '../components/stat'
+import data from '../data/about.json'
+import commaNumber from 'comma-number'
+
+<Meta
+  title="About"
+  description="Read about the background of gunfunded.com, a visualization of U.S. Congress’ funding on gun issues."
+/>
+
+export const sx = {
+  color: 'text',
+  'p, li': {
+    fontSize: [1, 2],
+    lineHeight: 'body',
+    my: 3
+  },
+  ul: {
+    my: 4,
+    pl: [3, 0],
+    li: { my: 2 }
+  },
+  h2: {
+    color: 'secondary',
+    fontWeight: 'heading',
+    lineHeight: 'heading',
+    letterSpacing: 'headline',
+    fontSize: 4,
+    mt: [3, 4],
+    mb: 3
+  },
+  h3: {
+    color: 'secondary',
+    fontWeight: 'heading',
+    lineHeight: 'heading',
+    letterSpacing: 'caps',
+    textTransform: 'uppercase',
+    fontSize: 2,
+    mt: [3, 4],
+    mb: 3
+  },
+  a: { color: 'accent', fontWeight: 'bold' },
+  '.recharts-wrapper': {
+    mx: 'auto',
+    mt: [3, 5],
+    overflowX: 'scroll',
+    maxWidth: '90vw',
+    text: {
+      color: 'text',
+      tspan: { fill: 'currentColor' }
+    }
+  }
+}
 
 <Box as="main" sx={{ page: 'background' }}>
 
-<Header title="About" desc="" includeMeta />
+<Header
+  title="About"
+  desc={<AboutHeader />}
+  sx={{ a: { fontWeight: 'bold', color: 'inherit' } }}
+/>
 
-<Container
-  sx={{
-    py: [3, 4],
-    color: 'text',
-    p: { fontSize: [1, 2], lineHeight: 'body', my: 3 },
-    h2: {
-      color: 'secondary',
-      fontWeight: 'heading',
-      lineHeight: 'heading',
-      letterSpacing: 'heading',
-      fontSize: 4,
-      mt: [3, 4],
-      mb: 3
-    },
-    a: { color: 'accent', fontWeight: 'bold' },
-    '.recharts-wrapper': {
-      mx: 'auto',
-      mt: 4,
-      text: {
-        color: 'text',
-        tspan: { fill: 'currentColor' }
-      }
-    }
-  }}
->
+<Container as="article" sx={sx}>
 
-Gun violence is a growing epidemic across the U.S., and Americans by-and-large [support gun control](https://www.vox.com/2015/10/3/9444417/gun-violence-mass-shootings-us-america), yet Congress refuses to pass it as legislation. Meanwhile, the gun lobby is directly funding our representatives: the current members of Congress have accepted [$40M from gun rights](https://www.opensecrets.org/industries/summary.php?ind=Q13&recipdetail=A&sortorder=U&cycle=All) groups and [about $6M from gun control](https://www.opensecrets.org/industries/summary.php?ind=Q12&recipdetail=A&sortorder=U&cycle=All) groups (about 2/3 of which since 2016).
+## Background
 
-<Lobbying />
+Gun violence is a growing epidemic across the U.S., and Americans by-and-large [support moderate gun control](https://www.vox.com/2015/10/3/9444417/gun-violence-mass-shootings-us-america), yet Congress refuses to pass it as legislation. Why the discrepancy?
+
+One answer comes in that the gun lobby directly funds our representatives: the current members of Congress have accepted [$40M from gun rights](https://www.opensecrets.org/industries/summary.php?ind=Q13&recipdetail=A&sortorder=U&cycle=All) groups and [about $8M from gun control](https://www.opensecrets.org/industries/summary.php?ind=Q12&recipdetail=A&sortorder=U&cycle=All) groups (about 2/3 of the latter coming since 2016, half just this year).
+
+<StatGrid>
+  <Stat
+    unit="$"
+    value={commaNumber(data.stats.gunRightsTotal)}
+    label="total gun rights"
+    lg
+  />
+  <Stat
+    unit="$"
+    value={commaNumber(data.stats.gunControlTotal)}
+    label="total gun control"
+    lg
+  />
+</StatGrid>
+
+<Lobbying data={data.lobbying} />
 
 ## The data
 
-The data all comes from the [Center for Responsive Politics](https://www.opensecrets.org), which gets it directly from the filings every Congressperson is required to file with the federal government listing their funders.
+Every member of Congress is required to file their funders with the federal government (FEC). However, though the data is technically public, it’s inaccessible—so Gun Funded tries to make it easy to visualize & understand.
+
+<Card
+  variant="sunken"
+  sx={{
+    color: 'secondary',
+    'h3': { mt: '0 !important' },
+    'p:last-of-type': { mb: 0 }
+  }}
+>
+
+### A note on objectivity
+
+The site attempts to authentically and neutrally present its data, but objectivity doesn’t really exist. The entire premise of the website, that this specific data is worth looking at, is a political statement in itself.
+
+Personally, I think it’s most important that regardless of where people stand on gun issues, everyone should know about our representatives’ funding.
+
+</Card>
+
+### Sources
+
+The funding data all comes from the [Center for Responsive Politics](https://www.opensecrets.org). The site does not update live, only because the data only meaningfully changes with each election every two years.
+
+The basic information about each member (including social media) comes from [theunitedstates.io](https://theunitedstates.io).
+
+### Deconstructing a profile
+
+<Profile
+  data={data.profiles.sample}
+  full
+  sx={{ h2: { mt: '0 !important', mb: 0 } }}
+/>
+
+- The first row is money in support of a candidate on **gun rights** (“rights” = against placing restrictions on firearms, typically more Republican)
+- The second row is in support of **gun control** (“control” = supports placing restrictions on firearms, typically more Democratic)
+- The first column is **direct contributions**: groups like the NRA & Everytown directly giving money to a candidate
+- The second two columns are **independent expenditure**: those groups running ads to support/oppose candidates, funneling money through other organizations
+
+- **Total**: the total money given to the member’s campaign or leadership PAC from gun rights or gun control PACs or individuals in all of CRP’s data (back to 1989 for members for whom that is relevant).
+- **Support/oppose:** numbers are money spent by outside groups supporting and opposing these candidates. _Gun rights support_, for example, shows money spent by gun rights groups on independent expenditures supporting this candidate.
+- **Net funding** (internal) is gun rights funding _(gun rights total, gun rights support, gun control opposition)_ **minus** gun&nbsp;control funding _(gun control total, gun control support, gun rights opposition)_
+- **Ranking** uses the net funding amount—from most gun rights to most gun control, with those with zero funding in the middle. (If it was ranked without gun control, there would be <span children={data.stats.unRightsCount} /> people with no gun rights funding who can’t really be ranked)
+
+</Container>
+
+<Box as="section" sx={{ bg: 'sunken', py: [4, 5], my: [4, 5], textAlign: [null, 'center'],
+h3: sx.h3 }}>
+
+<Heading as="h2" variant="headline" sx={{ fontSize: [4, 5], px: 3, mt: 0 }}>
+  Highlights
+</Heading>
+
+<Container
+  {...props}
+  sx={{
+    mt: [3, 4],
+    maxWidth: ['container', null, null, 'wide'],
+    display: 'grid',
+    gridTemplateColumns: ['auto', null, null, 'repeat(2, 1fr)'],
+    gridGap: [3, 4],
+    '> a': {
+      textDecoration: 'none'
+    },
+    ...props.sx
+  }}
+>
+  <div>
+
+### Highest gun rights
+
+<Profile data={data.profiles.highestRights} />
+
+  </div>
+  <div>
+
+### Highest Democrat
+
+<Profile data={data.profiles.highestRightsDem} />
+
+  </div>
+    <div>
+
+### Highest direct contributions
+
+<Profile data={data.profiles.highestRightsDirect} />
+
+  </div>
+  <div>
+
+### Highest gun control
+
+<Profile data={data.profiles.highestControl} />
+
+  </div>
+</Container>
+
+</Box>
+
+<Container as="article" sx={sx}>
 
 ## The site
 

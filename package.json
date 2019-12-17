@@ -10,7 +10,8 @@
     "start": "npm run dev",
     "data:download": "node data/download.js",
     "data:process": "node data/process.js",
-    "data:groups": "node data/process-groups.js"
+    "data:groups": "node data/process-groups.js",
+    "data:about": "node data/about.js"
   },
   "dependencies": {
     "@mdx-js/react": "^1.5.2",

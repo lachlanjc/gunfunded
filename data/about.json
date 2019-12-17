@@ -1,0 +1,320 @@
+{
+	"stats": {
+		"gunRightsTotal": 40162843,
+		"gunControlTotal": 8308934,
+		"unRightsCount": 238
+	},
+	"profiles": {
+		"sample": {
+			"id": "VA-sen-1",
+			"name": {
+				"first": "Mark",
+				"last": "Warner",
+				"full": "Mark R. Warner"
+			},
+			"role": "sen",
+			"gender": "M",
+			"party": "Democrat",
+			"state": "VA",
+			"termStart": "2015-01-06",
+			"termEnd": "2021-01-03",
+			"ids": {
+				"opensecrets": "N00002097",
+				"bioguide": "W000805"
+			},
+			"contact": {
+				"form": "http://www.warner.senate.gov/public/index.cfm?p=Contact",
+				"phone": "202-224-2023",
+				"url": "https://www.warner.senate.gov",
+				"twitter": "MarkWarner",
+				"instagram": "senatorwarner",
+				"facebook": "MarkRWarner"
+			},
+			"gunRightsDirect": 5500,
+			"gunRightsSupport": 0,
+			"gunRightsOpposed": 204731,
+			"gunControlDirect": 11737,
+			"gunControlSupport": 41000,
+			"gunControlOpposed": 0,
+			"gunRightsTotal": 5500,
+			"gunControlTotal": 52737,
+			"net": -47237,
+			"fundingType": "rights",
+			"rank": 519
+		},
+		"highestRights": {
+			"id": "UT-sen-2",
+			"name": {
+				"first": "Mitt",
+				"last": "Romney",
+				"full": "Mitt Romney"
+			},
+			"role": "sen",
+			"gender": "M",
+			"party": "Republican",
+			"state": "UT",
+			"termStart": "2019-01-03",
+			"termEnd": "2025-01-03",
+			"ids": {
+				"opensecrets": "N00000286",
+				"bioguide": "R000615"
+			},
+			"contact": {
+				"form": "https://www.romney.senate.gov/contact-senator-romney",
+				"phone": "202-224-5251",
+				"url": "https://www.romney.senate.gov",
+				"twitter": "SenatorRomney"
+			},
+			"gunRightsDirect": 0,
+			"gunRightsSupport": 3283524,
+			"gunRightsOpposed": 1909,
+			"gunControlDirect": 0,
+			"gunControlSupport": 0,
+			"gunControlOpposed": 0,
+			"gunRightsTotal": 3283524,
+			"gunControlTotal": 0,
+			"net": 3283524,
+			"fundingType": "rights",
+			"rank": 1
+		},
+		"highestRightsDem": {
+			"id": "MN-07",
+			"name": {
+				"first": "Collin",
+				"last": "Peterson",
+				"full": "Collin C. Peterson"
+			},
+			"role": "rep",
+			"gender": "M",
+			"party": "Democrat",
+			"state": "MN",
+			"district": 7,
+			"termStart": "2019-01-03",
+			"termEnd": "2021-01-03",
+			"ids": {
+				"opensecrets": "N00004558",
+				"bioguide": "P000258"
+			},
+			"contact": {
+				"phone": "202-225-2165",
+				"url": "https://collinpeterson.house.gov"
+			},
+			"gunRightsDirect": 112370,
+			"gunRightsSupport": 25997,
+			"gunRightsOpposed": 0,
+			"gunControlDirect": 0,
+			"gunControlSupport": 0,
+			"gunControlOpposed": 861,
+			"gunRightsTotal": 138367,
+			"gunControlTotal": 0,
+			"net": 138367,
+			"fundingType": "rights",
+			"rank": 49
+		},
+		"highestRightsDirect": {
+			"id": "TX-sen-2",
+			"name": {
+				"first": "Ted",
+				"last": "Cruz",
+				"full": "Ted Cruz"
+			},
+			"role": "sen",
+			"gender": "M",
+			"party": "Republican",
+			"state": "TX",
+			"termStart": "2019-01-03",
+			"termEnd": "2025-01-03",
+			"ids": {
+				"opensecrets": "N00033085",
+				"bioguide": "C001098"
+			},
+			"contact": {
+				"form": "https://www.cruz.senate.gov/?p=form&id=16",
+				"phone": "202-224-5922",
+				"url": "https://www.cruz.senate.gov",
+				"twitter": "SenTedCruz",
+				"facebook": "SenatorTedCruz"
+			},
+			"gunRightsDirect": 437815,
+			"gunRightsSupport": 154504,
+			"gunRightsOpposed": 0,
+			"gunControlDirect": 0,
+			"gunControlSupport": 0,
+			"gunControlOpposed": 8011,
+			"gunRightsTotal": 592319,
+			"gunControlTotal": 0,
+			"net": 592319,
+			"fundingType": "rights",
+			"rank": 18
+		},
+		"highestControl": {
+			"id": "GA-06",
+			"name": {
+				"first": "Lucy",
+				"last": "McBath",
+				"full": "Lucy McBath"
+			},
+			"role": "rep",
+			"gender": "F",
+			"party": "Democrat",
+			"state": "GA",
+			"district": 6,
+			"termStart": "2019-01-03",
+			"termEnd": "2021-01-03",
+			"ids": {
+				"opensecrets": "N00042813",
+				"bioguide": "M001208"
+			},
+			"contact": {
+				"phone": "202-225-4501",
+				"url": "https://mcbath.house.gov",
+				"twitter": "replucymcbath"
+			},
+			"gunRightsDirect": 0,
+			"gunRightsSupport": 0,
+			"gunRightsOpposed": 5502,
+			"gunControlDirect": 32795,
+			"gunControlSupport": 4209492,
+			"gunControlOpposed": 0,
+			"gunRightsTotal": 0,
+			"gunControlTotal": 4242287,
+			"net": -4242287,
+			"fundingType": "rights",
+			"rank": 531
+		}
+	},
+	"lobbying": [
+		{
+			"year": "1998",
+			"gunControl": "160000",
+			"gunRights": "4498393",
+			"gunManufacturing": "530000"
+		},
+		{
+			"year": "1999",
+			"gunControl": "840000",
+			"gunRights": "5891966",
+			"gunManufacturing": "795000"
+		},
+		{
+			"year": "2000",
+			"gunControl": "440000",
+			"gunRights": "6710758",
+			"gunManufacturing": "500000"
+		},
+		{
+			"year": "2001",
+			"gunControl": "2113699",
+			"gunRights": "6236161",
+			"gunManufacturing": "708000"
+		},
+		{
+			"year": "2002",
+			"gunControl": "1842054",
+			"gunRights": "5684546",
+			"gunManufacturing": "660000"
+		},
+		{
+			"year": "2003",
+			"gunControl": "1021665",
+			"gunRights": "4283326",
+			"gunManufacturing": "672000"
+		},
+		{
+			"year": "2004",
+			"gunControl": "1352346",
+			"gunRights": "4342400",
+			"gunManufacturing": "880000"
+		},
+		{
+			"year": "2005",
+			"gunControl": "230000",
+			"gunRights": "4070587",
+			"gunManufacturing": "1395000"
+		},
+		{
+			"year": "2006",
+			"gunControl": "90100",
+			"gunRights": "3184231",
+			"gunManufacturing": "1400000"
+		},
+		{
+			"year": "2007",
+			"gunControl": "208374",
+			"gunRights": "3962242",
+			"gunManufacturing": "1368000"
+		},
+		{
+			"year": "2008",
+			"gunControl": "150000",
+			"gunRights": "4128771",
+			"gunManufacturing": "1398000"
+		},
+		{
+			"year": "2009",
+			"gunControl": "251425",
+			"gunRights": "5209870",
+			"gunManufacturing": "1594000"
+		},
+		{
+			"year": "2010",
+			"gunControl": "290000",
+			"gunRights": "5847597",
+			"gunManufacturing": "1585000"
+		},
+		{
+			"year": "2011",
+			"gunControl": "280000",
+			"gunRights": "5580651",
+			"gunManufacturing": "1375000"
+		},
+		{
+			"year": "2012",
+			"gunControl": "250000",
+			"gunRights": "6129911",
+			"gunManufacturing": "979500"
+		},
+		{
+			"year": "2013",
+			"gunControl": "2217765",
+			"gunRights": "15292052",
+			"gunManufacturing": "850000"
+		},
+		{
+			"year": "2014",
+			"gunControl": "1942396",
+			"gunRights": "12013482",
+			"gunManufacturing": "817500"
+		},
+		{
+			"year": "2015",
+			"gunControl": "1678956",
+			"gunRights": "11406347",
+			"gunManufacturing": "1010000"
+		},
+		{
+			"year": "2016",
+			"gunControl": "1657992",
+			"gunRights": "11181199",
+			"gunManufacturing": "1120000"
+		},
+		{
+			"year": "2017",
+			"gunControl": "1942415",
+			"gunRights": "11440684",
+			"gunManufacturing": "1334000"
+		},
+		{
+			"year": "2018",
+			"gunControl": "2039212",
+			"gunRights": "12453572",
+			"gunManufacturing": "1161000"
+		},
+		{
+			"year": "2019",
+			"gunControl": "1800000",
+			"gunRights": "8164488",
+			"gunManufacturing": "1210000"
+		}
+	]
+}
