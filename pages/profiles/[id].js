@@ -176,8 +176,8 @@ const Page = ({ profile }) => {
               <Item
                 href={twitterURL(
                   profile.contact.twitter
-                    ? `.@${profile.contact.twitter}’s gun lobby funding on @gunfunded`
-                    : `${name} on @gunfunded`,
+                    ? `.@${profile.contact.twitter}’s gun lobby funding on Gun Funded`
+                    : `${name} on Gun Funded`,
                   url
                 )}
                 label="Twitter"
