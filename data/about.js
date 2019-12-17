@@ -19,7 +19,7 @@ const getProfiles = () => ({
   highestRightsDirect: _.last(_.sortBy(records, 'gunRightsDirect')),
   highestControl: _.last(_.orderBy(records, 'gunControlTotal'))
 })
-const getLobbying = () => neatCsv(rawLobbying)
+const getLobbying = () => _.reverse(neatCsv(rawLobbying))
 
 const getData = () =>
   Promise.all([getLobbying(), getProfiles(), getStats()])
