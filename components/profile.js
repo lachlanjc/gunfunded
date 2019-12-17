@@ -59,6 +59,7 @@ const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
         />
         <Image
           src={avatarUrl(data.ids.bioguide)}
+          alt={data.name.full}
           variant="avatar"
           loading="lazy"
           sx={{
@@ -83,6 +84,8 @@ const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
       </Box>
       {!full && (
         <IconButton
+          role="presentation"
+          tabIndex="-1"
           sx={{
             color: data.party.toLowerCase().slice(0, 3),
             border: '2px solid currentColor',
@@ -92,7 +95,6 @@ const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
             flexShrink: '0',
             ml: 3
           }}
-          tabIndex="-1"
         >
           <ChevronsRight size={24} />
         </IconButton>

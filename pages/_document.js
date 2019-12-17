@@ -18,7 +18,7 @@ export default class extends Document {
 
   render() {
     return (
-      <html>
+      <html lang="en">
         <Head>
           <style dangerouslySetInnerHTML={{ __html: this.props.css }} />
         </Head>
