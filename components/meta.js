@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import { palette } from './theme'
 
+const makeTitle = title => title === 'Gun Funded' ? title : `${title} – Gun Funded`
+
 export default ({
   title = 'Gun Funded',
   description = 'Visualize & analyze the gun lobby’s funding of the U.S. Congress.',
@@ -11,9 +13,9 @@ export default ({
     <meta key="og_type" property="og:type" content="website" />
     <meta key="og_site" property="og:site_name" content="Gun Funded" />
     <meta key="twitter_site" name="twitter:site" content="@gunfunded" />
-    <title>{title === 'Gun Funded' ? title : `${title} – Gun Funded`}</title>
-    <meta key="og_title" property="og:title" content={title} />
-    <meta key="twitter_title" name="twitter:title" content={title} />
+    <title>{makeTitle(title)}</title>
+    <meta key="og_title" property="og:title" content={makeTitle(title)} />
+    <meta key="twitter_title" name="twitter:title" content={makeTitle(title)} />
     <meta key="desc" name="description" content={description} />
     <meta key="og_desc" property="og:description" content={description} />
     <meta key="twitter_desc" name="twitter:description" content={description} />
