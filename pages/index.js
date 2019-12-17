@@ -8,7 +8,7 @@ import { Briefcase, Users } from 'react-feather'
 
 const Page = ({ profiles }) => (
   <Grouping
-    title="Gun&nbsp;Funded"
+    title="Gun Funded"
     desc="Visualize & analyze the gun lobby’s funding of the U.S. Congress."
     profiles={profiles}
     centered

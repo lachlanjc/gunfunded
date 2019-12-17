@@ -8,8 +8,7 @@ export default ({
   desc,
   img,
   children,
-  includeMeta = false,
-  ...props
+  includeMeta = false
 }) => {
   const [mode] = useColorMode()
   return (
