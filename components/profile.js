@@ -92,6 +92,7 @@ const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
             flexShrink: '0',
             ml: 3
           }}
+          tabIndex="-1"
         >
           <ChevronsRight size={24} />
         </IconButton>
