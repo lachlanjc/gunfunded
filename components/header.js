@@ -19,7 +19,6 @@ export default ({
         bg: mode === 'dark' ? 'darkless' : 'red',
         pt: [4, null, null, null, 5],
         pb: [4, 5, null, null, 6],
-        px: [2, 3],
         textAlign: centered && [null, 'center']
       }}
     >

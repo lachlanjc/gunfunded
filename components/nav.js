@@ -38,7 +38,6 @@ export default () => {
       sx={{
         bg: mode === 'dark' ? 'darkless' : 'red',
         color: 'nav',
-        px: [2, 3],
         py: 3
       }}
       key="nav"
