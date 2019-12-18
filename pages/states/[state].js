@@ -6,20 +6,24 @@ import Grouping, { ProfileGrouping } from '../../components/grouping'
 import Stat, { StatGrid } from '../../components/stat'
 import Search from '../../components/search'
 import states from '../../data/states.json'
-import fetch from '../../lib/fetch'
-import { find, map, filter } from 'lodash'
+import loadJsonFile from 'load-json-file'
+import { find, orderBy, sum, map, filter, round } from 'lodash'
 
 const Page = ({ profiles, abbrev, stats }) => {
   const state = find(states, ['abbrev', abbrev.toUpperCase()])
   const sens = filter(profiles, ['role', 'sen'])
   const reps = filter(profiles, ['role', 'rep'])
-  const partyKey = `circle:${stats.party === 'Democrat' ? 'last' : 'first'}-of-type`
+  const partyKey = `circle:${
+    stats.party === 'Democrat' ? 'last' : 'first'
+  }-of-type`
   const partyValue = { opacity: '1 !important', stroke: 'dem' }
   return (
     <Grouping
       centered
       title={state.name}
-      desc={`All U.S. Congress members from ${state.name}, sorted by gun money.`}
+      desc={`All U.S. Congress members from ${
+        state.name
+      }, sorted by gun money.`}
       profiles={reps}
       footer={[
         <Card
@@ -103,21 +107,43 @@ const Page = ({ profiles, abbrev, stats }) => {
   )
 }
 
-Page.getInitialProps = async ({ req, query }) => {
-  const abbrev = query.state
-  if (!map(states, 'abbrev').includes(abbrev.toUpperCase()))
-    return { statusCode: 404 }
-  const state = await fetch(req, `/state?abbrev=${abbrev}`)
-  if (!state) return { statusCode: 422 }
-  const { stats, profiles } = state
-  stats.party = 'Republican'
-  const dem = stats.rep < 50 && stats.fundedRep < 50
+export async function unstable_getStaticPaths() {
+  return map(map(states, 'abbrev'), state => ({ params: { state } }))
+}
+
+export async function unstable_getStaticProps({ params }) {
+  const abbrev = params.state.toUpperCase()
+  let profiles = await loadJsonFile('./data/records.json')
+  profiles = orderBy(filter(profiles, ['state', abbrev]), 'net', 'desc')
+  const count = profiles.length
+
+  const totals = map(profiles, 'gunRightsTotal')
+  const funds = filter(totals, t => t > 0)
+  const total = sum(totals)
+  const avg = round(total / count)
+  const p = (a, b) => round((a / b) * 100)
+  const percent = p(funds.length, count)
+
+  const profilesMale = filter(profiles, ['gender', 'M'])
+  const male = p(profilesMale.length, count)
+  const fundedMale =
+    p(filter(profilesMale, m => m.gunRightsTotal > 0).length, funds.length) || 0
+
+  const profilesRep = filter(profiles, ['party', 'Republican'])
+  let rep = p(profilesRep.length, count)
+  let fundedRep =
+    p(filter(profilesRep, r => r.gunRightsTotal > 0).length, funds.length) || 0
+  let party = 'Republican'
+  const dem = rep < 50 && fundedRep < 50
   if (dem) {
-    stats.party = 'Democrat'
-    stats.rep = 100 - stats.rep
-    stats.fundedRep = 100 - stats.fundedRep
+    party = 'Democrat'
+    rep = 100 - rep
+    fundedRep = 100 - fundedRep
   }
-  return { profiles, abbrev, stats }
+
+  const stats = { total, avg, percent, male, fundedMale, rep, fundedRep, party }
+
+  return { props: { profiles, abbrev, stats } }
 }
 
 export default Page

@@ -24,10 +24,9 @@ import Meta from '../../components/meta'
 import Profile from '../../components/profile'
 import Search from '../../components/search'
 import Methodology from '../../components/profile-methodology.mdx'
-import states from '../../data/states.json'
-import fetch from '../../lib/fetch'
+import loadJsonFile from 'load-json-file'
 import commaNumber from 'comma-number'
-import { capitalize, find } from 'lodash'
+import { map, capitalize, find } from 'lodash'
 
 const Header = ({ title, desc, img, ...props }) => {
   const [mode] = useColorMode()
@@ -131,17 +130,19 @@ const emailURL = (subject, body) =>
     body
   )}`
 
-const Page = ({ profile }) => {
-  const state = find(states, ['abbrev', profile.state.toUpperCase()])
+const Page = ({ state, profile }) => {
   const role = profile.role === 'sen' ? 'Senator' : 'Representative'
   const url = `https://gunfunded.com/profiles/${profile.id}`
   const img = `https://cards.gunfunded.com/${profile.id}.png`
   const name = `${role.slice(0, 3)}. ${profile.name.full}`
   const title = `${name} on Gun Funded`
-  const total = (
-    profile.fundingType === 'control' ? profile.gunControlTotal : profile.gunRightsTotal
-  )
-  const desc = `View ${state.name} ${role} ${profile.name.full}’s gun lobby funding ($${commaNumber(total)}) on Gun Funded.`
+  const total =
+    profile.fundingType === 'control'
+      ? profile.gunControlTotal
+      : profile.gunRightsTotal
+  const desc = `View ${state.name} ${role} ${
+    profile.name.full
+  }’s gun lobby funding ($${commaNumber(total)}) on Gun Funded.`
   const body = [desc, url].join('\n\n')
   return (
     <Box as="main" sx={{ bg: 'background' }}>
@@ -176,7 +177,9 @@ const Page = ({ profile }) => {
               <Item
                 href={twitterURL(
                   profile.contact.twitter
-                    ? `.@${profile.contact.twitter}’s gun lobby funding on Gun Funded`
+                    ? `.@${
+                        profile.contact.twitter
+                      }’s gun lobby funding on Gun Funded`
                     : `${name} on Gun Funded`,
                   url
                 )}
@@ -201,7 +204,7 @@ const Page = ({ profile }) => {
         <Grid gap={4} columns={[null, 2]} as="section">
           <Link
             href="/states/[state]"
-            as={`/states/${state.abbrev.toLowerCase()}`}
+            as={`/states/${state.abbrev.toUpperCase()}`}
             passHref
           >
             <Card as="a" variant="nav">
@@ -242,10 +245,17 @@ const Page = ({ profile }) => {
   )
 }
 
-Page.getInitialProps = async ({ req, query }) => {
-  const profile = await fetch(req, `/profiles?id=${query.id}`)
-  if (!profile.id) return { statusCode: 404 }
-  return { profile }
+export async function unstable_getStaticPaths() {
+  const profiles = await loadJsonFile('./data/records.json')
+  return map(map(profiles, 'id'), id => ({ params: { id } }))
+}
+
+export async function unstable_getStaticProps({ params }) {
+  const profiles = await loadJsonFile('./data/records.json')
+  const profile = find(profiles, ['id', params.id])
+  const states = await loadJsonFile('./data/states.json')
+  const state = find(states, ['abbrev', profile.state.toUpperCase()])
+  return { props: { profile, state } }
 }
 
 export default Page

@@ -1,10 +1,11 @@
-import fetch from 'isomorphic-unfetch'
+import { Card, Grid, Heading } from '@theme-ui/components'
+import { Briefcase, Users } from 'react-feather'
 import Grouping from '../components/grouping'
 import Search from '../components/search'
 import Link from 'next/link'
 import Map from 'react-usa-map'
-import { Box, Card, Grid, Heading } from '@theme-ui/components'
-import { Briefcase, Users } from 'react-feather'
+import loadJsonFile from 'load-json-file'
+import { orderBy } from 'lodash'
 
 const Page = ({ profiles }) => (
   <Grouping
@@ -55,7 +56,9 @@ const Page = ({ profiles }) => (
           }}
         >
           <Briefcase />
-          Contributing<br />PACs
+          Contributing
+          <br />
+          PACs
         </Card>
       </Link>
       <Link href="/profiles" passHref>
@@ -88,11 +91,10 @@ const Page = ({ profiles }) => (
   </Grouping>
 )
 
-Page.getInitialProps = async ({ req }) => {
-  const origin = req ? `http://${req.headers.host}` : ''
-  const data = await fetch(`${origin}/api/profiles?limit=6`)
-  const profiles = await data.json()
-  return { profiles }
+export async function unstable_getStaticProps() {
+  let profiles = await loadJsonFile('./data/records.json')
+  profiles = orderBy(profiles, 'rank').slice(0, 6)
+  return { props: { profiles } }
 }
 
 export default Page

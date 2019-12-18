@@ -11,9 +11,9 @@ import {
 import Meta from '../components/meta'
 import Header from '../components/header'
 import { Group, CycleHeader, CycleStats } from '../components/cycle'
-import fetch from '../lib/fetch'
 import useFocusable from '../lib/use-focusable'
-import { map, filter, sum, flatten } from 'lodash'
+import loadJsonFile from 'load-json-file'
+import { orderBy, reverse, filter, sum, map, groupBy, flatten } from 'lodash'
 
 const Page = ({ cycles }) => {
   const [jump, setJump] = useState('')
@@ -33,35 +33,38 @@ const Page = ({ cycles }) => {
     const groups =
       src.length > 0
         ? src
-        : [
-            { amount: 0, type: 'rights' },
-            { amount: 0, type: 'control' }
-          ]
+        : [{ amount: 0, type: 'rights' }, { amount: 0, type: 'control' }]
     const total = getTotal(groups)
     const rightsTotal = getTotal(filter(groups, ['type', 'rights']))
     const controlTotal = getTotal(filter(groups, ['type', 'control']))
     return { total, rightsTotal, controlTotal }
   }
-  useEffect(() => {
-    const groups = flatten(map(list, 'groups'))
-    setStats(calculateStats(groups))
-  }, [list])
+  useEffect(
+    () => {
+      const groups = flatten(map(list, 'groups'))
+      setStats(calculateStats(groups))
+    },
+    [list]
+  )
 
-  useEffect(() => {
-    if (jump.toString().length > 0) {
-      const j = jump.toString().toLowerCase()
-      let nextCycles = JSON.parse(JSON.stringify(cycles))
-      nextCycles = map(nextCycles, c => {
-        c.groups = filter(c.groups, g => g.pac.toLowerCase().includes(j))
-        c.stats = calculateStats(c.groups)
-        return c
-      })
-      nextCycles = filter(nextCycles, c => c.groups.length > 0)
-      setList(nextCycles)
-    } else {
-      setList(cycles)
-    }
-  }, [jump])
+  useEffect(
+    () => {
+      if (jump.toString().length > 0) {
+        const j = jump.toString().toLowerCase()
+        let nextCycles = JSON.parse(JSON.stringify(cycles))
+        nextCycles = map(nextCycles, c => {
+          c.groups = filter(c.groups, g => g.pac.toLowerCase().includes(j))
+          c.stats = calculateStats(c.groups)
+          return c
+        })
+        nextCycles = filter(nextCycles, c => c.groups.length > 0)
+        setList(nextCycles)
+      } else {
+        setList(cycles)
+      }
+    },
+    [jump]
+  )
 
   const input = useRef(null)
   useFocusable(input)
@@ -130,10 +133,29 @@ const Page = ({ cycles }) => {
   )
 }
 
-Page.getInitialProps = async ({ req }) => {
-  const cycles = await fetch(req, '/contributors')
-  if (cycles.length < 2) return { statusCode: 422 }
-  return { cycles }
+export async function unstable_getStaticProps() {
+  const getTotal = records => sum(map(records, 'amount'))
+
+  const records = await loadJsonFile('./data/groups.json')
+  let groups = reverse(orderBy(records, ['cycle', 'amount']))
+  let cycles = groupBy(groups, 'cycle')
+  cycles = Object.keys(cycles).map(cycle => {
+    const groups = cycles[cycle]
+    const rightsGroups = filter(groups, ['type', 'rights'])
+    rightsGroups.map(g => {
+      if (g.pac === 'National Rifle Assn') g.pac = 'NRA'
+      return g
+    })
+    const controlGroups = filter(groups, ['type', 'control'])
+    const stats = {
+      total: getTotal(groups),
+      rightsTotal: getTotal(rightsGroups),
+      controlTotal: getTotal(controlGroups)
+    }
+    return { year: cycle, groups, stats }
+  })
+
+  return { props: { cycles: reverse(cycles) } }
 }
 
 export default Page
