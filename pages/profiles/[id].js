@@ -204,7 +204,7 @@ const Page = ({ state, profile }) => {
         <Grid gap={4} columns={[null, 2]} as="section">
           <Link
             href="/states/[state]"
-            as={`/states/${state.abbrev.toLowerCase()}`}
+            as={`/states/${state.abbrev.toUpperCase()}`}
             passHref
           >
             <Card as="a" variant="nav">
