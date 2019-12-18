@@ -28,9 +28,7 @@ const Error = ({ error = '' }) => (
 )
 
 const disclaimer = (
-  <Text
-    sx={{ color: 'muted', fontSize: 0, mt: [-2, -28], textAlign: 'left' }}
-  >
+  <Text sx={{ color: 'muted', fontSize: 0, mt: [-2, -28], textAlign: 'left' }}>
     Never stored, saved, or sold.
   </Text>
 )

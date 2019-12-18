@@ -38,7 +38,13 @@ const Grouping = ({
     as="main"
     sx={{ bg: 'background', textAlign: centered && ['left', 'center'], ...sx }}
   >
-    <Header title={title} desc={desc} centered={centered} children={header} includeMeta />
+    <Header
+      title={title}
+      desc={desc}
+      centered={centered}
+      children={header}
+      includeMeta
+    />
     {children && (
       <Container as="section" sx={{ pt: [3, 4] }}>
         {children}

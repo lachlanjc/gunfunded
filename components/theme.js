@@ -69,8 +69,9 @@ const theme = merge(base, {
     }
   },
   fonts: {
-    body: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-     monospace: '"SFMono-Regular", "Roboto Mono", Menlo, Consolas, monospace'
+    body:
+      'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+    monospace: '"SFMono-Regular", "Roboto Mono", Menlo, Consolas, monospace'
   },
   lineHeights: {
     title: 1,

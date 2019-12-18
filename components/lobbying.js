@@ -11,14 +11,13 @@ import {
 import { palette } from './theme'
 
 export default ({ data }) => (
-  <BarChart
-    width={512}
-    height={300}
-    data={data}
-  >
+  <BarChart width={512} height={300} data={data}>
     <CartesianGrid strokeDasharray="3 3" stroke={palette.muted} />
     <XAxis dataKey="year" stroke={palette.muted} />
-    <YAxis tickFormatter={v => `$${Number(v) / 1000 / 1000}m`} stroke={palette.muted} />
+    <YAxis
+      tickFormatter={v => `$${Number(v) / 1000 / 1000}m`}
+      stroke={palette.muted}
+    />
     <Legend />
     <ReferenceLine y={0} stroke="#000" />
     <Bar

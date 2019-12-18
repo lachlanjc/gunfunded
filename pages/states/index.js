@@ -23,21 +23,24 @@ const StateList = () => {
   const [list, setList] = useState(states)
   const onChange = e =>
     setJump(e.target.value.toString().match(/[A-Za-z\s]+/g) || '')
-  useEffect(() => {
-    if (jump.toString().length > 0) {
-      const j = jump.toString().toLowerCase()
-      setList(
-        filter(
-          states,
-          s =>
-            s.name.toLowerCase().includes(j) ||
-            s.abbreviation.toLowerCase().includes(j)
+  useEffect(
+    () => {
+      if (jump.toString().length > 0) {
+        const j = jump.toString().toLowerCase()
+        setList(
+          filter(
+            states,
+            s =>
+              s.name.toLowerCase().includes(j) ||
+              s.abbreviation.toLowerCase().includes(j)
+          )
         )
-      )
-    } else {
-      setList(states)
-    }
-  }, [jump])
+      } else {
+        setList(states)
+      }
+    },
+    [jump]
+  )
 
   const input = useRef(null)
   useFocusable(input, 'Filter list')
