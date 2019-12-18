@@ -8,7 +8,6 @@ import Meta from '../components/meta'
 import NProgress from '../components/nprogress'
 import Nav from '../components/nav'
 import Footer from '../components/footer'
-import withError from '../components/with-error'
 
 class Root extends App {
   render() {
@@ -29,4 +28,4 @@ class Root extends App {
   }
 }
 
-export default withError(Root)
+export default Root
