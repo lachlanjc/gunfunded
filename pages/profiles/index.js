@@ -1,10 +1,10 @@
 import commaNumber from 'comma-number'
-import fetch from '../../lib/fetch'
+import loadJsonFile from 'load-json-file'
 import Grouping from '../../components/grouping'
 import Stat, { StatGrid } from '../../components/stat'
-import { sum, map, filter, round } from 'lodash'
+import { sum, map, filter, round, orderBy } from 'lodash'
 
-const Page = ({ profiles, abbrev, stats }) => (
+const Page = ({ profiles, stats }) => (
   <Grouping
     title="All Members of&nbsp;Congress"
     desc={`All members of the U.S. Congress, sorted by gun lobby funding.`}
@@ -47,10 +47,10 @@ const Page = ({ profiles, abbrev, stats }) => (
   </Grouping>
 )
 
-Page.getInitialProps = async ({ req }) => {
-  const profiles = await fetch(req, '/profiles?order=rank')
+export async function unstable_getStaticProps() {
+  let profiles = await loadJsonFile('./data/records.json')
+  profiles = orderBy(profiles, 'net', 'desc')
   const count = profiles.length
-  if (count < 100) return { statusCode: 422 }
 
   const totals = map(profiles, 'gunRightsTotal')
   const funds = filter(totals, t => t > 0)
@@ -74,7 +74,7 @@ Page.getInitialProps = async ({ req }) => {
   )
 
   const stats = { total, avg, percent, male, fundedMale, rep, fundedRep }
-  return { profiles, stats }
+  return { props: { profiles, stats } }
 }
 
 export default Page

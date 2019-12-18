@@ -1,13 +1,13 @@
-import fetch from '../lib/fetch'
+import loadJsonFile from 'load-json-file'
 import Grouping from '../components/grouping'
 import Stat, { StatGrid } from '../components/stat'
 import commaNumber from 'comma-number'
-import { map, filter, sum, round } from 'lodash'
+import { map, filter, sum, round, orderBy } from 'lodash'
 
 const Page = ({ profiles, stats }) => (
   <Grouping
     title="Top U.S. Senators"
-    desc="The top 25 U.S. Senators in Congress, ranked by their gun lobby funding."
+    desc="The top 30 U.S. Senators in Congress, ranked by their gun lobby funding."
     profiles={profiles}
   >
     <StatGrid sx={{ mt: [2, 3], mb: [4, 5] }}>
@@ -35,16 +35,22 @@ const Page = ({ profiles, stats }) => (
   </Grouping>
 )
 
-Page.getInitialProps = async ({ req }) => {
-  const profiles = await fetch(req, '/profiles?role=sen&limit=25')
-  if (profiles.length !== 25) return { statusCode: 422 }
+export async function unstable_getStaticProps() {
+  let profiles = await loadJsonFile('./data/records.json')
+  profiles = orderBy(
+    filter(profiles, ['role', 'sen']),
+    'gunRightsTotal',
+    'desc'
+  ).slice(0, 30)
   const total = sum(map(profiles, 'gunRightsTotal'))
   const avg = round(total / profiles.length)
   const repub =
     filter(profiles, ['party', 'Republican']).length / profiles.length
   const male = filter(profiles, ['gender', 'M']).length / profiles.length
   const stats = { total, avg, repub, male }
-  return { profiles, stats }
+  return {
+    props: { profiles, stats }
+  }
 }
 
 export default Page
