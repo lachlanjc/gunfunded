@@ -86,7 +86,7 @@ export default ({ defaultAddress = '' }) => {
           <Label htmlFor="address">U.S. home address</Label>
           <Input
             type="text"
-            name="address"
+            id="address"
             onChange={onChange}
             value={address}
             ref={input}
