@@ -19,6 +19,7 @@ import {
   Mail as MailIcon,
   Share as ShareIcon
 } from 'react-feather'
+import Error from 'next/error'
 import Link from 'next/link'
 import Meta from '../../components/meta'
 import Profile from '../../components/profile'
@@ -131,6 +132,7 @@ const emailURL = (subject, body) =>
   )}`
 
 const Page = ({ state, profile }) => {
+  if (!state || !profile) return <Error statusCode={404} />
   const role = profile.role === 'sen' ? 'Senator' : 'Representative'
   const url = `https://gunfunded.com/profiles/${profile.id}`
   const img = `https://cards.gunfunded.com/${profile.id}.png`
@@ -247,7 +249,8 @@ const Page = ({ state, profile }) => {
 
 export async function unstable_getStaticPaths() {
   const profiles = await loadJsonFile('./data/records.json')
-  return map(map(profiles, 'id'), id => ({ params: { id } }))
+  const paths = map(map(profiles, 'id'), id => ({ params: { id } }))
+  return { paths }
 }
 
 export async function unstable_getStaticProps({ params }) {

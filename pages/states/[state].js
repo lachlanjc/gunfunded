@@ -1,5 +1,6 @@
 import { Box, Heading, Card } from 'theme-ui'
 import commaNumber from 'comma-number'
+import Error from 'next/error'
 import Link from 'next/link'
 import Map from 'react-usa-map'
 import Grouping, { ProfileGrouping } from '../../components/grouping'
@@ -10,6 +11,7 @@ import loadJsonFile from 'load-json-file'
 import { find, orderBy, sum, map, filter, round } from 'lodash'
 
 const Page = ({ profiles, abbrev, stats }) => {
+  if (!abbrev || !profiles || !stats) return <Error statusCode={404} />
   const state = find(states, ['abbrev', abbrev.toUpperCase()])
   const sens = filter(profiles, ['role', 'sen'])
   const reps = filter(profiles, ['role', 'rep'])
@@ -108,7 +110,8 @@ const Page = ({ profiles, abbrev, stats }) => {
 }
 
 export async function unstable_getStaticPaths() {
-  return map(map(states, 'abbrev'), state => ({ params: { state } }))
+  const paths = map(map(states, 'abbrev'), state => ({ params: { state } }))
+  return { paths }
 }
 
 export async function unstable_getStaticProps({ params }) {

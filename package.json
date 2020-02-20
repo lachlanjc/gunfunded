@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "next",
-    "now-build": "next build",
+    "build": "next build",
     "start": "npm run dev",
     "data:download": "node data/download.js",
     "data:process": "node data/process.js",
@@ -21,7 +21,7 @@
     "load-json-file": "^6.2.0",
     "lodash": "^4.17.15",
     "neat-csv": "^5.2.0",
-    "next": "^9.2.2",
+    "next": "^9.2.3-canary.7",
     "nprogress": "^0.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
