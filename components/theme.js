@@ -1,4 +1,4 @@
-import { base } from '@theme-ui/presets'
+import base from '@theme-ui/preset-base'
 import { merge } from 'lodash'
 
 export const breakpoints = [32, 48, 64, 96, 128].map(w => `${w}em`)
@@ -29,7 +29,7 @@ const theme = merge(base, {
   breakpoints,
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fontSizes: [12, 16, 20, 24, 32, 48, 64, 96, 128],
-  initialColorMode: 'light',
+  initialColorModeName: 'light',
   useColorSchemeMediaQuery: true,
   colors: {
     ...palette,
@@ -71,6 +71,7 @@ const theme = merge(base, {
   fonts: {
     body:
       'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+    heading: 'inherit',
     monospace: '"SFMono-Regular", "Roboto Mono", Menlo, Consolas, monospace'
   },
   lineHeights: {
@@ -304,9 +305,7 @@ theme.styles.root = {
   fontWeight: theme.fontWeights.body,
   color: theme.colors.text,
   margin: 0,
-  minHeight: '100vh',
-  display: 'flex',
-  flexDirection: 'column'
+  minHeight: '100vh'
 }
 
 export default theme
