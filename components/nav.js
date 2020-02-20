@@ -1,6 +1,13 @@
 /** @jsx jsx */
-import { jsx, useColorMode } from 'theme-ui'
-import { Box, Container, IconButton, Text, NavLink } from '@theme-ui/components'
+import {
+  jsx,
+  useColorMode,
+  Box,
+  Container,
+  IconButton,
+  Text,
+  NavLink
+} from 'theme-ui'
 import Link from 'next/link'
 import { Moon } from 'react-feather'
 

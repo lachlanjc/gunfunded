@@ -1,5 +1,4 @@
-import { useColorMode } from 'theme-ui'
-import { Box, Container, Heading } from '@theme-ui/components'
+import { useColorMode, Box, Container, Heading } from 'theme-ui'
 import Meta from './meta'
 
 export default ({

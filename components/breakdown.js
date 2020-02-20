@@ -1,4 +1,4 @@
-import { Flex, Box, Text } from '@theme-ui/components'
+import { Flex, Box, Text } from 'theme-ui'
 
 const Breakdown = ({ segments, sx = {} }) => (
   <Flex sx={{ flexDirection: 'column', minWidth: 196, maxWidth: 208, ...sx }}>

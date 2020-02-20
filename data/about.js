@@ -15,7 +15,9 @@ const getStats = () => ({
 const getProfiles = () => ({
   sample: _.find(records, ['id', 'VA-sen-1']),
   highestRights: _.last(_.sortBy(records, 'net')),
-  highestRightsDem: _.first(_.sortBy(_.filter(records, ['party', 'Democrat'], 'net'))),
+  highestRightsDem: _.first(
+    _.sortBy(_.filter(records, ['party', 'Democrat'], 'net'))
+  ),
   highestRightsDirect: _.last(_.sortBy(records, 'gunRightsDirect')),
   highestControl: _.last(_.orderBy(records, 'gunControlTotal'))
 })
@@ -26,7 +28,7 @@ const getData = () =>
     .catch(() => {
       console.error('🚨 ERROR')
     })
-    .then(([lobbying, profiles, stats]) => ({stats, profiles, lobbying}))
+    .then(([lobbying, profiles, stats]) => ({ stats, profiles, lobbying }))
 const save = data => {
   writeJsonFile('./data/about.json', data).then(() => {
     console.log(`✅ Saved`)

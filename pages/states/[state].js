@@ -1,4 +1,4 @@
-import { Box, Heading, Card } from '@theme-ui/components'
+import { Box, Heading, Card } from 'theme-ui'
 import commaNumber from 'comma-number'
 import Link from 'next/link'
 import Map from 'react-usa-map'

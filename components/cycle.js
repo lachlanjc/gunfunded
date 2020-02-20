@@ -1,4 +1,4 @@
-import { Badge, Box, Flex, Grid, Heading, Text } from '@theme-ui/components'
+import { Badge, Box, Flex, Grid, Heading, Text } from 'theme-ui'
 import Breakdown from '../components/breakdown'
 import Stat from '../components/stat'
 import commaNumber from 'comma-number'

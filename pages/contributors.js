@@ -1,13 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import {
-  Box,
-  Card,
-  Container,
-  Divider,
-  Grid,
-  Input,
-  Label
-} from '@theme-ui/components'
+import { Box, Card, Container, Divider, Grid, Input, Label } from 'theme-ui'
 import Meta from '../components/meta'
 import Header from '../components/header'
 import { Group, CycleHeader, CycleStats } from '../components/cycle'

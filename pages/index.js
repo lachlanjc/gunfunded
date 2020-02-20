@@ -1,4 +1,4 @@
-import { Card, Grid, Heading } from '@theme-ui/components'
+import { Card, Grid, Heading } from 'theme-ui'
 import { Briefcase, Users } from 'react-feather'
 import Grouping from '../components/grouping'
 import Search from '../components/search'

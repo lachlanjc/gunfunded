@@ -1,4 +1,4 @@
-import { Box, Donut, Flex, Text } from '@theme-ui/components'
+import { Box, Donut, Flex, Text } from 'theme-ui'
 import { isEmpty } from 'lodash'
 
 export const StatGrid = ({ quad = false, ...props }) => (

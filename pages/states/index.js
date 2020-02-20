@@ -7,7 +7,7 @@ import {
   Label,
   Input,
   Link as A
-} from '@theme-ui/components'
+} from 'theme-ui'
 import { filter, orderBy } from 'lodash'
 import Router from 'next/router'
 import Link from 'next/link'

@@ -2,15 +2,7 @@ import React, { useState, useRef } from 'react'
 import fetch from 'isomorphic-unfetch'
 import useFocusable from '../lib/use-focusable'
 import Profile from './profile'
-import {
-  Box,
-  Card,
-  Label,
-  Input,
-  Button,
-  Spinner,
-  Text
-} from '@theme-ui/components'
+import { Box, Card, Label, Input, Button, Spinner, Text } from 'theme-ui'
 import { isEmpty } from 'lodash'
 
 const Loading = () => (

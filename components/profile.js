@@ -7,7 +7,7 @@ import {
   Text,
   Link as A,
   IconButton
-} from '@theme-ui/components'
+} from 'theme-ui'
 import { ChevronsRight } from 'react-feather'
 import Stat, { StatGrid } from '../components/stat'
 import Link from 'next/link'

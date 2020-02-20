@@ -44,8 +44,9 @@ export async function unstable_getStaticProps() {
   ).slice(0, 30)
   const total = sum(map(profiles, 'gunRightsTotal'))
   const avg = round(total / profiles.length)
-  const repub =
-    round(filter(profiles, ['party', 'Republican']).length / profiles.length)
+  const repub = round(
+    filter(profiles, ['party', 'Republican']).length / profiles.length
+  )
   const male = round(filter(profiles, ['gender', 'M']).length / profiles.length)
   const stats = { total, avg, repub, male }
   return {

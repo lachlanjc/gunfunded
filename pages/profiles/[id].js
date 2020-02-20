@@ -1,4 +1,5 @@
 import {
+  useColorMode,
   Box,
   Container,
   Heading,
@@ -8,7 +9,7 @@ import {
   Grid,
   Divider,
   Link as A
-} from '@theme-ui/components'
+} from 'theme-ui'
 import {
   Phone as PhoneIcon,
   Edit as FormIcon,
@@ -18,7 +19,6 @@ import {
   Mail as MailIcon,
   Share as ShareIcon
 } from 'react-feather'
-import { useColorMode } from 'theme-ui'
 import Link from 'next/link'
 import Meta from '../../components/meta'
 import Profile from '../../components/profile'
