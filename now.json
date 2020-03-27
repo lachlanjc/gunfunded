@@ -1,18 +1,4 @@
 {
-  "version": 2,
-  "name": "gunfunded",
-  "builds": [{ "src": "next.config.js", "use": "@now/next" }],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "headers": {
-        "cache-control": "s-maxage=43200"
-      },
-      "dest": "/api/$1",
-      "continue": true
-    }
-  ],
-  "github": {
-    "silent": true
-  }
+  "public": true,
+  "github": { "silent": true }
 }
