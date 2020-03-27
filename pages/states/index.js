@@ -58,6 +58,7 @@ const StateList = () => {
         <Link
           href={`/states/${state.abbrev}`}
           key={state.abbrev}
+          prefetch={false}
           passHref
         >
           <A
