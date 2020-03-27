@@ -91,7 +91,7 @@ const Page = ({ profiles }) => (
   </Grouping>
 )
 
-export async function unstable_getStaticProps() {
+export async function getStaticProps() {
   let profiles = await loadJsonFile('./data/records.json')
   profiles = orderBy(profiles, 'rank').slice(0, 6)
   return { props: { profiles } }

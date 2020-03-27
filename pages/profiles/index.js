@@ -47,7 +47,7 @@ const Page = ({ profiles, stats }) => (
   </Grouping>
 )
 
-export async function unstable_getStaticProps() {
+export async function getStaticProps() {
   let profiles = await loadJsonFile('./data/records.json')
   profiles = orderBy(profiles, 'net', 'desc')
   const count = profiles.length

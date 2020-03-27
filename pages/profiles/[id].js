@@ -179,9 +179,7 @@ const Page = ({ state, profile }) => {
               <Item
                 href={twitterURL(
                   profile.contact.twitter
-                    ? `.@${
-                        profile.contact.twitter
-                      }’s gun lobby funding on Gun Funded`
+                    ? `.@${profile.contact.twitter}’s gun lobby funding on Gun Funded`
                     : `${name} on Gun Funded`,
                   url
                 )}
@@ -247,13 +245,13 @@ const Page = ({ state, profile }) => {
   )
 }
 
-export async function unstable_getStaticPaths() {
+export async function getStaticPaths() {
   const profiles = await loadJsonFile('./data/records.json')
   const paths = map(map(profiles, 'id'), id => ({ params: { id } }))
-  return { paths }
+  return { paths, fallback: false }
 }
 
-export async function unstable_getStaticProps({ params }) {
+export async function getStaticProps({ params }) {
   const profiles = await loadJsonFile('./data/records.json')
   const profile = find(profiles, ['id', params.id])
   const states = await loadJsonFile('./data/states.json')

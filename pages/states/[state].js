@@ -23,9 +23,7 @@ const Page = ({ profiles, abbrev, stats }) => {
     <Grouping
       centered
       title={state.name}
-      desc={`All U.S. Congress members from ${
-        state.name
-      }, sorted by gun money.`}
+      desc={`All U.S. Congress members from ${state.name}, sorted by gun money.`}
       profiles={reps}
       footer={[
         <Card
@@ -109,12 +107,12 @@ const Page = ({ profiles, abbrev, stats }) => {
   )
 }
 
-export async function unstable_getStaticPaths() {
+export async function getStaticPaths() {
   const paths = map(map(states, 'abbrev'), state => ({ params: { state } }))
-  return { paths }
+  return { paths, fallback: false }
 }
 
-export async function unstable_getStaticProps({ params }) {
+export async function getStaticProps({ params }) {
   const abbrev = params.state.toUpperCase()
   let profiles = await loadJsonFile('./data/records.json')
   profiles = orderBy(filter(profiles, ['state', abbrev]), 'net', 'desc')
