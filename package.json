@@ -14,21 +14,21 @@
     "data:about": "node data/about.js"
   },
   "dependencies": {
+    "@next/mdx": "^10.0.1",
     "@theme-ui/preset-base": "^0.3.0",
-    "@zeit/next-mdx": "^1.2.0",
     "comma-number": "^2.0.1",
-    "isomorphic-unfetch": "^3.0.0",
+    "isomorphic-unfetch": "^3.1.0",
     "load-json-file": "^6.2.0",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.20",
     "neat-csv": "^5.2.0",
-    "next": "^9.3.2",
+    "next": "^10.0.1",
     "nprogress": "^0.2.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-feather": "^2.0.3",
-    "react-usa-map": "^1.4.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-feather": "^2.0.8",
+    "react-usa-map": "^1.5.0",
     "recharts": "^2.0.0-beta.1",
-    "theme-ui": "^0.3.1",
+    "theme-ui": "^0.3.3",
     "write-json-file": "^4.3.0"
   }
 }
