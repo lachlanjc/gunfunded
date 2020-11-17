@@ -14,6 +14,7 @@
     "data:about": "node data/about.js"
   },
   "dependencies": {
+    "@mdx-js/loader": "^1.6.21",
     "@next/mdx": "^10.0.1",
     "@theme-ui/preset-base": "^0.3.0",
     "comma-number": "^2.0.1",

@@ -1,6 +1,4 @@
-/** @jsx jsx */
 import {
-  jsx,
   useColorMode,
   Box,
   Container,
