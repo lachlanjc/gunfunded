@@ -6,16 +6,16 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  Legend
+  Legend,
 } from 'recharts'
 import { palette } from './theme'
 
-export default ({ data }) => (
+const Lobbying = ({ data }) => (
   <BarChart width={512} height={300} data={data}>
     <CartesianGrid strokeDasharray="3 3" stroke={palette.muted} />
     <XAxis dataKey="year" stroke={palette.muted} />
     <YAxis
-      tickFormatter={v => `$${Number(v) / 1000 / 1000}m`}
+      tickFormatter={(v) => `$${Number(v) / 1000 / 1000}m`}
       stroke={palette.muted}
     />
     <Legend />
@@ -36,3 +36,5 @@ export default ({ data }) => (
     />
   </BarChart>
 )
+
+export default Lobbying

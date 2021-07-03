@@ -4,17 +4,17 @@ import {
   Container,
   IconButton,
   Text,
-  NavLink
+  NavLink,
 } from 'theme-ui'
 import Link from 'next/link'
 import { Moon } from 'react-feather'
 
-const ColorSwitcher = props => {
+const ColorSwitcher = (props) => {
   const [mode, setMode] = useColorMode()
   return (
     <IconButton
       {...props}
-      onClick={e => setMode(mode === 'dark' ? 'light' : 'dark')}
+      onClick={(e) => setMode(mode === 'dark' ? 'light' : 'dark')}
       title="Cycle Color Mode"
       sx={{
         borderRadius: 9999,
@@ -23,16 +23,15 @@ const ColorSwitcher = props => {
         ':hover,:focus': {
           color: 'accent',
           boxShadow: '0 0 0 3px',
-          outline: 'none'
-        }
-      }}
-    >
+          outline: 'none',
+        },
+      }}>
       <Moon size={24} />
     </IconButton>
   )
 }
 
-export default () => {
+const Nav = () => {
   const [mode] = useColorMode()
   return (
     <Box
@@ -40,10 +39,9 @@ export default () => {
       sx={{
         bg: mode === 'dark' ? 'darkless' : 'red',
         color: 'nav',
-        py: 3
+        py: 3,
       }}
-      key="nav"
-    >
+      key="nav">
       <Container
         sx={{
           display: 'flex',
@@ -53,18 +51,16 @@ export default () => {
             color: mode === 'dark' ? 'red' : 'white',
             textDecoration: 'none',
             mr: [3, 4],
-            ':focus,:hover': { color: mode === 'dark' ? 'red' : 'white' }
-          }
-        }}
-      >
+            ':focus,:hover': { color: mode === 'dark' ? 'red' : 'white' },
+          },
+        }}>
         <Link href="/" passHref>
           <Text
             as="a"
             variant="logo"
             sx={{
-              flex: '1 1 auto'
-            }}
-          >
+              flex: '1 1 auto',
+            }}>
             Gun&nbsp;Funded
           </Text>
         </Link>
@@ -82,3 +78,5 @@ export default () => {
     </Box>
   )
 }
+
+export default Nav

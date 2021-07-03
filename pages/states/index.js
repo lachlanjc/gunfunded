@@ -6,7 +6,7 @@ import {
   Flex,
   Label,
   Input,
-  Link as A
+  Link as A,
 } from 'theme-ui'
 import { filter, orderBy } from 'lodash'
 import Router from 'next/router'
@@ -19,7 +19,7 @@ import useFocusable from '../../lib/use-focusable'
 const StateList = () => {
   const [jump, setJump] = useState('')
   const [list, setList] = useState(states)
-  const onChange = e =>
+  const onChange = (e) =>
     setJump(e.target.value.toString().match(/[A-Za-z\s]+/g) || '')
   useEffect(() => {
     if (jump.toString().length > 0) {
@@ -27,7 +27,7 @@ const StateList = () => {
       setList(
         filter(
           states,
-          s =>
+          (s) =>
             s.name.toLowerCase().includes(j) ||
             s.abbrev.toLowerCase().includes(j)
         )
@@ -54,13 +54,12 @@ const StateList = () => {
       ref={input}
     />,
     <Flex sx={{ flexWrap: 'wrap', mx: -2, mt: 3 }} key="list">
-      {list.map(state => (
+      {list.map((state) => (
         <Link
           href={`/states/${state.abbrev}`}
           key={state.abbrev}
           prefetch={false}
-          passHref
-        >
+          passHref>
           <A
             children={state.name}
             sx={{
@@ -74,20 +73,20 @@ const StateList = () => {
               mr: 2,
               mb: 2,
               ':focus, :hover': { bg: 'sunken' },
-              ':active': { color: 'accent' }
+              ':active': { color: 'accent' },
             }}
           />
         </Link>
       ))}
-    </Flex>
+    </Flex>,
   ]
 }
 
-const mapHandler = e => {
+const mapHandler = (e) => {
   Router.push('/states/' + e.target.dataset.name)
 }
 
-export default () => (
+const Page = () => (
   <Box as="main" sx={{ minHeight: '100vh', bg: 'background' }}>
     <Header title="All States" includeMeta />
     <Container
@@ -98,9 +97,8 @@ export default () => (
         justifyContent: 'center',
         py: [1, 3, 4],
         px: 0,
-        svg: { maxHeight: ['50vh', 'auto'] }
-      }}
-    >
+        svg: { maxHeight: ['50vh', 'auto'] },
+      }}>
       <Map onClick={mapHandler} />
     </Container>
     <Container sx={{ py: [2, 3, 4] }}>
@@ -111,3 +109,5 @@ export default () => (
     </Container>
   </Box>
 )
+
+export default Page

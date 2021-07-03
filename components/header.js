@@ -1,14 +1,14 @@
 import { useColorMode, Box, Container, Heading } from 'theme-ui'
 import Meta from './meta'
 
-export default ({
+const Header = ({
   centered = false,
   title,
   desc,
   img,
   children,
   includeMeta = false,
-  sx = {}
+  sx = {},
 }) => {
   const [mode] = useColorMode()
   return (
@@ -19,9 +19,8 @@ export default ({
         pt: [4, null, null, null, 5],
         pb: [4, 5, null, null, 6],
         textAlign: centered && [null, 'center'],
-        ...sx
-      }}
-    >
+        ...sx,
+      }}>
       {includeMeta && <Meta title={title} description={desc} image={img} />}
       <Container>
         <Heading
@@ -38,7 +37,7 @@ export default ({
               mt: 3,
               color: 'snow',
               maxWidth: ['narrowplus', null, null, 'subcontainer', 'subwide'],
-              mx: centered ? [null, 'auto'] : null
+              mx: centered ? [null, 'auto'] : null,
             }}
             children={desc}
           />
@@ -48,3 +47,5 @@ export default ({
     </Box>
   )
 }
+
+export default Header

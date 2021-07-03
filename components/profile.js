@@ -5,8 +5,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import commaNumber from 'comma-number'
 
-const getYear = date => date.slice(0, 4)
-const avatarUrl = id => `https://avatars.gunfunded.com/${id}.jpg`
+const getYear = (date) => date.slice(0, 4)
+const avatarUrl = (id) => `https://avatars.gunfunded.com/${id}.jpg`
 
 const Badge = ({ party, sx, ...props }) => (
   <Box
@@ -22,7 +22,7 @@ const Badge = ({ party, sx, ...props }) => (
       height: 24,
       lineHeight: 0,
       borderRadius: 12,
-      ...sx
+      ...sx,
     }}
     title={party}
     children={party.slice(0, 1)}
@@ -34,8 +34,7 @@ const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
   <Card
     as={full ? 'article' : 'a'}
     sx={{ display: 'block', p: [3, 4], textAlign: 'left', ...sx }}
-    {...props}
-  >
+    {...props}>
     {label && (
       <Text
         variant="caps"
@@ -53,10 +52,9 @@ const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
             borderRadius: 'circle',
             overflow: 'hidden',
             width: [64, 72],
-            height: [64, 72]
-          }
-        }}
-      >
+            height: [64, 72],
+          },
+        }}>
         <Badge
           party={data.party}
           sx={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}
@@ -66,14 +64,15 @@ const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
           alt={data.name.full}
           objectFit="cover"
           objectPosition="center"
+          width={450}
+          height={550}
         />
       </Box>
       <Box sx={{ mr: 'auto' }}>
         <Heading
           as="h2"
           variant="headline"
-          sx={{ color: 'text', textAlign: 'left !important', mt: 0, mb: 0 }}
-        >
+          sx={{ color: 'text', textAlign: 'left !important', mt: 0, mb: 0 }}>
           {data.role === 'sen' ? 'Sen.' : 'Rep.'} {data.name.full}
         </Heading>
         <Text sx={{ color: 'muted', fontSize: [1, 2] }}>
@@ -93,9 +92,8 @@ const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
             width: 36,
             height: 36,
             flexShrink: '0',
-            ml: 3
-          }}
-        >
+            ml: 3,
+          }}>
           <ChevronsRight size={24} />
         </IconButton>
       )}
@@ -167,8 +165,7 @@ const Wrapper = ({ full, data, ...props }) =>
       href="/profiles/[id]"
       as={`/profiles/${data.id}`}
       passHref
-      prefetch={false}
-    >
+      prefetch={false}>
       <Profile
         data={data}
         sx={{
@@ -177,7 +174,10 @@ const Wrapper = ({ full, data, ...props }) =>
           WebkitTapHighlightColor: 'transparent',
           transition:
             'transform .125s ease-in-out, box-shadow .125s ease-in-out',
-          ':hover,:focus': { transform: 'scale(1.0625)', boxShadow: 'elevated' }
+          ':hover,:focus': {
+            transform: 'scale(1.0625)',
+            boxShadow: 'elevated',
+          },
         }}
         {...props}
       />
