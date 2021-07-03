@@ -24,7 +24,7 @@ const disclaimer = (
   </Text>
 )
 
-export default ({ defaultAddress = '' }) => {
+const Search = ({ defaultAddress = '' }) => {
   const [address, setAddress] = useState(defaultAddress)
   const [submit, setSubmit] = useState('Search')
   const [value, setValue] = useState(disclaimer)
@@ -95,3 +95,5 @@ export default ({ defaultAddress = '' }) => {
     </>
   )
 }
+
+export default Search
