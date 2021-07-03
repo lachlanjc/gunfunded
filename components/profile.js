@@ -1,15 +1,7 @@
-import {
-  Flex,
-  Card,
-  Box,
-  Heading,
-  Image,
-  Text,
-  Link as A,
-  IconButton
-} from 'theme-ui'
+import { Flex, Card, Box, Heading, Text, Link as A, IconButton } from 'theme-ui'
 import { ChevronsRight } from 'react-feather'
 import Stat, { StatGrid } from '../components/stat'
+import Image from 'next/image'
 import Link from 'next/link'
 import commaNumber from 'comma-number'
 
@@ -52,7 +44,19 @@ const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
       />
     )}
     <Flex as="header" sx={{ alignItems: 'center' }}>
-      <Box sx={{ position: 'relative', flexShrink: '0', mr: 3 }}>
+      <Box
+        sx={{
+          position: 'relative',
+          flexShrink: '0',
+          mr: 3,
+          img: {
+            borderRadius: 'circle',
+            overflow: 'hidden',
+            width: [64, 72],
+            height: [64, 72]
+          }
+        }}
+      >
         <Badge
           party={data.party}
           sx={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}
@@ -60,12 +64,8 @@ const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
         <Image
           src={avatarUrl(data.ids.bioguide)}
           alt={data.name.full}
-          variant="avatar"
-          loading="lazy"
-          sx={{
-            width: [64, 72],
-            height: [64, 72]
-          }}
+          objectFit="cover"
+          objectPosition="center"
         />
       </Box>
       <Box sx={{ mr: 'auto' }}>

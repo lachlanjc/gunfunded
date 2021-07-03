@@ -1,5 +1,5 @@
 const { map, find, last, isEmpty, pick } = require('lodash')
-const fetch = require('isomorphic-unfetch')
+const fetch = require('node-fetch')
 const writeJsonFile = require('write-json-file')
 
 const USIO = 'https://theunitedstates.io/congress-legislators'

@@ -1,5 +1,5 @@
 import base from '@theme-ui/preset-base'
-import { merge } from 'lodash'
+import { merge } from 'theme-ui'
 
 export const breakpoints = [32, 48, 64, 96, 128].map(w => `${w}em`)
 
@@ -187,8 +187,6 @@ const theme = merge(base, {
   images: {
     avatar: {
       borderRadius: 'circle',
-      objectFit: 'cover',
-      objectPosition: 'center',
       flexShrink: 0
     }
   },
