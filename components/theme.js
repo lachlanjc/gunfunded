@@ -1,7 +1,7 @@
 import base from '@theme-ui/preset-base'
 import { merge } from 'theme-ui'
 
-export const breakpoints = [32, 48, 64, 96, 128].map(w => `${w}em`)
+export const breakpoints = [32, 48, 64, 96, 128].map((w) => `${w}em`)
 
 export const palette = {
   darker: '#121217',
@@ -22,7 +22,7 @@ export const palette = {
   blue: '#338eda',
   twitter: '#1da1f2',
   facebook: '#3b5998',
-  instagram: '#e1306c'
+  instagram: '#e1306c',
 }
 
 const theme = merge(base, {
@@ -64,32 +64,32 @@ const theme = merge(base, {
         accent: palette.cyan,
         invertedPrimary: palette.darker,
         invertedText: palette.red,
-        nav: palette.red
-      }
-    }
+        nav: palette.red,
+      },
+    },
   },
   fonts: {
     body:
       'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
     heading: 'inherit',
-    monospace: '"SFMono-Regular", "Roboto Mono", Menlo, Consolas, monospace'
+    monospace: '"SFMono-Regular", "Roboto Mono", Menlo, Consolas, monospace',
   },
   lineHeights: {
     title: 1,
     heading: 1.125,
     subheading: 1.25,
-    body: 1.5
+    body: 1.5,
   },
   fontWeights: {
     stat: 300,
     body: 400,
     medium: 600,
     bold: 700,
-    heading: 900
+    heading: 900,
   },
   letterSpacings: {
     title: '-0.009em',
-    headline: '0.009em'
+    headline: '0.009em',
   },
   sizes: {
     ultrawide: 1536,
@@ -98,35 +98,36 @@ const theme = merge(base, {
     container: 768,
     subcontainer: 640,
     narrowplus: 576,
-    narrow: 512
+    narrow: 512,
   },
   radii: {
     default: 6,
     extra: 9,
-    circle: 99999
+    circle: 99999,
   },
   shadows: {
     small: '0 1px 2px rgba(0, 0, 0, 0.0625), 0 2px 4px rgba(0, 0, 0, 0.0625)',
     card: '0 4px 8px rgba(0, 0, 0, 0.125)',
-    elevated: '0 1px 2px rgba(0, 0, 0, 0.0625), 0 8px 12px rgba(0, 0, 0, 0.125)'
+    elevated:
+      '0 1px 2px rgba(0, 0, 0, 0.0625), 0 8px 12px rgba(0, 0, 0, 0.125)',
   },
   text: {
     heading: {
       fontWeight: 'heading',
-      lineHeight: 'heading'
+      lineHeight: 'heading',
     },
     title: {
       fontWeight: 'heading',
       lineHeight: 'title',
       letterSpacing: 'title',
-      fontSize: [5, 6, 7, null, 8]
+      fontSize: [5, 6, 7, null, 8],
     },
     subtitle: {
       fontSize: [3, 4, null, null, 5],
       fontWeight: 'body',
       letterSpacing: 'headline',
       lineHeight: 'subheading',
-      my: 0
+      my: 0,
     },
     headline: {
       fontWeight: 'heading',
@@ -135,7 +136,7 @@ const theme = merge(base, {
       fontSize: 4,
       color: 'accent',
       mt: 3,
-      mb: 3
+      mb: 3,
     },
     subheadline: {
       fontWeight: 'heading',
@@ -144,23 +145,23 @@ const theme = merge(base, {
       letterSpacing: 'headline',
       fontSize: [1, 2],
       mt: 0,
-      mb: 3
+      mb: 3,
     },
     caption: {
       color: 'muted',
       fontWeight: 'medium',
-      letterSpacing: 'headline'
+      letterSpacing: 'headline',
     },
     logo: {
       textTransform: 'uppercase',
       letterSpacing: 'headline',
-      fontWeight: 'heading'
-    }
+      fontWeight: 'heading',
+    },
   },
   badges: {
     pill: {
-      borderRadius: 'circle'
-    }
+      borderRadius: 'circle',
+    },
   },
   buttons: {
     primary: {
@@ -171,7 +172,7 @@ const theme = merge(base, {
       fontWeight: 'bold',
       display: 'flex',
       alignItems: 'center',
-      svg: { ml: -1, mr: 2 }
+      svg: { ml: -1, mr: 2 },
     },
     inverted: {
       bg: 'invertedPrimary',
@@ -181,14 +182,14 @@ const theme = merge(base, {
       fontWeight: 'bold',
       display: 'flex',
       alignItems: 'center',
-      svg: { ml: -1, mr: 2 }
-    }
+      svg: { ml: -1, mr: 2 },
+    },
   },
   images: {
     avatar: {
       borderRadius: 'circle',
-      flexShrink: 0
-    }
+      flexShrink: 0,
+    },
   },
   forms: {
     input: {
@@ -203,11 +204,11 @@ const theme = merge(base, {
       '::-webkit-input-placeholder': { color: 'placeholder' },
       '::-moz-placeholder': { color: 'placeholder' },
       ':-ms-input-placeholder': { color: 'placeholder' },
-      '&[type="search"]::-webkit-search-decoration': { display: 'none' }
+      '&[type="search"]::-webkit-search-decoration': { display: 'none' },
     },
     label: {
       color: 'text',
-      fontWeight: 'medium'
+      fontWeight: 'medium',
     },
     hidden: {
       position: 'absolute',
@@ -215,8 +216,8 @@ const theme = merge(base, {
       width: '1px',
       overflow: 'hidden',
       clip: 'rect(1px, 1px, 1px, 1px)',
-      whiteSpace: 'nowrap'
-    }
+      whiteSpace: 'nowrap',
+    },
   },
   cards: {
     primary: {
@@ -225,12 +226,12 @@ const theme = merge(base, {
       p: [3, 4],
       borderRadius: 'extra',
       boxShadow: 'card',
-      input: { boxShadow: 'none !important' }
+      input: { boxShadow: 'none !important' },
     },
     sunken: {
       bg: 'sunken',
       p: [3, 4],
-      borderRadius: 'extra'
+      borderRadius: 'extra',
     },
     error: {
       bg: 'sunken',
@@ -239,7 +240,7 @@ const theme = merge(base, {
       color: 'text',
       fontWeight: 'bold',
       display: 'flex',
-      placeContent: 'center'
+      placeContent: 'center',
     },
     nav: {
       bg: 'elevated',
@@ -258,44 +259,45 @@ const theme = merge(base, {
       fontWeight: 'bold',
       lineHeight: 'title',
       WebkitTapHighlightColor: 'transparent',
-      transition: 'transform .125s ease-in-out, box-shadow .125s ease-in-out',
+      transition: '.125s ease-in-out',
+      transitionProperty: 'box-shadow, transform',
       ':hover,:focus': {
         transform: 'scale(1.0625)',
-        boxShadow: 'elevated'
+        boxShadow: 'elevated',
       },
       ':after': {
         content: '"→"',
         color: 'accent',
         fontWeight: 'title',
-        ml: 'auto'
+        ml: 'auto',
       },
       svg: {
         flexShrink: '0',
         mr: 3,
-        mb: [3, 0]
-      }
-    }
+        mb: [3, 0],
+      },
+    },
   },
   layout: {
     container: {
       width: '100%',
       maxWidth: ['container', null, null, null, 'wide'],
       mx: 'auto',
-      px: 3
+      px: 3,
     },
     wide: {
       width: '100%',
       maxWidth: ['wide', null, null, null, 'ultrawide'],
       mx: 'auto',
-      px: 3
-    }
+      px: 3,
+    },
   },
   styles: {
     hr: {
       borderColor: 'border',
-      my: [3, 4]
-    }
-  }
+      my: [3, 4],
+    },
+  },
 })
 theme.styles.root = {
   fontFamily: theme.fonts.body,
@@ -303,7 +305,7 @@ theme.styles.root = {
   fontWeight: theme.fontWeights.body,
   color: theme.colors.text,
   margin: 0,
-  minHeight: '100vh'
+  minHeight: '100vh',
 }
 
 export default theme
