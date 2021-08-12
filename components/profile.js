@@ -64,6 +64,8 @@ const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
           sx={{
             width: [64, 72],
             height: [64, 72],
+            objectFit: 'cover',
+            objectPosition: 'center',
           }}
         />
       </Box>
