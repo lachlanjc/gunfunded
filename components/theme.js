@@ -29,8 +29,10 @@ const theme = merge(base, {
   breakpoints,
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fontSizes: [12, 16, 20, 24, 32, 48, 64, 96, 128],
-  initialColorModeName: 'light',
-  useColorSchemeMediaQuery: true,
+  config: {
+    initialColorModeName: 'light',
+    useColorSchemeMediaQuery: 'system',
+  },
   colors: {
     ...palette,
     text: palette.black,
@@ -72,7 +74,7 @@ const theme = merge(base, {
     body:
       'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
     heading: 'inherit',
-    monospace: '"SFMono-Regular", "Roboto Mono", Menlo, Consolas, monospace',
+    monospace: 'ui-monospace, "SFMono-Regular", "Roboto Mono", Menlo, Consolas, monospace',
   },
   lineHeights: {
     title: 1,

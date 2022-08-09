@@ -134,8 +134,8 @@ const emailURL = (subject, body) =>
 const Page = ({ state, profile }) => {
   if (!state || !profile) return <Error statusCode={404} />
   const role = profile.role === 'sen' ? 'Senator' : 'Representative'
-  const url = `https://gunfunded.com/profiles/${profile.id}`
-  const img = `https://cards.gunfunded.com/${profile.id}.png`
+  const url = `https://gunfunded.vercel.app/profiles/${profile.id}`
+  const img = `https://gunfunded-cards.vercel.app/${profile.id}.png`
   const name = `${role.slice(0, 3)}. ${profile.name.full}`
   const title = `${name} on Gun Funded`
   const total =

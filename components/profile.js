@@ -14,7 +14,7 @@ import Link from 'next/link'
 import commaNumber from 'comma-number'
 
 const getYear = (date) => date.slice(0, 4)
-const avatarUrl = (id) => `https://avatars.gunfunded.com/${id}.jpg`
+const avatarUrl = (id) => `https://gunfunded-avatars.vercel.app/${id}.jpg`
 
 const Badge = ({ party, sx, ...props }) => (
   <Box
