@@ -1,7 +1,7 @@
 {
   "name": "gunfunded",
   "version": "0.0.1",
-  "author": "Lachlan Campbell",
+  "author": "Lachlan Campbell (https://lachlanjc.com)",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -15,14 +15,16 @@
     "data:about": "node data/about.js"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.0",
     "@mdx-js/loader": "^1.6.22",
-    "@next/mdx": "^11.1.0",
-    "@theme-ui/preset-base": "^0.10.1",
+    "@mdx-js/react": "1.6.22",
+    "@next/mdx": "^12.2.4",
+    "@theme-ui/preset-base": "^0.14.7",
     "comma-number": "^2.1.0",
     "load-json-file": "^6.2.0",
     "lodash": "^4.17.21",
     "neat-csv": "^6.0.1",
-    "next": "^12.1.0",
+    "next": "^12.2.4",
     "node-fetch": "^3.1.1",
     "nprogress": "^0.2.0",
     "react": "^17.0.2",
@@ -30,11 +32,11 @@
     "react-feather": "^2.0.9",
     "react-usa-map": "^1.5.0",
     "recharts": "^2.1.0",
-    "theme-ui": "^0.10.0",
+    "theme-ui": "^0.14.7",
     "write-json-file": "^4.3.0"
   },
   "devDependencies": {
-    "eslint": "^7.32.0",
-    "eslint-config-next": "^11.1.0"
+    "eslint": "^8.21.0",
+    "eslint-config-next": "^12.2.4"
   }
 }
