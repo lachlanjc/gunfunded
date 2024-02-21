@@ -14,7 +14,7 @@ import Link from 'next/link'
 import commaNumber from 'comma-number'
 
 const getYear = (date) => date.slice(0, 4)
-const avatarUrl = (id) => `https://avatars.gunfunded.com/${id}.jpg`
+const avatarUrl = (id) => `https://gunfunded-avatars.vercel.app/${id}.jpg`
 
 const Badge = ({ party, sx, ...props }) => (
   <Box
@@ -42,7 +42,8 @@ const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
   <Card
     as={full ? 'article' : 'a'}
     sx={{ display: 'block', p: [3, 4], textAlign: 'left', ...sx }}
-    {...props}>
+    {...props}
+  >
     {label && (
       <Text
         variant="caps"
@@ -73,7 +74,8 @@ const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
         <Heading
           as="h2"
           variant="headline"
-          sx={{ color: 'text', textAlign: 'left !important', mt: 0, mb: 0 }}>
+          sx={{ color: 'text', textAlign: 'left !important', mt: 0, mb: 0 }}
+        >
           {data.role === 'sen' ? 'Sen.' : 'Rep.'} {data.name.full}
         </Heading>
         <Text sx={{ color: 'muted', fontSize: [1, 2] }}>
@@ -94,7 +96,8 @@ const Profile = ({ label, data, full = false, sx = {}, ...props }) => (
             height: 36,
             flexShrink: '0',
             ml: 3,
-          }}>
+          }}
+        >
           <ChevronsRight size={24} />
         </IconButton>
       )}
@@ -166,7 +169,8 @@ const Wrapper = ({ full, data, ...props }) =>
       href="/profiles/[id]"
       as={`/profiles/${data.id}`}
       passHref
-      prefetch={false}>
+      prefetch={false}
+    >
       <Profile
         data={data}
         sx={{

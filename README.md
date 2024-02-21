@@ -2,6 +2,6 @@
 
 Analyzing the gun lobby’s funding of Congress.
 
-[**gunfunded.com**](https://gunfunded.com/)
+[**gunfunded.vercel.app**](https://gunfunded.vercel.app/)
 
 MIT License

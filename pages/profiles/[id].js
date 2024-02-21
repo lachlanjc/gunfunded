@@ -8,7 +8,7 @@ import {
   Flex,
   Grid,
   Divider,
-  Link as A
+  Link as A,
 } from 'theme-ui'
 import {
   Phone as PhoneIcon,
@@ -17,7 +17,7 @@ import {
   Twitter as TwitterIcon,
   Instagram as InstagramIcon,
   Mail as MailIcon,
-  Share as ShareIcon
+  Share as ShareIcon,
 } from 'react-feather'
 import Error from 'next/error'
 import Link from 'next/link'
@@ -38,7 +38,7 @@ const Header = ({ title, desc, img, ...props }) => {
         bg: mode === 'dark' ? 'darkless' : 'red',
         pt: [4, null, null, null, 5],
         pb: [4, 5, null, null, 6],
-        px: [2, 3]
+        px: [2, 3],
       }}
     >
       <Container>
@@ -49,7 +49,7 @@ const Header = ({ title, desc, img, ...props }) => {
             fontSize: [4, 5],
             fontWeight: 'heading',
             lineHeight: 'heading',
-            letterSpacing: 'headline'
+            letterSpacing: 'headline',
           }}
           children={title}
         />
@@ -64,7 +64,7 @@ const Header = ({ title, desc, img, ...props }) => {
               fontSize: [2, 3, null, 4],
               fontWeight: 'body',
               letterSpacing: 'headline',
-              lineHeight: 'subheading'
+              lineHeight: 'subheading',
             }}
             children={desc}
           />
@@ -80,14 +80,14 @@ const Item = ({ label, color, ...props }) => {
     Contact: FormIcon,
     Twitter: TwitterIcon,
     Facebook: FacebookIcon,
-    Instagram: InstagramIcon
+    Instagram: InstagramIcon,
   }[label]
   return (
     <A
       sx={{
         color: color || label.toLowerCase(),
         pr: 4,
-        lineHeight: 0
+        lineHeight: 0,
       }}
       title={label}
       target="_blank"
@@ -98,7 +98,7 @@ const Item = ({ label, color, ...props }) => {
   )
 }
 
-const tel = num => `tel:` + num.match(/\d+/g).join('')
+const tel = (num) => `tel:` + num.match(/\d+/g).join('')
 
 const Contact = ({ phone, form, twitter, facebook, instagram }) => (
   <Flex sx={{ alignItems: 'center' }}>
@@ -125,7 +125,7 @@ const twitterURL = (text, u) =>
   `https://twitter.com/intent/tweet?text=${text
     .split(' ')
     .join('%20')}&url=${u}`
-const facebookURL = u => `https://www.facebook.com/sharer/sharer.php?u=${u}`
+const facebookURL = (u) => `https://www.facebook.com/sharer/sharer.php?u=${u}`
 const emailURL = (subject, body) =>
   `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
     body
@@ -134,8 +134,8 @@ const emailURL = (subject, body) =>
 const Page = ({ state, profile }) => {
   if (!state || !profile) return <Error statusCode={404} />
   const role = profile.role === 'sen' ? 'Senator' : 'Representative'
-  const url = `https://gunfunded.com/profiles/${profile.id}`
-  const img = `https://cards.gunfunded.com/${profile.id}.png`
+  const url = `https://gunfunded.vercel.app/profiles/${profile.id}`
+  const img = `https://gunfunded-cards.vercel.app/${profile.id}.png`
   const name = `${role.slice(0, 3)}. ${profile.name.full}`
   const title = `${name} on Gun Funded`
   const total =
@@ -164,7 +164,7 @@ const Page = ({ state, profile }) => {
             <Flex sx={{ alignItems: 'center' }}>
               <Button
                 sx={{ mr: 4 }}
-                onClick={async e => {
+                onClick={async (e) => {
                   try {
                     await navigator.share({ title, body, url })
                   } catch (error) {
@@ -220,7 +220,7 @@ const Page = ({ state, profile }) => {
         <Card
           sx={{
             mt: 4,
-            'input, a': { bg: 'sunken', boxShadow: 'none' }
+            'input, a': { bg: 'sunken', boxShadow: 'none' },
           }}
         >
           <Heading as="h2" variant="headline" sx={{ mt: 0 }}>
@@ -235,7 +235,7 @@ const Page = ({ state, profile }) => {
             mt: [3, 4],
             a: { color: 'accent' },
             ul: { pl: 0, mb: 0 },
-            'p:last-of-type': { mb: 0 }
+            'p:last-of-type': { mb: 0 },
           }}
         >
           <Methodology />
@@ -247,7 +247,7 @@ const Page = ({ state, profile }) => {
 
 export async function getStaticPaths() {
   const profiles = await loadJsonFile('./data/records.json')
-  const paths = map(map(profiles, 'id'), id => ({ params: { id } }))
+  const paths = map(map(profiles, 'id'), (id) => ({ params: { id } }))
   return { paths, fallback: false }
 }
 
